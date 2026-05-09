@@ -1,5 +1,5 @@
-const CACHE = 'wbh-v3';
-const PRECACHE = ['/', '/index.html', '/ambient.mp3', '/manifest.json', '/icon-192.png', '/icon-512.png'];
+const CACHE = 'wbh-v4';
+const PRECACHE = ['/ambient.mp3', '/manifest.json', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE).catch(() => {})));
@@ -18,17 +18,35 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   if (e.request.url.includes('/.netlify/functions/')) return;
-  e.respondWith(
-    caches.match(e.request).then(cached =>
-      cached || fetch(e.request).then(res => {
+
+  const url = new URL(e.request.url);
+  const isHTML = url.pathname === '/' || url.pathname.endsWith('.html');
+
+  if (isHTML) {
+    // Network-first for HTML — always get fresh app code
+    e.respondWith(
+      fetch(e.request).then(res => {
         if (res.ok) {
           const clone = res.clone();
           caches.open(CACHE).then(c => c.put(e.request, clone));
         }
         return res;
-      }).catch(() => caches.match('/index.html'))
-    )
-  );
+      }).catch(() => caches.match(e.request))
+    );
+  } else {
+    // Cache-first for assets (audio, icons, etc.)
+    e.respondWith(
+      caches.match(e.request).then(cached =>
+        cached || fetch(e.request).then(res => {
+          if (res.ok) {
+            const clone = res.clone();
+            caches.open(CACHE).then(c => c.put(e.request, clone));
+          }
+          return res;
+        })
+      )
+    );
+  }
 });
 
 self.addEventListener('push', e => {
