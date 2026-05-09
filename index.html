@@ -1480,7 +1480,9 @@ async function submitCheckin() {
     renderCheckinList();
   } catch(err) {
     respEl.classList.remove('visible');
-    document.getElementById('submitError').classList.add('visible');
+    const errEl = document.getElementById('submitError');
+    errEl.textContent = `Something went wrong (${err.message}). Please try again.`;
+    errEl.classList.add('visible');
     btn.disabled=false; btn.textContent='Try Again →';
     console.error('Companion error:',err);
   } finally { isSubmitting=false; }
@@ -1754,8 +1756,22 @@ function initApp() {
 })();
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(e => console.warn('SW:', e));
+  window.addEventListener('load', async () => {
+    try {
+      // Unregister any old service workers first, then register fresh
+      const regs = await navigator.serviceWorker.getRegistrations();
+      for (const reg of regs) {
+        const swUrl = reg.active?.scriptURL || '';
+        if (!swUrl.endsWith('/sw.js')) await reg.unregister();
+      }
+      const reg = await navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' });
+      reg.addEventListener('updatefound', () => {
+        const newSW = reg.installing;
+        newSW.addEventListener('statechange', () => {
+          if (newSW.state === 'activated') window.location.reload();
+        });
+      });
+    } catch(e) { console.warn('SW:', e); }
   });
 }
 </script>
