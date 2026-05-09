@@ -930,6 +930,8 @@
   }
   .audio-btn:hover { background: rgba(107,140,110,0.15); color: var(--cream); }
   .audio-btn.playing { color: var(--gold-light); border-color: rgba(196,146,58,0.4); }
+  .audio-btn.pulse { animation: audioPulse 1.8s ease 2; }
+  @keyframes audioPulse { 0%,100%{box-shadow:none} 50%{box-shadow:0 0 0 3px rgba(107,140,110,0.35)} }
 
   /* ── Notification modal (bottom slide) ── */
   .notif-modal {
@@ -996,7 +998,7 @@
   <div class="header-title"><em>The Way Back Home</em> — Daily Practice</div>
   <div class="header-actions">
     <div class="streak-badge" id="streakBadge" title="Your practice streak"><span class="streak-dot"></span><span id="streakLabel">Day 1</span></div>
-    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Toggle ambient music">♩ Ambient</button>
+    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Play soft ambient music during your practice">♩ Music</button>
     <button class="btn-install" id="installBtn" onclick="installPWA()">Add to Home Screen</button>
     <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer" class="header-link">danieljahearnlmft.com</a>
   </div>
@@ -1545,39 +1547,38 @@ window.addEventListener('appinstalled', () => {
 //  AMBIENT AUDIO
 // ─────────────────────────────────────────────
 const _audio = document.getElementById('ambientAudio');
-let _audioReady = false;
-
-function _unlockAudio() {
-  if (_audioReady) return;
-  _audioReady = true;
-  const pref = lsGet('wbh_audio_on');
-  if (pref === 'true') {
-    _audio.play().then(() => {
-      document.getElementById('audioBtn').classList.add('playing');
-      document.getElementById('audioBtn').textContent = '♩ Playing';
-    }).catch(() => {});
-  }
-  document.removeEventListener('click', _unlockAudio);
-  document.removeEventListener('touchstart', _unlockAudio);
-}
-document.addEventListener('click', _unlockAudio);
-document.addEventListener('touchstart', _unlockAudio);
+_audio.volume = 0.45;
 
 function toggleAudio() {
-  _audioReady = true;
   const btn = document.getElementById('audioBtn');
   if (_audio.paused) {
+    _audio.load();
     _audio.play().then(() => {
       btn.classList.add('playing');
-      btn.textContent = '♩ Playing';
+      btn.textContent = '♩ Pause';
       lsSet('wbh_audio_on', 'true');
-    }).catch(() => {});
+      document.getElementById('audioHint').style.display = 'none';
+    }).catch(err => {
+      console.warn('Audio blocked:', err);
+      btn.textContent = '♩ Music';
+    });
   } else {
     _audio.pause();
     btn.classList.remove('playing');
-    btn.textContent = '♩ Ambient';
+    btn.textContent = '♩ Music';
     lsSet('wbh_audio_on', 'false');
   }
+}
+
+function _showAudioHint() {
+  if (lsGet('wbh_audio_hint_seen') || lsGet('wbh_audio_on') === 'true') return;
+  const hint = document.getElementById('audioHint');
+  const btn  = document.getElementById('audioBtn');
+  hint.style.display = 'block';
+  btn.classList.add('pulse');
+  btn.addEventListener('animationend', () => btn.classList.remove('pulse'), { once: true });
+  lsSet('wbh_audio_hint_seen', 'true');
+  setTimeout(() => { hint.style.opacity = '0'; setTimeout(() => hint.style.display='none', 600); }, 5000);
 }
 
 // ─────────────────────────────────────────────
@@ -1713,6 +1714,7 @@ function initApp() {
   }
   renderCheckinList();
   renderStreak();
+  setTimeout(_showAudioHint, 2500);
 }
 
 (async () => {
@@ -1747,7 +1749,20 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <!-- Ambient audio -->
-<audio id="ambientAudio" src="/ambient.mp3" loop preload="none"></audio>
+<audio id="ambientAudio" src="/ambient.mp3" loop preload="metadata"></audio>
+
+<!-- Audio hint toast -->
+<div id="audioHint" style="display:none; position:fixed; top:64px; right:16px; z-index:200;
+  background:var(--deep-forest); color:var(--cream); padding:10px 16px;
+  border-radius:3px; border:1px solid rgba(196,146,58,0.4);
+  font-family:'DM Sans',sans-serif; font-size:0.82rem; line-height:1.4;
+  max-width:220px; box-shadow:0 4px 20px rgba(0,0,0,0.2);
+  transition:opacity 0.6s ease;">
+  <span style="color:var(--gold-light);">♩</span> Tap <strong>Music</strong> for soft ambient sound during your practice.
+  <div style="position:absolute;top:-6px;right:20px;width:10px;height:10px;
+    background:var(--deep-forest);border-left:1px solid rgba(196,146,58,0.4);
+    border-top:1px solid rgba(196,146,58,0.4);transform:rotate(45deg);"></div>
+</div>
 
 <!-- Notification opt-in modal -->
 <div class="notif-modal" id="notifModal">
