@@ -1,0 +1,16 @@
+{
+  "name": "The Way Back Home — Daily Practice",
+  "short_name": "Way Back Home",
+  "description": "A daily contemplative practice for parents rebuilding connection with their teenager. Based on the five conditions of secure attachment.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1C2B1E",
+  "theme_color": "#1C2B1E",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "categories": ["health", "lifestyle", "education"],
+  "lang": "en-US"
+}

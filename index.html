@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<!-- WBH v2.0 - full rebuild: og fix, PWA prompt, share, copy upgrade, clean CSS -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Way Back Home">
+<meta name="theme-color" content="#1C2B1E">
+
+<title>The Way Back Home — Daily Practice for Parents of Teens</title>
+<meta name="description" content="A free, calm daily practice for parents of teens. One condition of secure attachment, one reflection prompt, one quiet moment — grounded in the IAT framework by Daniel Ahearn, LMFT.">
+<!-- Open Graph -->
+<meta property="og:title" content="The Way Back Home — A Daily Practice for Parents">
+<meta property="og:description" content="One condition of secure attachment. One reflection prompt. A calm daily ritual for parents rebuilding connection with their teen. Free — no app to download.">
+<meta property="og:url" content="https://waybackhome.app">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://waybackhome.app/cond-exploration.jpg">
+<meta property="og:image:width" content="1320">
+<meta property="og:image:height" content="990">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Way Back Home — A Daily Practice for Parents">
+<meta name="twitter:description" content="One condition of secure attachment. One reflection prompt. A calm daily ritual for parents of teens.">
+<meta name="twitter:image" content="https://waybackhome.app/cond-exploration.jpg">
+<link rel="canonical" href="https://waybackhome.app">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<meta name="google-site-verification" content="4x6tZnuqVjLD1HQgpOJ1tU4zTe7-9O9zFZ7GvUnOHGA" />
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFeklEQVR4nO3dPVIcSRCG4R6CYxCy8HQUOZjcgANwDg7ADTBxdBQ8LIJ7SIYYNAPT0/WTVZX51fuYGwh6qt/IzWl2tLtloKufP/6M/Plo5/3lbTfi53b7ocSLHpE3/QFEjDWt4m7yTQkZqazDNv1mhIxSVmGbfBNChpXasC9qL4CYYam2p6qgiRkt1HRVNN4JGb3kriDZE5qY0VNub1lBEzNGyOkuOWhixkip/SUFTczwIKXDzaCJGZ5s9Vj9HBrw5GzQTGd4dK7L1aCJGZ6t9XkyaGJGBKc6ZYeGlG9BM50RyddemdCQchQ00xkRHXbLhIaUz6CZzohs3y8TGlIIGlJ2y8K6AR1MaEi5HH0BqPd0d5X8tbeP7w2vZDwmNKQQNKRc8IYQSpjQkELQkELQkELQkELQneQ8K0Y5gu5gHzNRt8dvChs6FfD+n6n/xm4UJnQjW9OYad0GQTeQGitR2yNoY7mRErUtdmgjNWGyV9thQhuwmrJM63oEXck6QqKuQ9AVWsVH1OXYoQv0CI69ugwTOlPv6cm0zkPQGUbFRdTpCDrR6KhG//wo2KE3eAqJvXobE/oMTzEf8npdHhD0Cu/ReL++UQj6hCixRLnOntihD0QMJOI1t8SE/kAYGgh6IWYl0wdNzFqm3aEJWdOUE5qYdU0XNDFrmypoYtY3xQ5NyPOQn9DEfEz9PKSDVr95pZTPRTZo5ZtmQfV8dmr/SwrVG9WS0n9fLTWhibmM0rnJBK10U0ZQOT+JoFVuxmgK5xh6h1a4AV5F3avDTmhibivq+YYMOuphRxPxnMMFHfGQI4t23mF26GgHqyjCXh1iQhOzDxHug/ugIxziTLzfD9dBez+8WXm+Ly53aM8HhmPe9mp3E5qYY/F2v1xO6HO8HaA6bxN4i7sJDdQgaEghaEghaEghaEghaEghaEiR/puTbh5ei/7c8/218ZW0of76SjChIYWgIYWgIYWgIYWgIYWgIUX6sd1IW4/UlB+djUTQxlKfDe+/jrBtEbSR0l9yELYtdmgDpTFbfw8QdDXLEIm6HkFXaBEgUdfhQ7KFWofnZafmQ7LAQARdoMdawOpRhqAhhaAhhaAz9VwFWDvyETSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkhPt7Obx7urv6nfP1t4/vv1pdy4yY0IZyYy79M1hH0EZqwiRqOwQNKezQBrYm7M3D6+ee/Hx/vfq17NP1mNCVLNcFVo96BF2hRYBEXYegC7UMj6jLETSkEHSBHhOUKV2GoDP1DI2o8xF0hhGBEXUenkMnGh0Wz6jTMKETjI7ZyzVEQNCQQtAbPE1GT9fiFUGf4TEgj9fkCUGv8ByO52sbjaBPiBBMhGscgaAhhaC/iDT5Il1rLwR9IGIgEa+5JYL+EDmMyNdujaAXjSAUXoOFy9EXMIPUzxSi3sX7y9tu9EWMpDTZlF5LqalXDsUAFF9TjmmDVr7xyq9ty5RBz3DDZ3iNp0wZNHRdLMuyzPTGcKbJNdNrXZZ/HU81oWe7wcsy32ueJujZbuyhmV770aqh+oHZmW7oOcoftN2vzfITmpj/m+EsjoKe6c0hdBx2Kz2hZ5hIudTP5FvQKlNa/cbVUDqbr71KTmilG9aK6hmdDDrylFa9US1EP6tTna5O6MhRQ99an2dXjmhRR584I0Q8s3NdyuzQEW+MF0pnlzSBVX+DiHi2toakCR1t9YCmlA6TVw6ixkip/WXt0ESNEXK6y35TSNToKbe3qjh5s4hWSgdn1WM7pjVaqOmq+jk0UcNSbU+mMbKCoJTVYGwyXQkbqaz/Dd90XSBsrGm1qnbbf4kbPd5v/QWdlNBXmp/KQwAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" sizes="167x167" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKcAAACnCAYAAAB0FkzsAAAFJElEQVR4nO3cu1EjQRRG4ZZqw6DWWm9DWQeTDAiAOAiADDBxNhQ8LEp57BogapDm0d3Tj//ePp+LQDM9p+60pBKH0NjN75//Wj8nyjm9vh9aPVf1JyJG32rGWuUPE+SYSoda9I8RJUIoF2mRP0KUmLM30l2/TJSIkRvpMfcJCROxclvJipMwkSqnmaRxS5TYK+UWH/1AwkRJMZFG3dYJE6XFNLUZJ2Gil+xX68BeW4NvNU6mJmpba2wxTsJEK0utzcZJmGhtrjn2nJB1FSdTE71ctsfkhKxvcTI10du0QSYnZH3FydSEinOLTE7IIk7IOoTALR2amJyQ9aP3AWDb8/1N1OPunk6Vj6QtJidkHdlvQhWTE7KIE7KIE7KIE7KIs6DYt3wQhzgLOYdJoOUQZwGXQRJoGXxCtMNahOefefvUpiUmZ6bY6cgUzUecGVKDI9A8xJkoNzQCTceeM1KJuNiHpmFyRig99ZiicYhzQ62QCHQbca6oHRCBrmPPOaNlNOxDlzE5L/SaZkzRa8Q50TuQ3s+vhjg/qYShchwKht9zKsbAPvTD0JNTMcwp9eOrbdg4rVx4K8dZw5BxjnzBLRlqz0mUtgwzOQnTniHiJEyb3MdJmHa53XMSpX0uJydh+uAuTsL0w1Wco4fp7fwPHv4/p7eLUoKHz+XNT07CnOdhXUzH6eEC1GR9fczGaX3hW7G8Tub2nJYXuzdr+1BTk5Mw97G2fmbitLawqiyto4k4LS2oBVbWU3rPaWURLVPeh8pOTsJsQ3mdJeNUXjCPVNdbLk7VhfJOcd1l9pyKizMqlX2oxOQkTC0q10Nmci5RWSiPVCbkEonJCcwhTsgiTsgiTsgiTsgiTshy9U8Vbh/fkn/n5eFXhSMpw9v5pGJyQhZxQhZxQhZxQhZxQhZxQpart5J6WHu7x9PbOj0QZ4bY9x+njyPUdNzWE+W8Mb7n90ZGnAn2BkagaYgzUqmwCDQecUYoHRSBxuE7RBtqhtT7RRLfITKs9oRjgq4jTsgiTsgizgWtbrnc2pcRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2TJf/tS1fP9zd/Yx949nf7UPBavmJwZUsLMeTw+EGei3NAINB3/Za6Q28e3r1v3y8MvQiyAyZlg7/RjeqYhzkilwiLQeMQZoXRQBBqHODfUColAtxHnitoBEeg64oQs4lzQaqoxPZfx8eWMHsHwEec1JueFXpOMCXqNOCd6B9L7+dUQJ2QR5yeVqaVyHAqIM+gFoXY8vQwfp2oIqsfV0tBxqgegfny1DRunlQtv5ThrGDZO6BsyTmvTyNrxljLcx5e1LnSLr2mM9hHnUJPT+gSyfvypjqfX90Pvg2jBy4X1ch4xhpic3i6ot/NZMkScsMl9nF6njNfzmjqGEILXfaf3C+j5/E6v7we3k9PzhZvyfJ5fE9PT+52eL9gSb++BfpucXm/tsOfcorvb+ohTMwSf5/0tTuvT0+MFSuHh/KcNupmcHi5MCZ7W4SpOi9PT0wUpwep6XLZnfnJavRC1WVuXuaE4G6fF6Ql/FienhUCtTYfWrKzPUmurt3XlQK0sfG/q67TWWFR8nj49go6t4Wf+BRFsirkrR8WpfHuHPbE9JUfHLR57pAy65Ns6UxS5UtvJ2nMSKFLlNLMrMm7x2LJnkBWZgESKOXvvsEVvz0SKEMpt+6rsHYl0TKVfi1R/YUOovtV8cfwfD7C4QqNqIN8AAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="152x152" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAACYCAYAAAAYwiAhAAAEqElEQVR4nO3cPVIbMRiAYdmTY3hS0XGUNJTcgANwDg7ADShpchQ6Ksb3SAowrO39kVb6tN/P+1SZiYFd6Y0kOza71MHh9ve/Hj8H5Y5vHzvJ7y/yzQnKrtbBNf1mhOVHq9CqvwlR+VYbWtUXE1cca0Nb9UWEFVdpaPvSH0BcsZXOf1FgxIWUyjrIDoy4MJTbQ1ZgxIUxOV0sBkZcmLPUx2xgxIUcc51MBkZcKDHVy2hgxIU1xropfh0MKHEVGKsXalz2s5/7S6AWWySaGy5UBAZR34GxPaKlU0+sYBC1S4nVC3JYwSCKwCDq19YXENnLwyHrcffPR+ErkbPn/AVJbJEQRWAQRWAQRWAQRWCFcp/54ROBFTjFRWT5CCzDy8PhKioiy0NgC+ZCGgsP5whsRm48RDaNwCaURkNk4wjsQs22R2TXCGygRSCcy84R2JfWURDZJwJLcjEQWfDAemxn0SMLG1jPiY98LgsZ2FaTHTGyUIFpWEm2/vm9hQlM08RquhZpIQLTOKEar0mC+8CiTKRWbj+2Rlg6uFzBiEsPd4ERly5utkjC0snFCkZcepkPjLh0Mx1YlLgs3+fO4i8/sTzgNSz+lh1zK1jUuFKyee+mArM4wK1ZGwMzW6S1ge3BwpapPjDCmqc9MtVbJHEt0z5GagPTPnCaaB4rdVuk5sGyQNuWqWoFI6562sZQTWDaBsYyTWOpIjBNA+KFljHd9AymZRC82/JcttkKRlz9bDnW6p5FpkR8a2l7BpmSkjMY/CIwiCIwiCIwiCIwiCIwiDL9uci7p/fsx74+3gheSTnL116CFQyiCAyiCAyiCAyiCAyiTD+L7GXqGZ/lZ3e9ENiEnJcRho8htnFskSNKXqOq+ZoICOxCTShEdo3ABloEQmTnCOxLyzCI7AdvmU5yQfQ++POWaYRDYBAVPjDJ8xJnMQKDMAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKJVvmYYffPB2xsvD4W/O4+6fj3+kr8UqtsgJuXGVPjYaAhuxJhgiG8cWWeDu6f17K3x9vCGoDKxgF2pWIlaxawQ20CIQIjtHYF9ahkFkPwgsyQRBZJ/CByYZApERGISF/q+iXitM5Ff6w65gPbevyFtlyMC2mPCokYULbMuJjhhZqMA0TLCGa+gpVGDoL0xgmlYOTdciLURgGidU4zVJcB+Y5onUfG2tuA7MwgRauMYabl/Jl5g4yTccen213/UKhu3tj28fu60vojWL247Fa87hbgWzPFGWr32Kq8A8TJCHexhyE5inifFyL8e3j93+9IetL6aGlwkZ8nJPfC6yAJ+FLPe9RVpdxbz8Sx9j+d5OPZk+g1megFzW7/EsMEurmPWBL2HtXocdmVzBrA14C1bv+Sow7auY1YFuwcK9X/ZjcgWDTmOL02hgWlcxC/+CpVkbg8kVTFtk1gZWksaxmOplMSKv7xdDO3OL0eIZTNtKBl2W+sg65BMZxuR0kf0sksgwlNtD0csURIaUyjpYFQwH/5jWLDBVKxKhxbF292qy5RGaX7XHoqZnKkLzo9V5W+TQTmg2STyJ+w+42JYT7BoKqQAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" sizes="120x120" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAADg0lEQVR4nO2cMXLbMBBFQU2OoUmVLkdRo9I38AFyDh3AN3CZJkdRp0rDeyQVZUcmCQIEsH8//itNirPc578ATY2HUJjjz+9/S1+zN8brfSh1rd0XktD67BGe/UGJbU+O6OQPSKw9KaIPKReWXAxSPGz6TZBYXGJpjiZYcrGJ+VkVLLk+WPO0KFhyfbHka1aw5PpkzlvSLlr444tgpdc3z/4OaweFTz571Igm5yFY6eVi8qkEkzOEoPQyowSTI8HkfLMuwBPvr8fV4y9vY6NKtnPQ+suNRjQ5EkyOBJPTneDYRomNrgRPcnuS3MVj0pzQ6WeIjzYloU9wLK3saaYWvFUes2RawanSWCXTrcF7RDGuy1QJLpVCpjTTCC4thUWy+xFdUwTDyHad4FYp85xmt4JbN92rZJeCvTbbAldrsMSm4ybBkpuHC8GSmw/0iJbY/cAmWHLLACnYq1zEuuEEIzYpBbT6B5TvRaM1pgQIf+KESDCj3BAw7stcMEITamJ9f2Yj2vrGLbAY2SYJ7lFuCDb33Vxwr3InWt9/U8G9y51o2Ycma7DELlN7Xa6eYMldp3Z/THbRvUrvZhct2iHB5EgwORJMDuQ3Os6XW/Sc379+NKjkA8SatqAEkyPB5EgwORJMDuQmqzRLGyTETVFpqAXHdr7TcWbRtCN6y2NNzrneoBScI4xVMp3gPaIYJVO9LiwlqNaarNeFojg0gkuOV6ZRTSNYzCPB5EgwORJMjgSTI8HkSDA5EkyOBJMjweRIMDkSTA7Mv1ESdaD+TlYIIby/Hv+sHX95G0+tarGAekTH5G49xzO0gpfEnS+30/lyO205lwFKwTnCWCVTChYf0Anek0TGFFMJLiGITTLNc3BpMSyPTxQJrpE6liS7F1xTBINk14JbCPAu2bVgEcet4JbJ8pxil4ItGu5VsjvBlo32KNmV4BINnnvZ0LqGlrgRjNRYpFpiHMbrfbAuQtTDRYIRE4NY0xzwgpEbiVzbBLRgDw1Er/Gx/qK9VUJv3DOIb5/G632ATLA3uSHg1vwQjLKbRm3UFpBqn3xCJliU4z/B1ilGSkAuCPfw2eOXBFtJRmhMKSzv5dkfxIhmkjuBck+LaUV7bBJx5qbvYoKt12ORxpKv1REtyT5Y8xRdgyUZm5ifJHlal3HYGrykXbTSjEGKh2xhSnN7cgK2O5ESXZ89k/MfBf9ASdSsDeEAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FDFAF5;
+    --deep-forest: #1C2B1E;
+    --forest-mid: #2A3E2C;
+    --sage: #6B8C6E;
+    --sage-light: #8FAD92;
+    --gold: #C4923A;
+    --gold-light: #D4A84A;
+    --stone: #8B8378;
+    --stone-light: #C4BDB5;
+    --ink: #2C2420;
+    --rust: #B5513A;
+    --safety-accent: #4A7C5A;
+    --attunement-accent: #8B6B3A;
+    --soothing-accent: #3A5C7A;
+    --delight-accent: #B5513A;
+    --exploration-accent: #6B5A3A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    font-size: 18px;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: var(--deep-forest);
+    color: var(--cream);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 16px;
+  }
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+  }
+  .header-title em { font-style: italic; color: var(--gold-light); }
+  .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .header-link {
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage-light);
+    text-decoration: none;
+    border: 1px solid rgba(107,140,110,0.4);
+    padding: 5px 10px;
+    border-radius: 2px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .header-link:hover { background: rgba(107,140,110,0.15); color: var(--cream); }
+  .btn-install {
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+    background: transparent;
+    border: 1px solid rgba(196,146,58,0.5);
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: none;
+  }
+  .btn-install.visible { display: block; }
+  .btn-install:hover { background: rgba(196,146,58,0.15); }
+
+  /* ── Layout ── */
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 22px 80px; }
+
+  /* ── Email Gate ── */
+  #emailGate {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 22px;
+  }
+  .gate-card {
+    background: var(--warm-white);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 48px rgba(28,43,30,0.14);
+    max-width: 500px;
+    width: 100%;
+  }
+  .gate-banner {
+    background: linear-gradient(140deg, #1C2B1E 0%, #2A3E2C 100%);
+    padding: 36px 36px 30px;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .gate-banner::after {
+    content: '';
+    position: absolute;
+    right: -20px; bottom: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(196,146,58,0.08);
+    pointer-events: none;
+  }
+  .gate-eyebrow {
+    font-size: 0.63rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .gate-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.1rem;
+    font-weight: 300;
+    line-height: 1.12;
+    margin-bottom: 12px;
+  }
+  .gate-title em { font-style: italic; color: var(--gold-light); }
+  .gate-subtitle {
+    font-size: 0.92rem;
+    opacity: 0.72;
+    line-height: 1.65;
+  }
+  .gate-body { padding: 28px 36px 32px; }
+  .gate-description {
+    font-size: 0.95rem;
+    line-height: 1.72;
+    color: var(--ink);
+    opacity: 0.82;
+    margin-bottom: 24px;
+  }
+  .gate-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--stone);
+    margin-bottom: 7px;
+  }
+  .gate-input {
+    width: 100%;
+    border: 1px solid var(--stone-light);
+    border-radius: 3px;
+    padding: 12px 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+  }
+  .gate-input:focus { border-color: var(--sage); }
+  .gate-input::placeholder { color: var(--stone-light); }
+  .btn-gate {
+    width: 100%;
+    background: var(--deep-forest);
+    color: var(--cream);
+    border: none;
+    padding: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .btn-gate:hover { background: var(--forest-mid); }
+  .btn-gate:disabled { opacity: 0.5; cursor: not-allowed; }
+  .gate-skip {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    font-size: 0.75rem;
+    color: var(--stone);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .gate-skip:hover { color: var(--ink); }
+  .gate-privacy {
+    font-size: 0.78rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin-top: 14px;
+    opacity: 0.7;
+  }
+  .gate-error {
+    display: none;
+    font-size: 0.78rem;
+    color: var(--rust);
+    margin-top: 6px;
+  }
+  .gate-error.visible { display: block; }
+
+  /* ── App ── */
+  #appContent { display: none; }
+
+  /* ── Intro card ── */
+  .intro-card {
+    background: var(--deep-forest);
+    color: var(--cream);
+    border-radius: 5px;
+    padding: 30px 32px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .intro-card::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(196,146,58,0.06);
+    pointer-events: none;
+  }
+  .intro-eyebrow {
+    font-size: 0.63rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .intro-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.65rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .intro-card h2 em { font-style: italic; color: var(--gold-light); }
+  .intro-card p {
+    font-size: 0.86rem;
+    line-height: 1.72;
+    opacity: 0.75;
+    margin-bottom: 8px;
+    max-width: 500px;
+  }
+  .intro-author {
+    margin-top: 18px;
+    font-size: 0.75rem;
+    opacity: 0.5;
+    font-style: italic;
+  }
+  .intro-author strong { opacity: 1; font-style: normal; color: var(--sage-light); }
+  .btn-dismiss {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.1);
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 9px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-dismiss:hover { background: rgba(255,255,255,0.18); }
+
+  /* ── Today card ── */
+  .today-card {
+    background: var(--warm-white);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(28,43,30,0.07);
+    margin-bottom: 28px;
+  }
+
+  /* ── Condition photo banner ── */
+  .condition-photo-banner {
+    position: relative;
+    height: 230px;
+    overflow: hidden;
+    color: var(--cream);
+  }
+  .condition-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.74) contrast(1.06) saturate(0.80);
+    display: block;
+    animation: kenBurns 14s ease-in-out infinite alternate;
+    transform-origin: center center;
+  }
+  @keyframes kenBurns {
+    0%   { transform: scale(1.0) translate(0%, 0%); }
+    100% { transform: scale(1.07) translate(-1.5%, -1.2%); }
+  }
+  .condition-photo-overlay {
+    position: absolute;
+    inset: 0;
+    /* background set per-condition in JS */
+  }
+  .condition-photo-text {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 18px 28px 22px;
+  }
+  .condition-eyebrow {
+    font-size: 0.58rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    opacity: 0.6;
+    margin-bottom: 5px;
+  }
+  .condition-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 7px;
+    letter-spacing: -0.01em;
+  }
+  .condition-tagline {
+    font-size: 0.82rem;
+    opacity: 0.75;
+    line-height: 1.58;
+    max-width: 440px;
+  }
+
+  /* ── Book quote ── */
+  .book-quote-area {
+    padding: 18px 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    background: rgba(196,146,58,0.03);
+  }
+  .quote-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .quote-label::before {
+    content: '';
+    display: inline-block;
+    width: 12px; height: 1px;
+    background: var(--gold);
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .quote-chapter {
+    font-size: 0.65rem;
+    color: var(--stone);
+    margin-top: 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Prompt ── */
+  .prompt-area { padding: 20px 30px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .prompt-label {
+    font-size: 0.63rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--stone);
+    margin-bottom: 9px;
+  }
+  .prompt-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.62;
+  }
+
+  /* ── Vis strip ── */
+  .vis-strip {
+    padding: 12px 30px;
+    background: rgba(107,140,110,0.07);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .vis-strip:hover { background: rgba(107,140,110,0.13); }
+  .vis-icon { font-size: 0.95rem; }
+  .vis-text { font-size: 0.79rem; color: var(--sage); font-weight: 500; flex: 1; }
+  .vis-badge {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage);
+    border: 1px solid var(--sage-light);
+    padding: 2px 8px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  /* ── Journal ── */
+  .journal-area { padding: 20px 30px; }
+  .journal-label {
+    font-size: 0.63rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--stone);
+    margin-bottom: 9px;
+  }
+  .journal-textarea {
+    width: 100%;
+    min-height: 108px;
+    border: 1px solid var(--stone-light);
+    border-radius: 3px;
+    padding: 12px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--cream);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .journal-textarea:focus { border-color: var(--sage); }
+  .journal-textarea::placeholder { color: var(--stone-light); }
+  .submit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    gap: 10px;
+  }
+  .submit-actions { display: flex; gap: 10px; }
+  .btn-share {
+    background: transparent;
+    color: var(--stone);
+    border: 1px solid var(--stone-light);
+    padding: 9px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-share:hover { border-color: var(--sage); color: var(--sage); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--stone);
+    border: 1px solid var(--stone-light);
+    padding: 9px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--sage); color: var(--sage); }
+  .btn-submit {
+    background: var(--deep-forest);
+    color: var(--cream);
+    border: none;
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--forest-mid); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── Error ── */
+  .submit-error {
+    display: none;
+    padding: 11px 16px;
+    background: rgba(181,81,58,0.07);
+    border-left: 3px solid var(--rust);
+    border-radius: 0 2px 2px 0;
+    margin: 0 30px 14px;
+    font-size: 0.8rem;
+    color: var(--rust);
+    line-height: 1.5;
+  }
+  .submit-error.visible { display: block; }
+
+  /* ── Companion ── */
+  .companion-response {
+    padding: 20px 30px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    background: rgba(196,146,58,0.04);
+    display: none;
+  }
+  .companion-response.visible { display: block; }
+  .companion-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .companion-label::before {
+    content: '';
+    display: inline-block;
+    width: 14px; height: 1px;
+    background: var(--gold);
+  }
+  .companion-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.06rem;
+    font-weight: 400;
+    line-height: 1.78;
+    color: var(--ink);
+  }
+  .companion-text p + p { margin-top: 10px; }
+
+  /* ── Already done ── */
+  .already-done {
+    background: var(--warm-white);
+    border-radius: 5px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 20px rgba(28,43,30,0.07);
+    margin-bottom: 28px;
+    border-left: 3px solid var(--sage);
+  }
+  .already-done h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--deep-forest);
+    margin-bottom: 6px;
+  }
+  .already-done p {
+    font-size: 0.85rem;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(28,43,30,0.88);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--warm-white);
+    max-width: 520px;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+  .modal-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--deep-forest);
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--stone);
+    line-height: 1;
+    padding: 0 0 0 14px;
+    flex-shrink: 0;
+  }
+  .modal-body { padding: 20px 24px 24px; }
+  .modal-body p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.82;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .modal-error { color: var(--rust); font-size: 0.85rem; }
+
+  /* ── Loading dots ── */
+  .loading-dots span {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+    margin: 0 2px;
+    animation: dot-pulse 1.2s ease-in-out infinite;
+  }
+  .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dot-pulse {
+    0%,80%,100% { opacity:0.2; transform:scale(0.8); }
+    40% { opacity:1; transform:scale(1); }
+  }
+
+  /* ── Journal history ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--deep-forest);
+  }
+  .checkin-list { display: flex; flex-direction: column; gap: 10px; }
+  .checkin-item {
+    background: var(--warm-white);
+    border-radius: 4px;
+    padding: 14px 18px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    border-left: 3px solid var(--stone-light);
+  }
+  .checkin-item.hist-safety      { border-left-color: var(--safety-accent); }
+  .checkin-item.hist-attunement  { border-left-color: var(--attunement-accent); }
+  .checkin-item.hist-soothing    { border-left-color: var(--soothing-accent); }
+  .checkin-item.hist-delight     { border-left-color: var(--delight-accent); }
+  .checkin-item.hist-exploration { border-left-color: var(--exploration-accent); }
+  .checkin-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 7px; flex-wrap: wrap; }
+  .checkin-date { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone); font-weight: 500; }
+  .checkin-cond {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(107,140,110,0.1);
+    color: var(--sage);
+  }
+  .checkin-entry { font-size: 0.92rem; line-height: 1.65; color: var(--ink); opacity: 0.82; }
+  .checkin-response {
+    margin-top: 9px;
+    padding-top: 9px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--stone);
+    line-height: 1.65;
+  }
+  .empty-state {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--stone);
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+
+  /* ── Footer CTA ── */
+  .footer-cta {
+    background: var(--deep-forest);
+    color: var(--cream);
+    border-radius: 5px;
+    padding: 26px 28px;
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-cta-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  .footer-cta-text p {
+    font-size: 0.78rem;
+    opacity: 0.58;
+    line-height: 1.55;
+    max-width: 340px;
+  }
+  .footer-links { display: flex; flex-direction: column; gap: 7px; flex-shrink: 0; }
+  .footer-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.73rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 8px 18px;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .footer-link.primary { background: var(--gold); color: var(--deep-forest); }
+  .footer-link.primary:hover { background: var(--gold-light); }
+  .footer-link.secondary { border: 1px solid rgba(255,255,255,0.18); color: var(--cream); }
+  .footer-link.secondary:hover { border-color: rgba(255,255,255,0.45); }
+  .footer-nav {
+    text-align: center;
+    padding: 20px 20px 28px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin-top: 4px;
+  }
+  .footer-nav a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-nav a:hover { color: rgba(245,240,232,0.7); }
+
+  /* ── Share toast ── */
+  .share-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--deep-forest);
+    color: var(--cream);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    z-index: 300;
+    pointer-events: none;
+  }
+  .share-toast.visible { transform: translateX(-50%) translateY(0); }
+
+  /* ── Breath anchor ── */
+  .breath-section {
+    padding: 18px 28px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.055);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(107,140,110,0.025);
+  }
+  .breath-orb-wrap {
+    position: relative;
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .breath-orb {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--sage);
+    animation: breathePulse 8s ease-in-out infinite;
+  }
+  .breath-orb-inner {
+    position: absolute;
+    inset: 9px;
+    border-radius: 50%;
+    background: var(--sage);
+    animation: breathePulse 8s ease-in-out infinite;
+    animation-delay: 0.4s;
+  }
+  @keyframes breathePulse {
+    0%, 100% { transform: scale(0.84); opacity: 0.18; }
+    50%       { transform: scale(1.08); opacity: 0.52; }
+  }
+  .breath-content { flex: 1; }
+  .breath-label {
+    font-size: 0.58rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--stone);
+    margin-bottom: 6px;
+  }
+  .breath-invitation {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    line-height: 1.72;
+    color: var(--ink);
+    opacity: 0.68;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 500px) {
+    .site-header { padding: 12px 18px; }
+    .header-title { font-size: 0.88rem; }
+    .gate-banner, .gate-body { padding-left: 22px; padding-right: 22px; }
+    .condition-name { font-size: 1.8rem; }
+    .condition-icon { font-size: 1.3rem; }
+    .book-quote-area, .prompt-area, .breath-section,
+    .journal-area, .companion-response, .vis-strip { padding-left: 18px; padding-right: 18px; }
+    .submit-row { flex-direction: column; align-items: stretch; }
+    .submit-actions { justify-content: space-between; }
+    .btn-submit { width: 100%; text-align: center; }
+    .footer-cta { flex-direction: column; }
+    .footer-links { width: 100%; }
+    .footer-link { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-title"><em>The Way Back Home</em> — Daily Practice</div>
+  <div class="header-actions">
+    <button class="btn-install" id="installBtn" onclick="installPWA()">Add to Home Screen</button>
+    <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer" class="header-link">danieljahearnlmft.com</a>
+  </div>
+</header>
+
+<!-- ── EMAIL GATE ── -->
+<div id="emailGate">
+  <div class="gate-card">
+    <div class="gate-banner">
+      <div class="gate-eyebrow">A Daily Practice for Parents of Teens</div>
+      <div class="gate-title"><em>The Way Back Home</em><br>Daily Practice</div>
+      <div class="gate-subtitle">One condition of secure attachment. One quiet moment each day. No app to download — just open, reflect, and return.</div>
+    </div>
+    <div class="gate-body">
+      <p class="gate-description">Each day brings one of the five conditions of secure attachment from <em>The Way Back Home</em> — Safety, Attunement, Soothing, Expressed Delight, Exploration. You'll receive a passage from the book, a reflection prompt, and a quiet AI companion that helps you go one step deeper. Your journal stays private on your device.</p>
+      <label class="gate-label" for="gateFirst">First name</label>
+      <input type="text" id="gateFirst" class="gate-input" placeholder="Your first name" autocomplete="given-name">
+      <label class="gate-label" for="gateEmail">Email address</label>
+      <input type="email" id="gateEmail" class="gate-input" placeholder="you@example.com" autocomplete="email">
+      <div class="gate-error" id="gateError">Please enter a valid email address.</div>
+      <button class="btn-gate" id="gateBtn" onclick="submitGate()">Begin My Practice →</button>
+      <span class="gate-skip" onclick="skipGate()">Skip for now — just open the app</span>
+      <p class="gate-privacy">Your email is used only to stay connected about the book, parent groups, and upcoming trainings. No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN APP ── -->
+<div id="appContent">
+  <div class="container">
+
+    <!-- First-visit intro -->
+    <div class="intro-card" id="introCard" style="display:none">
+      <div class="intro-eyebrow">Welcome to Your Practice</div>
+      <h2>One condition.<br><em>One day at a time.</em></h2>
+      <p>Each day you'll be offered one of the five conditions of secure attachment to explore — Safety, Attunement, Soothing, Expressed Delight, or Exploration. You'll receive a quote from the book, a reflection prompt, and a space to write.</p>
+      <p>There is no right answer. The AI companion that responds to your check-in is not a therapist — it's a reflective presence designed to help you go one step deeper. Your journal stays on your device.</p>
+      <p class="intro-author">Created by <strong>Daniel Ahearn, LMFT</strong> — author of <em>The Way Back Home</em>, IAT-certified clinician, Director of Culture at Ascend Healthcare.</p>
+      <button class="btn-dismiss" onclick="dismissIntro()">Begin →</button>
+    </div>
+
+    <!-- Today's card -->
+    <div class="today-card" id="todayCard">
+      <div id="conditionBanner"></div>
+      <div id="bookQuoteArea"></div>
+      <div id="breathAnchor"></div>
+      <div class="prompt-area">
+        <div class="prompt-label">Today's Reflection Prompt</div>
+        <div class="prompt-text" id="promptText">Loading…</div>
+      </div>
+      <div class="vis-strip" id="visStrip" style="cursor:pointer;">
+        <span class="vis-icon">🌿</span>
+        <span class="vis-text" id="visStripText">Guided visualization</span>
+        <span class="vis-badge" id="visStripBadge">Open →</span>
+      </div>
+      <div class="journal-area">
+        <div class="journal-label">Your Check-In</div>
+        <textarea id="journalInput" class="journal-textarea" rows="5"
+          placeholder="Write whatever comes up. There is no right answer — just what's true for you right now."></textarea>
+        <div class="submit-row">
+          <div class="submit-actions">
+            <button class="btn-share" onclick="shareApp()" title="Share with another parent">
+              <span>↗</span> Share
+            </button>
+            <button class="btn-secondary" onclick="skipDay()">Skip today</button>
+          </div>
+          <button class="btn-submit" id="submitBtn" onclick="submitCheckin()">Submit →</button>
+        </div>
+      </div>
+      <div class="submit-error" id="submitError">Something went wrong. Please check your connection and try again.</div>
+      <div class="companion-response" id="companionResponse">
+        <div class="companion-label">Reflective Companion</div>
+        <div class="companion-text" id="companionText">
+          <div class="loading-dots"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Journal history -->
+    <div>
+      <div class="section-header">
+        <div class="section-title">Your Journal</div>
+      </div>
+      <div class="checkin-list" id="checkinList">
+        <div class="empty-state">Your check-ins will appear here.<br>Start by completing today's reflection above.</div>
+      </div>
+    </div>
+
+    <!-- Footer CTA -->
+    <div class="footer-cta">
+      <div class="footer-cta-text">
+        <h3>The Way Back Home</h3>
+        <p>Healing Attachment Wounds with Your Teen — by Daniel Ahearn, LMFT. The book this practice is built on. Available on Amazon.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.amazon.com/Way-Back-Home-Healing-Attachment-ebook/dp/B0GLF2JH8T" target="_blank" rel="noopener noreferrer" class="footer-link primary">Get the Book</a>
+        <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" class="footer-link secondary">Parent Support Groups</a>
+      </div>
+    </div>
+
+    <nav class="footer-nav">
+      <a href="/about/">About this practice</a>
+      <a href="/conditions/">The five conditions</a>
+      <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer">danieljahearnlmft.com</a>
+    </nav>
+
+  </div>
+</div>
+
+<!-- Visualization modal -->
+<div class="modal-overlay" id="visModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" id="visTitle">Visualization</div>
+      <button class="modal-close" onclick="closeVis()">✕</button>
+    </div>
+    <div class="modal-body" id="visBody">
+      <div class="loading-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Share toast -->
+<div class="share-toast" id="shareToast">Link copied to clipboard</div>
+
+<script>
+// ─────────────────────────────────────────────
+//  DATA
+// ─────────────────────────────────────────────
+const CONDITIONS = [
+  {
+    key:'safety', name:'Safety', icon:'🌱',
+    image:'cond-safety.jpg', imagePos:'center 25%',
+    overlayColor:'rgba(38, 62, 42, 0.86)',
+    breathInvitation:'Let your weight settle. Feel your feet on the floor. Breathe in, and notice — you are here. Breathe out. Before anything else, this: you are not alone, and neither is your teen.',
+    colorClass:'cond-safety', histClass:'hist-safety',
+    tagline:"Creating the conditions where your teen's nervous system can settle — where they know they are not alone.",
+    youtubeUrl: 'https://youtu.be/JdDb2kE56dM?si=1BpjoDI4vo3f1ybY',
+    quotes:[
+      { text:"The truth is, the real work begins not with insight or tools, but with presence — a collaborative, steady, safe presence. Before any transformation is possible, the nervous system must be taught, gently, consistently, and often wordlessly, that it is safe to exist.", chapter:"Chapter 2" },
+      { text:"Safety isn't a nice-to-have. It's the foundation of everything. Without it, a child's brain literally develops differently — the prefrontal cortex, the limbic system, and the stress response all get wired for survival instead of connection.", chapter:"Chapter 2" },
+      { text:"It only takes one caring adult. Even in adolescence, the consistent presence of someone steady and safe can buffer stress, reshape regulation, and begin to repair what was missed early on.", chapter:"Chapter 2" }
+    ],
+    prompts:[
+      "Think of a moment recently when your teen seemed to relax in your presence. What were you doing? What made that possible?",
+      "What does 'safety' feel like in your own body? How do you know when you feel it with another person?",
+      "Is there something your teen is trying to tell you through their behavior? What might the behavior be protecting?",
+      "When you were a teenager, what made you feel safe at home? What made you feel unsafe? How does that show up in your parenting today?"
+    ]
+  },
+  {
+    key:'attunement', name:'Attunement', icon:'🌊',
+    image:'cond-attunement.jpg', imagePos:'center 55%',
+    overlayColor:'rgba(22, 46, 78, 0.84)',
+    breathInvitation:'Soften your gaze. Breathe in quietly — not to fix anything, just to arrive. On the exhale, release the day\'s agenda. You are about to become curious about someone you love.',
+    colorClass:'cond-attunement', histClass:'hist-attunement',
+    tagline:"Being curious about your teen's inner world — not to fix it, but to know it.",
+    youtubeUrl: null,
+    quotes:[
+      { text:"When a child feels truly seen, their armor loosens, their defenses falter. In that trembling silence, a door opens. And sometimes, that single risk — to sit closer, to be known, to let another presence in — changes the direction of a life.", chapter:"Chapter 3" },
+      { text:"Connection over correction. You don't have to be right, and you don't have to tell them why they are wrong. It requires you to care enough to wonder with them.", chapter:"Chapter 3" },
+      { text:"Attunement is an energy saver. Parents who practice it discover they chase fewer flare-ups and waste less energy on battles. Their own anxiety decreases, the household settles, and calm begins to ripple through the family.", chapter:"Chapter 3" }
+    ],
+    prompts:[
+      "Describe a recent interaction with your teen. What do you think they were feeling underneath what they said or did?",
+      "Where do you find it hardest to stay curious rather than reactive? What's happening inside you in those moments?",
+      "What is something your teen cares deeply about that you don't fully understand? What would it take to get genuinely curious about it?",
+      "Think of a moment you got it wrong — misread your teen. What would it look like to go back and repair that misattunement?"
+    ]
+  },
+  {
+    key:'soothing', name:'Soothing', icon:'🍃',
+    image:'cond-soothing.jpg', imagePos:'center center',
+    overlayColor:'rgba(82, 46, 14, 0.84)',
+    breathInvitation:'Place a hand anywhere that feels right. Breathe in warmth. On the exhale, feel the body\'s natural intelligence begin its work. You don\'t have to do anything. Let the settling come to you.',
+    colorClass:'cond-soothing', histClass:'hist-soothing',
+    tagline:"Helping your teen return to calm — and learning to do the same for yourself.",
+    youtubeUrl: null,
+    quotes:[
+      { text:"When your teen rages, they're asking if you'll stay — not if you'll fix it.", chapter:"Chapter 4" },
+      { text:"Soothing does not mean eliminating distress. It does not mean making everything comfortable. Soothing means staying present with discomfort while knowing you are not alone in it.", chapter:"Chapter 4" },
+      { text:"Your nervous system offering theirs an invitation to settle — not through words, but through your own regulation. Soothing your teen begins with soothing yourself.", chapter:"Chapter 4" }
+    ],
+    prompts:[
+      "How do you soothe yourself when you're overwhelmed? Did someone model that for you, or did you have to figure it out alone?",
+      "What does your teen look like when their nervous system is dysregulated? What do they need in those moments — even if they can't ask for it?",
+      "Think of a time you stayed regulated while your teen was not. What made that possible? What did that do for them?",
+      "What gets in the way of you being a soothing presence? What activates your own dysregulation?"
+    ]
+  },
+  {
+    key:'delight', name:'Expressed Delight', icon:'✨',
+    image:'cond-delight.jpg', imagePos:'center 35%',
+    overlayColor:'rgba(92, 68, 10, 0.80)',
+    breathInvitation:'Bring to mind your teen\'s face — not in a hard moment, but in an ordinary one. Hold it lightly. Breathe in and let something open. Breathe out. Their existence still moves something in you.',
+    colorClass:'cond-delight', histClass:'hist-delight',
+    tagline:"Letting your teen know — through your face, your voice, your presence — that their existence brings you joy.",
+    youtubeUrl: null,
+    quotes:[
+      { text:"Expressed delight does not mean grand praise or artificial positivity. It shows up in micro-moments: the light in your eyes when your teen walks in the room. The way you laugh at their jokes. The pause to notice their effort, their presence. These moments wire a self that knows: I am wanted. My being brings light.", chapter:"Chapter 5" },
+      { text:"The question that changes everything: when was the last time my teen felt truly seen by me? Not for what they did — but for who they are?", chapter:"Chapter 5" }
+    ],
+    prompts:[
+      "When did you last feel genuine delight in your teen? Not pride in their achievement — delight in who they are. What was happening?",
+      "Was delight expressed freely in your own childhood? How does that history live in the way you show up now?",
+      "What is something unique and wonderful about your teen that you haven't said out loud to them recently?",
+      "If your teen were asked: 'Does your parent genuinely enjoy you?' — what do you think they would say? What would you want them to say?"
+    ]
+  },
+  {
+    key:'exploration', name:'Exploration', icon:'🧭',
+    image:'cond-exploration.jpg', imagePos:'center 38%',
+    overlayColor:'rgba(32, 24, 12, 0.88)',
+    breathInvitation:'Breathe in and feel both feet on the ground. Breathe out and sense the space around you. The further they go, the more they need to know you are here. Find your center. They are still coming home to you.',
+    colorClass:'cond-exploration', histClass:'hist-exploration',
+    tagline:"Supporting your teen's emerging self — trusting the process of becoming, even when it's uncomfortable.",
+    youtubeUrl: null,
+    quotes:[
+      { text:"Imagine offering your teen this same balance. Steady enough that they can leave. Present enough that they can return. Not holding them back. Not pushing them forward. Just available.", chapter:"Chapter 6" },
+      { text:"Adolescence drives young people to push outward, test limits, and seek novelty. If parents respond only with control, the push turns into rupture. The question is never whether ruptures will happen — but whether you know how to repair them.", chapter:"Chapter 6" }
+    ],
+    prompts:[
+      "What aspect of your teen's growing independence is hardest for you to support? What does that difficulty tell you about yourself?",
+      "Think of a way your teen is becoming someone you didn't fully expect. How do you feel about that? What do they need from you in response?",
+      "Is there a place where your fear for your teen's safety is actually limiting their healthy exploration? How do you find the balance?",
+      "What does it mean to 'lean back in' after allowing your teen to move outward? Where are you in that cycle right now?"
+    ]
+  }
+];
+
+// ─────────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────────
+const todayKey = new Date().toISOString().split('T')[0];
+let todayCondition = null, todayPrompt = null, todayQuote = null;
+let isSubmitting = false;
+let deferredInstallPrompt = null;
+
+// ─────────────────────────────────────────────
+//  STORAGE — IndexedDB (durable) + localStorage (fast) + memory cache
+// ─────────────────────────────────────────────
+const _cache = {};
+let _db = null;
+
+function _openDB() {
+  return new Promise((resolve, reject) => {
+    if (_db) { resolve(_db); return; }
+    const req = indexedDB.open('wbh_store', 1);
+    req.onupgradeneeded = e => { e.target.result.createObjectStore('kv', { keyPath: 'k' }); };
+    req.onsuccess = e => { _db = e.target.result; resolve(_db); };
+    req.onerror   = () => reject(req.error);
+  });
+}
+async function _idbGet(k) {
+  try {
+    const db = await _openDB();
+    return new Promise(resolve => {
+      const req = db.transaction('kv','readonly').objectStore('kv').get(k);
+      req.onsuccess = () => resolve(req.result ? req.result.v : null);
+      req.onerror   = () => resolve(null);
+    });
+  } catch(e) { return null; }
+}
+async function _idbSet(k, v) {
+  try {
+    const db = await _openDB();
+    return new Promise(resolve => {
+      const tx = db.transaction('kv','readwrite');
+      tx.objectStore('kv').put({ k, v });
+      tx.oncomplete = resolve; tx.onerror = resolve;
+    });
+  } catch(e) {}
+}
+async function _preloadCache() {
+  try {
+    const db = await _openDB();
+    await new Promise(resolve => {
+      const req = db.transaction('kv','readonly').objectStore('kv').getAll();
+      req.onsuccess = () => { (req.result||[]).forEach(row => { _cache[row.k] = row.v; }); resolve(); };
+      req.onerror = resolve;
+    });
+  } catch(e) {}
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('wbh_') && !_cache[k]) {
+        _cache[k] = localStorage.getItem(k);
+        _idbSet(k, _cache[k]);
+      }
+    }
+  } catch(e) {}
+}
+function lsGet(k) { return (k in _cache) ? _cache[k] : null; }
+function lsSet(k, v) {
+  _cache[k] = v;
+  try { localStorage.setItem(k, v); } catch(e) {}
+  _idbSet(k, v);
+}
+
+// ─────────────────────────────────────────────
+//  GATE
+// ─────────────────────────────────────────────
+function gateAlreadyPassed() {
+  return !!(lsGet('wbh_user_email') || lsGet('wbh_gate_skipped'));
+}
+async function submitGate() {
+  const email = document.getElementById('gateEmail').value.trim();
+  const first = document.getElementById('gateFirst').value.trim();
+  const errEl = document.getElementById('gateError');
+  errEl.classList.remove('visible');
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.classList.add('visible'); return;
+  }
+  const btn = document.getElementById('gateBtn');
+  btn.disabled = true; btn.textContent = 'Starting…';
+  lsSet('wbh_user_email', email);
+  if (first) lsSet('wbh_user_first', first);
+  try {
+    await fetch('/.netlify/functions/subscribe', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email, firstName: first })
+    });
+  } catch(e) {}
+  document.getElementById('emailGate').style.display = 'none';
+  document.getElementById('appContent').style.display = 'block';
+  initApp();
+}
+function skipGate() {
+  lsSet('wbh_gate_skipped', 'true');
+  document.getElementById('emailGate').style.display = 'none';
+  document.getElementById('appContent').style.display = 'block';
+  initApp();
+}
+
+// ─────────────────────────────────────────────
+//  CONDITION / PROMPT LOGIC
+// ─────────────────────────────────────────────
+function getTodayCondition() {
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+  return CONDITIONS[dayOfYear % CONDITIONS.length];
+}
+function getTodayPrompt(cond) {
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+  return cond.prompts[dayOfYear % cond.prompts.length];
+}
+function getTodayQuote(cond) {
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+  return cond.quotes[dayOfYear % cond.quotes.length];
+}
+function checkedInToday() { return !!lsGet('wbh_checkin_' + todayKey); }
+function isFirstVisit() { return !lsGet('wbh_visited'); }
+
+// ─────────────────────────────────────────────
+//  RENDER
+// ─────────────────────────────────────────────
+function renderBanner(cond) {
+  const overlayBg = `linear-gradient(to bottom, rgba(20,32,22,0.04) 0%, rgba(20,32,22,0.18) 38%, ${cond.overlayColor || 'rgba(20,32,22,0.82)'} 100%)`;
+  document.getElementById('conditionBanner').innerHTML = `
+    <div class="condition-photo-banner">
+      <img class="condition-photo-img"
+           src="${cond.image}"
+           alt="${cond.name}"
+           style="object-position: ${cond.imagePos || 'center'};">
+      <div class="condition-photo-overlay" style="background:${overlayBg}"></div>
+      <div class="condition-photo-text">
+        <div class="condition-eyebrow">Today's Condition</div>
+        <span class="condition-name">${cond.name}</span>
+        <div class="condition-tagline">${cond.tagline}</div>
+      </div>
+    </div>`;
+}
+
+function renderBreath(cond) {
+  document.getElementById('breathAnchor').innerHTML = `
+    <div class="breath-section">
+      <div class="breath-orb-wrap">
+        <div class="breath-orb"></div>
+        <div class="breath-orb-inner"></div>
+      </div>
+      <div class="breath-content">
+        <div class="breath-label">Before you begin</div>
+        <div class="breath-invitation">${cond.breathInvitation}</div>
+      </div>
+    </div>`;
+}
+function renderQuote(quote) {
+  document.getElementById('bookQuoteArea').innerHTML = `
+    <div class="book-quote-area">
+      <div class="quote-label">From the Book</div>
+      <div class="quote-text">"${quote.text}"</div>
+      <div class="quote-chapter">${quote.chapter} — <em>The Way Back Home</em></div>
+    </div>`;
+}
+function renderAlreadyDone() {
+  const stored = lsGet('wbh_checkin_' + todayKey);
+  let entry = null;
+  try { entry = JSON.parse(stored); } catch(e) {}
+  document.getElementById('todayCard').innerHTML = `
+    <div class="already-done">
+      <h3>Practice complete for today.</h3>
+      <p>You've already checked in today. Come back tomorrow for a new condition and prompt.</p>
+      ${entry ? `<div style="margin-top:14px;font-size:0.82rem;color:var(--stone);">Today's condition: <strong>${entry.condition || ''}</strong></div>` : ''}
+    </div>`;
+}
+
+function renderCheckinList() {
+  const list = document.getElementById('checkinList');
+  const keys = Object.keys(_cache).filter(k => k.startsWith('wbh_checkin_')).sort().reverse();
+  if (!keys.length) return;
+  list.innerHTML = keys.slice(0,30).map(k => {
+    let e = null;
+    try { e = JSON.parse(_cache[k]); } catch(x) {}
+    if (!e) return '';
+    const d = new Date(e.timestamp || k.replace('wbh_checkin_',''));
+    const dateStr = d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    return `<div class="checkin-item ${e.histClass||''}">
+      <div class="checkin-meta">
+        <span class="checkin-date">${dateStr}</span>
+        ${e.condition ? `<span class="checkin-cond">${e.condition}</span>` : ''}
+      </div>
+      <div class="checkin-entry">${e.journalText||''}</div>
+      ${e.response ? `<div class="checkin-response">${e.response.replace(/<[^>]+>/g,' ')}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ─────────────────────────────────────────────
+//  ACTIONS
+// ─────────────────────────────────────────────
+function dismissIntro() {
+  lsSet('wbh_visited','true');
+  document.getElementById('introCard').style.display='none';
+}
+function skipDay() { document.getElementById('todayCard').style.display='none'; }
+
+async function submitCheckin() {
+  if (isSubmitting) return;
+  const input = document.getElementById('journalInput');
+  const text = input.value.trim();
+  if (!text) { input.focus(); return; }
+  isSubmitting = true;
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Reflecting…';
+  const respEl = document.getElementById('companionResponse');
+  const textEl = document.getElementById('companionText');
+  respEl.classList.add('visible');
+  textEl.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+  document.getElementById('submitError').classList.remove('visible');
+  try {
+    const firstName = lsGet('wbh_user_first') || '';
+    const res = await fetch('/.netlify/functions/companion', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        condition: todayCondition.name,
+        prompt: todayPrompt,
+        journalText: text,
+        firstName
+      })
+    });
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    const raw = data.response || '';
+    const fmt = raw.split('\n\n').filter(Boolean).map(p=>`<p>${p.replace(/\n/g,'<br>')}</p>`).join('');
+    textEl.innerHTML = fmt;
+    lsSet('wbh_checkin_' + todayKey, JSON.stringify({
+      condition: todayCondition.name,
+      histClass: todayCondition.histClass,
+      prompt: todayPrompt,
+      journalText: text,
+      response: fmt,
+      timestamp: new Date().toISOString()
+    }));
+    document.querySelector('.submit-row').style.display='none';
+    input.readOnly=true; input.style.opacity='0.65';
+    renderCheckinList();
+  } catch(err) {
+    respEl.classList.remove('visible');
+    document.getElementById('submitError').classList.add('visible');
+    btn.disabled=false; btn.textContent='Try Again →';
+    console.error('Companion error:',err);
+  } finally { isSubmitting=false; }
+}
+
+async function openVis() {
+  if (!todayCondition) return;
+  document.getElementById('visTitle').textContent = `Visualization — ${todayCondition.name}`;
+  document.getElementById('visBody').innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+  document.getElementById('visModal').classList.add('open');
+  try {
+    const res = await fetch('/.netlify/functions/visualization', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ condition: todayCondition.name })
+    });
+    const data = await res.json();
+    const raw = data.visualization || '';
+    const fmt = raw.split('\n\n').filter(Boolean).map(p=>`<p>${p.replace(/\n/g,'<br>')}</p>`).join('');
+    document.getElementById('visBody').innerHTML = fmt;
+  } catch(e) {
+    document.getElementById('visBody').innerHTML = `<p class="modal-error">Unable to load. Please check your connection and try again.</p>`;
+  }
+}
+function closeVis() { document.getElementById('visModal').classList.remove('open'); }
+document.getElementById('visModal').addEventListener('click', function(e) { if(e.target===this) closeVis(); });
+
+// Share
+function shareApp() {
+  const shareData = {
+    title: 'The Way Back Home — Daily Practice',
+    text: 'A calm daily practice for parents of teens — five conditions of secure attachment, one quiet moment at a time. Free, no app needed.',
+    url: 'https://waybackhome.app'
+  };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+  } else {
+    navigator.clipboard.writeText('https://waybackhome.app').then(() => {
+      const toast = document.getElementById('shareToast');
+      toast.classList.add('visible');
+      setTimeout(() => toast.classList.remove('visible'), 2500);
+    }).catch(() => {});
+  }
+}
+
+// PWA Install
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  document.getElementById('installBtn').classList.add('visible');
+});
+function installPWA() {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then(() => {
+    deferredInstallPrompt = null;
+    document.getElementById('installBtn').classList.remove('visible');
+  });
+}
+window.addEventListener('appinstalled', () => {
+  document.getElementById('installBtn').classList.remove('visible');
+});
+
+// Enter key on email gate
+document.getElementById('gateEmail').addEventListener('keydown', e => {
+  if (e.key === 'Enter') submitGate();
+});
+
+// ─────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────
+function initApp() {
+  const hasSignedIn = lsGet('wbh_user_first') || lsGet('wbh_user_email') || lsGet('wbh_gate_skipped');
+  if (isFirstVisit() && !hasSignedIn) document.getElementById('introCard').style.display='block';
+  if (checkedInToday()) {
+    renderAlreadyDone();
+  } else {
+    todayCondition = getTodayCondition();
+    todayPrompt    = getTodayPrompt(todayCondition);
+    todayQuote     = getTodayQuote(todayCondition);
+    renderBanner(todayCondition);
+    renderQuote(todayQuote);
+    renderBreath(todayCondition);
+    document.getElementById('promptText').textContent = todayPrompt;
+    // Vis strip: YouTube for Safety, AI visualization for all others
+    const strip = document.getElementById('visStrip');
+    document.getElementById('visStripText').textContent = `Guided visualization — ${todayCondition.name}`;
+    if (todayCondition.youtubeUrl) {
+      strip.onclick = () => window.open(todayCondition.youtubeUrl, '_blank');
+      document.getElementById('visStripBadge').textContent = 'YouTube ↗';
+    } else {
+      strip.onclick = openVis;
+      document.getElementById('visStripBadge').textContent = 'Open →';
+    }
+  }
+  renderCheckinList();
+}
+
+(async () => {
+  await _preloadCache();
+  if (gateAlreadyPassed()) {
+    document.getElementById('emailGate').style.display='none';
+    document.getElementById('appContent').style.display='block';
+    initApp();
+  }
+})();
+</script>
+<script>
+
+// iOS install banner — show once per session if on iOS Safari and not already installed
+(function() {
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isStandalone = window.navigator.standalone === true;
+  var shown = sessionStorage.getItem('wbh_ios_banner_shown');
+  if (isIOS && !isStandalone && !shown) {
+    setTimeout(function() {
+      document.getElementById('iosBanner').style.display = 'block';
+      sessionStorage.setItem('wbh_ios_banner_shown', '1');
+    }, 4000);
+  }
+})();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(e => console.warn('SW:', e));
+  });
+}
+</script>
+
+<!-- iOS install banner -->
+<div id="iosBanner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
+  background:#1C2B1E; color:#F5F0E8; padding:14px 20px 20px;
+  border-top:1px solid rgba(196,146,58,0.3); font-family:'DM Sans',sans-serif;">
+  <button onclick="document.getElementById('iosBanner').style.display='none'"
+    style="position:absolute;top:10px;right:14px;background:none;border:none;color:#8B8378;font-size:1.1rem;cursor:pointer;">✕</button>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div style="width:48px;height:48px;border-radius:12px;overflow:hidden;flex-shrink:0;background:#2A3E2C;">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAADg0lEQVR4nO2cMXLbMBBFQU2OoUmVLkdRo9I38AFyDh3AN3CZJkdRp0rDeyQVZUcmCQIEsH8//itNirPc578ATY2HUJjjz+9/S1+zN8brfSh1rd0XktD67BGe/UGJbU+O6OQPSKw9KaIPKReWXAxSPGz6TZBYXGJpjiZYcrGJ+VkVLLk+WPO0KFhyfbHka1aw5PpkzlvSLlr444tgpdc3z/4OaweFTz571Igm5yFY6eVi8qkEkzOEoPQyowSTI8HkfLMuwBPvr8fV4y9vY6NKtnPQ+suNRjQ5EkyOBJPTneDYRomNrgRPcnuS3MVj0pzQ6WeIjzYloU9wLK3saaYWvFUes2RawanSWCXTrcF7RDGuy1QJLpVCpjTTCC4thUWy+xFdUwTDyHad4FYp85xmt4JbN92rZJeCvTbbAldrsMSm4ybBkpuHC8GSmw/0iJbY/cAmWHLLACnYq1zEuuEEIzYpBbT6B5TvRaM1pgQIf+KESDCj3BAw7stcMEITamJ9f2Yj2vrGLbAY2SYJ7lFuCDb33Vxwr3InWt9/U8G9y51o2Ycma7DELlN7Xa6eYMldp3Z/THbRvUrvZhct2iHB5EgwORJMDuQ3Os6XW/Sc379+NKjkA8SatqAEkyPB5EgwORJMDuQmqzRLGyTETVFpqAXHdr7TcWbRtCN6y2NNzrneoBScI4xVMp3gPaIYJVO9LiwlqNaarNeFojg0gkuOV6ZRTSNYzCPB5EgwORJMjgSTI8HkSDA5EkyOBJMjweRIMDkSTA7Mv1ESdaD+TlYIIby/Hv+sHX95G0+tarGAekTH5G49xzO0gpfEnS+30/lyO205lwFKwTnCWCVTChYf0Anek0TGFFMJLiGITTLNc3BpMSyPTxQJrpE6liS7F1xTBINk14JbCPAu2bVgEcet4JbJ8pxil4ItGu5VsjvBlo32KNmV4BINnnvZ0LqGlrgRjNRYpFpiHMbrfbAuQtTDRYIRE4NY0xzwgpEbiVzbBLRgDw1Er/Gx/qK9VUJv3DOIb5/G632ATLA3uSHg1vwQjLKbRm3UFpBqn3xCJliU4z/B1ilGSkAuCPfw2eOXBFtJRmhMKSzv5dkfxIhmkjuBck+LaUV7bBJx5qbvYoKt12ORxpKv1REtyT5Y8xRdgyUZm5ifJHlal3HYGrykXbTSjEGKh2xhSnN7cgK2O5ESXZ89k/MfBf9ASdSsDeEAAAAASUVORK5CYII=" width="48" height="48" alt="">
+    </div>
+    <div>
+      <div style="font-size:0.78rem;font-weight:500;color:#C4923A;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;">Add to Home Screen</div>
+      <div style="font-size:0.82rem;line-height:1.5;opacity:0.75;">
+        Tap <strong style="color:#F5F0E8;">Share</strong> <span style="font-size:1rem;">⎙</span> then <strong style="color:#F5F0E8;">"Add to Home Screen"</strong> for daily access.
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

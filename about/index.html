@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About The Way Back Home — A Daily Practice for Parents of Teens</title>
+<meta name="description" content="The Way Back Home is a free daily practice app for parents of teenagers, grounded in the five conditions of secure attachment from the IAT framework. Built by Daniel Ahearn, LMFT.">
+<meta property="og:title" content="About The Way Back Home">
+<meta property="og:description" content="A free daily practice for parents of teens — one condition of secure attachment, one reflection prompt, one quiet moment a day.">
+<meta property="og:url" content="https://waybackhome.app/about/">
+<meta property="og:image" content="https://waybackhome.app/cond-exploration.jpg">
+<link rel="canonical" href="https://waybackhome.app/about/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "The Way Back Home",
+  "url": "https://waybackhome.app",
+  "description": "A free daily practice for parents of teenagers grounded in the five conditions of secure attachment.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": {
+    "@type": "Person",
+    "name": "Daniel J. Ahearn",
+    "jobTitle": "Licensed Marriage and Family Therapist",
+    "url": "https://danieljahearnlmft.com"
+  }
+}
+</script>
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --deep-forest: #1C2B1E;
+    --forest-mid: #2A3E2C;
+    --sage: #6B8C6E;
+    --sage-light: #8FAD92;
+    --gold: #C4923A;
+    --stone: #8B8378;
+    --ink: #2C2420;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Nav */
+  nav {
+    background: var(--deep-forest);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-back {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.7);
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: rgba(245, 240, 232, 1); }
+  .nav-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    border: 1px solid rgba(111, 140, 110, 0.4);
+    padding: 7px 16px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover {
+    background: rgba(111, 140, 110, 0.15);
+    color: #b8d4bb;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--deep-forest);
+    padding: 80px 32px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('../cond-exploration.jpg') center 40% / cover no-repeat;
+    opacity: 0.18;
+    filter: saturate(0.6);
+  }
+  .hero-inner { position: relative; max-width: 680px; margin: 0 auto; }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 24px;
+    opacity: 0.85;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(38px, 6vw, 62px);
+    line-height: 1.08;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245, 240, 232, 0.72);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* Content */
+  .content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 32px 80px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--deep-forest);
+    margin-bottom: 20px;
+    margin-top: 56px;
+  }
+  h2:first-child { margin-top: 0; }
+  p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--ink);
+    opacity: 0.88;
+    margin-bottom: 20px;
+  }
+  ul {
+    margin: 0 0 20px 0;
+    padding: 0;
+    list-style: none;
+  }
+  ul li {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--ink);
+    opacity: 0.85;
+    padding: 6px 0 6px 24px;
+    position: relative;
+    border-bottom: 1px solid rgba(44, 36, 32, 0.07);
+  }
+  ul li:last-child { border-bottom: none; }
+  ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--sage);
+    font-weight: 300;
+  }
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: rgba(107, 140, 110, 0.4);
+    margin: 52px 0;
+  }
+  .author-block {
+    background: rgba(28, 43, 30, 0.06);
+    border-left: 3px solid rgba(107, 140, 110, 0.5);
+    padding: 28px 28px 28px 32px;
+    border-radius: 0 8px 8px 0;
+    margin: 40px 0;
+  }
+  .author-block p { margin-bottom: 0; opacity: 0.82; }
+  .author-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--deep-forest);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--deep-forest);
+    padding: 64px 32px;
+    text-align: center;
+  }
+  .cta-inner { max-width: 560px; margin: 0 auto; }
+  .cta-label {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 20px;
+    opacity: 0.8;
+  }
+  .cta-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .cta-sub {
+    font-size: 15px;
+    color: rgba(245, 240, 232, 0.6);
+    margin-bottom: 36px;
+    line-height: 1.65;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: rgba(107, 140, 110, 0.2);
+    border: 1px solid rgba(107, 140, 110, 0.55);
+    color: var(--sage-light);
+    padding: 14px 36px;
+    border-radius: 100px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+  .cta-btn:hover {
+    background: rgba(107, 140, 110, 0.3);
+    color: #c8e0ca;
+  }
+  .cta-note {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(245, 240, 232, 0.35);
+    letter-spacing: 0.06em;
+  }
+
+  footer {
+    background: #151e16;
+    padding: 28px 32px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(245, 240, 232, 0.3);
+    letter-spacing: 0.06em;
+  }
+  footer a { color: rgba(245, 240, 232, 0.45); }
+  footer a:hover { color: rgba(245, 240, 232, 0.7); }
+
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 56px 20px 52px; }
+    .content { padding: 52px 20px 64px; }
+    .cta-section { padding: 52px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="/">← The Way Back Home</a>
+  <a class="nav-cta" href="/">Open Practice</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">About the practice</div>
+    <h1>A daily practice<br>for parents of teens</h1>
+    <p class="hero-sub">One condition of secure attachment. One reflection prompt. One quiet moment before you respond. Free — no download required.</p>
+  </div>
+</section>
+
+<main class="content">
+
+  <h2>What it is</h2>
+  <p>The Way Back Home is a free daily practice for parents navigating the particular difficulty of raising teenagers. It is not a course, a program, or a parenting system. It is a ten-minute daily ritual — something you return to, the way you might return to a meditation cushion or a morning journal.</p>
+  <p>Each day, the practice offers one of the five conditions of secure attachment — the qualities of presence that research shows are most essential to a teenager feeling known, safe, and loved. A breath anchor settles the nervous system. A reflection prompt opens the inquiry. An AI companion — quiet, non-directive, warm — listens and reflects without advice or fixing.</p>
+  <p>Your journal stays private on your device. Nothing is stored, sold, or analyzed.</p>
+
+  <div class="divider"></div>
+
+  <h2>What the practice contains</h2>
+  <ul>
+    <li>One of the five conditions of secure attachment, rotating daily: Safety, Attunement, Soothing, Expressed Delight, and Exploration</li>
+    <li>A somatic breath anchor — a brief, grounded invitation to arrive in your body before reflecting</li>
+    <li>A reflection prompt drawn from the IAT framework and <em>The Way Back Home</em></li>
+    <li>A guided visualization for most conditions — a short imaginative practice that opens toward the reflection</li>
+    <li>A quiet AI companion that mirrors your language, deepens the inquiry, and never advises</li>
+    <li>A private journal, stored locally on your device</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h2>Who it's for</h2>
+  <p>Parents of teenagers who want to show up differently — not perfectly, just more present. Specifically, parents who are:</p>
+  <ul>
+    <li>Trying to repair a connection that has frayed over the adolescent years</li>
+    <li>Working on becoming a more regulated, available presence for their teen</li>
+    <li>In therapy or coaching and want a daily practice to embody that work between sessions</li>
+    <li>Familiar with the IAT framework and the book, and want to bring it into daily life</li>
+    <li>Feeling the gap between the parent they want to be and the parent they actually are under pressure</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h2>The IAT framework</h2>
+  <p>The Ideal Parent Figure (IAT) protocol — developed by Daniel P. Brown, Ph.D. and David Elliott, Ph.D. — is an attachment-based therapeutic approach that works directly with the imagination to build the internal experience of secure attachment. Rather than analyzing early relational failures, IAT works by helping people develop a felt sense of what secure attachment would have felt like — creating new implicit memories of safety, attunement, and support.</p>
+  <p>The five conditions of the IAT framework — Safety, Attunement, Soothing, Expressed Delight, and Exploration — describe the core qualities that a securely attached child experiences from caregivers. They are not techniques. They are states of being, qualities of presence, ways of attending.</p>
+  <p>The Way Back Home applies this framework to the specific challenge of parenting teenagers — a context where attachment needs are high, but the relational dynamics are more complex and often more adversarial than in early childhood.</p>
+
+  <div class="author-block">
+    <span class="author-name">Daniel J. Ahearn, LMFT · IAT-Certified · Author</span>
+    <p>Daniel Ahearn is a licensed marriage and family therapist practicing in Los Angeles, where he works with parents, adults, and families navigating relational difficulty and developmental transitions. He is certified in the Ideal Parent Figure protocol and is the author of <em>The Way Back Home</em>. He built this practice app as a daily companion to the book — a way for parents to return to the five conditions not just as ideas, but as lived, embodied practice.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>The five conditions</h2>
+  <p>Each of the five conditions describes a quality of presence that research shows is essential to secure attachment. In the practice, they rotate on a five-day cycle — each bringing its own breath anchor, reflection prompt, and visualization. <a href="/conditions/" style="color: var(--sage); text-decoration: underline; text-underline-offset: 3px;">Read about each condition →</a></p>
+
+</main>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-label">Begin today</div>
+    <div class="cta-heading">One quiet moment.<br>Every day.</div>
+    <p class="cta-sub">Free. No download. Your journal stays on your device.</p>
+    <a class="cta-btn" href="/">Open the practice</a>
+    <p class="cta-note">waybackhome.app</p>
+  </div>
+</section>
+
+<footer>
+  <p><a href="/">waybackhome.app</a> &nbsp;·&nbsp; <a href="/conditions/">The five conditions</a> &nbsp;·&nbsp; <a href="https://danieljahearnlmft.com">danieljahearnlmft.com</a></p>
+</footer>
+
+</body>
+</html>
