@@ -1548,23 +1548,23 @@ window.addEventListener('appinstalled', () => {
 // ─────────────────────────────────────────────
 //  AMBIENT AUDIO
 // ─────────────────────────────────────────────
-const _audio = document.getElementById('ambientAudio');
-_audio.volume = 0.45;
-
 function toggleAudio() {
-  const btn = document.getElementById('audioBtn');
-  if (_audio.paused) {
-    _audio.play().then(() => {
+  const audio = document.getElementById('ambientAudio');
+  const btn   = document.getElementById('audioBtn');
+  if (!audio) return;
+  audio.volume = 0.45;
+  if (audio.paused) {
+    audio.play().then(() => {
       btn.classList.add('playing');
       btn.textContent = '♩ Pause';
       lsSet('wbh_audio_on', 'true');
-      document.getElementById('audioHint').style.display = 'none';
+      const hint = document.getElementById('audioHint');
+      if (hint) hint.style.display = 'none';
     }).catch(err => {
       console.warn('Audio blocked:', err);
-      btn.textContent = '♩ Music';
     });
   } else {
-    _audio.pause();
+    audio.pause();
     btn.classList.remove('playing');
     btn.textContent = '♩ Music';
     lsSet('wbh_audio_on', 'false');
