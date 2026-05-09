@@ -1,5 +1,7 @@
 [functions]
   directory = "netlify/functions"
+  external_node_modules = ["@netlify/blobs"]
+  node_bundler = "esbuild"
 
 [functions."push-send"]
   schedule = "0 16 * * *"
