@@ -1638,7 +1638,10 @@ function urlBase64ToUint8Array(b64) {
 
 function showNotifPrompt() {
   if (lsGet('wbh_notif_asked') || !('Notification' in window) || !('serviceWorker' in navigator)) return;
-  if (Notification.permission === 'denied') return;
+  if (Notification.permission === 'denied') {
+    lsSet('wbh_notif_asked', 'true');
+    return;
+  }
   document.getElementById('notifModal').classList.add('visible');
 }
 
@@ -1653,7 +1656,18 @@ async function enableNotifications() {
   btn.textContent = 'Enabling…'; btn.disabled = true;
   try {
     const permission = await Notification.requestPermission();
-    if (permission !== 'granted') { btn.textContent = 'Blocked by browser'; return; }
+    if (permission === 'denied') {
+      document.getElementById('notifModal').innerHTML = `
+        <button class="notif-close" onclick="dismissNotifPrompt()">✕</button>
+        <div class="notif-eyebrow">Notifications Blocked</div>
+        <div class="notif-heading" style="font-size:0.9rem;margin-bottom:8px;">Your browser is blocking notifications for this site.</div>
+        <div class="notif-body">To enable: open your browser's <strong style="color:var(--cream)">site settings</strong> for waybackhome.app and set Notifications to <strong style="color:var(--cream)">Allow</strong>, then come back and try again.</div>
+        <div class="notif-row" style="margin-top:12px;"><button class="notif-skip" onclick="dismissNotifPrompt()">Dismiss</button></div>`;
+      return;
+    }
+    if (permission !== 'granted') {
+      btn.textContent = 'Enable →'; btn.disabled = false; return;
+    }
     const reg = await navigator.serviceWorker.ready;
     const existing = await reg.pushManager.getSubscription();
     if (existing) await existing.unsubscribe();
@@ -1675,8 +1689,7 @@ async function enableNotifications() {
     setTimeout(() => toast.classList.remove('visible'), 3000);
   } catch(e) {
     console.error('Notif error:', e);
-    btn.textContent = 'Try Again';
-    btn.disabled = false;
+    btn.textContent = 'Try Again'; btn.disabled = false;
   }
 }
 
