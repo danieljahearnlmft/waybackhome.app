@@ -894,6 +894,100 @@
     .footer-links { width: 100%; }
     .footer-link { width: 100%; }
   }
+
+  /* ── Streak badge ── */
+  .streak-badge {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--gold-light);
+    border: 1px solid rgba(196,146,58,0.35);
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    cursor: default;
+  }
+  .streak-badge.visible { display: flex; }
+  .streak-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); flex-shrink: 0; }
+
+  /* ── Audio button ── */
+  .audio-btn {
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage-light);
+    background: transparent;
+    border: 1px solid rgba(107,140,110,0.4);
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .audio-btn:hover { background: rgba(107,140,110,0.15); color: var(--cream); }
+  .audio-btn.playing { color: var(--gold-light); border-color: rgba(196,146,58,0.4); }
+
+  /* ── Notification modal (bottom slide) ── */
+  .notif-modal {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 400;
+    background: var(--deep-forest);
+    color: var(--cream);
+    padding: 22px 24px 30px;
+    border-top: 1px solid rgba(196,146,58,0.3);
+    font-family: 'DM Sans', sans-serif;
+    animation: slideUp 0.3s ease;
+  }
+  .notif-modal.visible { display: block; }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .notif-close {
+    position: absolute; top: 12px; right: 16px;
+    background: none; border: none; color: var(--stone); font-size: 1.1rem; cursor: pointer;
+  }
+  .notif-eyebrow {
+    font-size: 0.63rem; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--gold-light); margin-bottom: 8px;
+  }
+  .notif-heading { font-size: 1rem; font-weight: 400; margin-bottom: 6px; }
+  .notif-body { font-size: 0.84rem; opacity: 0.72; line-height: 1.55; margin-bottom: 16px; }
+  .notif-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .notif-select {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: var(--cream); padding: 7px 10px; border-radius: 3px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.84rem; cursor: pointer;
+  }
+  .notif-enable {
+    background: var(--gold); color: var(--deep-forest); border: none;
+    padding: 8px 16px; border-radius: 2px; font-size: 0.82rem;
+    font-weight: 500; cursor: pointer; transition: opacity 0.2s;
+  }
+  .notif-enable:hover { opacity: 0.88; }
+  .notif-skip {
+    font-size: 0.78rem; color: var(--stone); background: none; border: none;
+    cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+  }
+
+  /* ── Milestone toast ── */
+  .milestone-toast {
+    display: none;
+    position: fixed; top: 70px; left: 50%; transform: translateX(-50%);
+    background: var(--deep-forest); color: var(--cream);
+    padding: 12px 22px; border-radius: 3px;
+    border: 1px solid rgba(196,146,58,0.5);
+    font-size: 0.88rem; z-index: 300;
+    text-align: center; max-width: 300px; width: 90%;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    animation: fadeSlideDown 0.35s ease;
+  }
+  .milestone-toast.visible { display: block; }
+  @keyframes fadeSlideDown { from { opacity:0; transform:translateX(-50%) translateY(-8px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+  .milestone-toast strong { color: var(--gold-light); }
 </style>
 </head>
 <body>
@@ -901,6 +995,8 @@
 <header class="site-header">
   <div class="header-title"><em>The Way Back Home</em> — Daily Practice</div>
   <div class="header-actions">
+    <div class="streak-badge" id="streakBadge" title="Your practice streak"><span class="streak-dot"></span><span id="streakLabel">Day 1</span></div>
+    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Toggle ambient music">♩ Ambient</button>
     <button class="btn-install" id="installBtn" onclick="installPWA()">Add to Home Screen</button>
     <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer" class="header-link">danieljahearnlmft.com</a>
   </div>
@@ -1375,6 +1471,10 @@ async function submitCheckin() {
     }));
     document.querySelector('.submit-row').style.display='none';
     input.readOnly=true; input.style.opacity='0.65';
+    const newStreak = updateStreak();
+    renderStreak();
+    checkMilestone(newStreak);
+    if (!lsGet('wbh_notif_asked')) setTimeout(showNotifPrompt, 2000);
     renderCheckinList();
   } catch(err) {
     respEl.classList.remove('visible');
@@ -1441,6 +1541,144 @@ window.addEventListener('appinstalled', () => {
   document.getElementById('installBtn').classList.remove('visible');
 });
 
+// ─────────────────────────────────────────────
+//  AMBIENT AUDIO
+// ─────────────────────────────────────────────
+const _audio = document.getElementById('ambientAudio');
+let _audioReady = false;
+
+function _unlockAudio() {
+  if (_audioReady) return;
+  _audioReady = true;
+  const pref = lsGet('wbh_audio_on');
+  if (pref === 'true') {
+    _audio.play().then(() => {
+      document.getElementById('audioBtn').classList.add('playing');
+      document.getElementById('audioBtn').textContent = '♩ Playing';
+    }).catch(() => {});
+  }
+  document.removeEventListener('click', _unlockAudio);
+  document.removeEventListener('touchstart', _unlockAudio);
+}
+document.addEventListener('click', _unlockAudio);
+document.addEventListener('touchstart', _unlockAudio);
+
+function toggleAudio() {
+  _audioReady = true;
+  const btn = document.getElementById('audioBtn');
+  if (_audio.paused) {
+    _audio.play().then(() => {
+      btn.classList.add('playing');
+      btn.textContent = '♩ Playing';
+      lsSet('wbh_audio_on', 'true');
+    }).catch(() => {});
+  } else {
+    _audio.pause();
+    btn.classList.remove('playing');
+    btn.textContent = '♩ Ambient';
+    lsSet('wbh_audio_on', 'false');
+  }
+}
+
+// ─────────────────────────────────────────────
+//  STREAK COUNTER
+// ─────────────────────────────────────────────
+function getStreak() { return parseInt(lsGet('wbh_streak') || '0'); }
+
+function updateStreak() {
+  const today     = new Date().toISOString().split('T')[0];
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  const last      = lsGet('wbh_last_practice');
+  if (last === today) return getStreak();
+  let streak = last === yesterday ? getStreak() + 1 : 1;
+  const longest = Math.max(streak, parseInt(lsGet('wbh_longest_streak') || '0'));
+  lsSet('wbh_streak', String(streak));
+  lsSet('wbh_longest_streak', String(longest));
+  lsSet('wbh_last_practice', today);
+  return streak;
+}
+
+function renderStreak() {
+  const streak = getStreak();
+  const badge  = document.getElementById('streakBadge');
+  const label  = document.getElementById('streakLabel');
+  if (streak > 0) {
+    label.textContent = `Day ${streak}`;
+    badge.classList.add('visible');
+  } else {
+    badge.classList.remove('visible');
+  }
+}
+
+// ─────────────────────────────────────────────
+//  MILESTONE CELEBRATIONS
+// ─────────────────────────────────────────────
+const MILESTONES = { 1:'First practice complete. Welcome.', 7:'7 days. A week of showing up.', 14:'14 days. The practice is becoming yours.', 21:'21 days. Real commitment.', 30:'30 days. A month of turning toward.', 60:'60 days. Remarkable.', 90:'90 days. This is who you are now.' };
+
+function checkMilestone(streak) {
+  const msg = MILESTONES[streak];
+  if (!msg) return;
+  const toast = document.getElementById('milestoneToast');
+  toast.innerHTML = `<strong>${streak === 1 ? '✦' : `Day ${streak}`}</strong> — ${msg}`;
+  toast.classList.add('visible');
+  setTimeout(() => toast.classList.remove('visible'), 4500);
+}
+
+// ─────────────────────────────────────────────
+//  PUSH NOTIFICATIONS
+// ─────────────────────────────────────────────
+const VAPID_PUBLIC_KEY = 'BFbT7fs04YEpVJKNuRG88hr-w3tSeRlhyYYdSRITO9Z-LnYnrRz3LuSdFg8a48KYmrPPxlhQaWwmA5IPTB_mEWc';
+
+function urlBase64ToUint8Array(b64) {
+  const pad = '='.repeat((4 - b64.length % 4) % 4);
+  const raw = atob((b64 + pad).replace(/-/g,'+').replace(/_/g,'/'));
+  return Uint8Array.from(raw, c => c.charCodeAt(0));
+}
+
+function showNotifPrompt() {
+  if (lsGet('wbh_notif_asked') || !('Notification' in window) || !('serviceWorker' in navigator)) return;
+  if (Notification.permission === 'denied') return;
+  document.getElementById('notifModal').classList.add('visible');
+}
+
+function dismissNotifPrompt() {
+  lsSet('wbh_notif_asked', 'true');
+  document.getElementById('notifModal').classList.remove('visible');
+}
+
+async function enableNotifications() {
+  const hour = parseInt(document.getElementById('notifHour').value);
+  const btn  = document.querySelector('.notif-enable');
+  btn.textContent = 'Enabling…'; btn.disabled = true;
+  try {
+    const permission = await Notification.requestPermission();
+    if (permission !== 'granted') { btn.textContent = 'Blocked by browser'; return; }
+    const reg = await navigator.serviceWorker.ready;
+    const existing = await reg.pushManager.getSubscription();
+    if (existing) await existing.unsubscribe();
+    const sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+    });
+    await fetch('/.netlify/functions/push-subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subscription: sub.toJSON(), preferredHour: hour })
+    });
+    lsSet('wbh_notif_asked', 'true');
+    lsSet('wbh_notif_enabled', 'true');
+    dismissNotifPrompt();
+    const toast = document.getElementById('milestoneToast');
+    toast.innerHTML = 'Reminders on — see you tomorrow.';
+    toast.classList.add('visible');
+    setTimeout(() => toast.classList.remove('visible'), 3000);
+  } catch(e) {
+    console.error('Notif error:', e);
+    btn.textContent = 'Try Again';
+    btn.disabled = false;
+  }
+}
+
 // Enter key on email gate
 document.getElementById('gateEmail').addEventListener('keydown', e => {
   if (e.key === 'Enter') submitGate();
@@ -1474,6 +1712,7 @@ function initApp() {
     }
   }
   renderCheckinList();
+  renderStreak();
 }
 
 (async () => {
@@ -1506,6 +1745,36 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+
+<!-- Ambient audio -->
+<audio id="ambientAudio" src="/ambient.mp3" loop preload="none"></audio>
+
+<!-- Notification opt-in modal -->
+<div class="notif-modal" id="notifModal">
+  <button class="notif-close" onclick="dismissNotifPrompt()">✕</button>
+  <div class="notif-eyebrow">Daily Reminder</div>
+  <div class="notif-heading">Get a gentle nudge each day?</div>
+  <div class="notif-body">A quiet daily notification — the day's condition and reflection prompt, delivered when you're ready.</div>
+  <div class="notif-row">
+    <span style="font-size:0.82rem;opacity:0.7;">Remind me at</span>
+    <select class="notif-select" id="notifHour">
+      <option value="6">6:00 AM</option>
+      <option value="7">7:00 AM</option>
+      <option value="8">8:00 AM</option>
+      <option value="9" selected>9:00 AM</option>
+      <option value="10">10:00 AM</option>
+      <option value="12">12:00 PM</option>
+      <option value="17">5:00 PM</option>
+      <option value="20">8:00 PM</option>
+      <option value="21">9:00 PM</option>
+    </select>
+    <button class="notif-enable" onclick="enableNotifications()">Enable →</button>
+    <button class="notif-skip" onclick="dismissNotifPrompt()">Not now</button>
+  </div>
+</div>
+
+<!-- Milestone toast -->
+<div class="milestone-toast" id="milestoneToast"></div>
 
 <!-- iOS install banner -->
 <div id="iosBanner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;

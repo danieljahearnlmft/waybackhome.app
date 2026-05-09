@@ -1,5 +1,8 @@
 [functions]
   directory = "netlify/functions"
 
+[functions."push-send"]
+  schedule = "0 16 * * *"
+
 [build.environment]
   NODE_VERSION = "18"
