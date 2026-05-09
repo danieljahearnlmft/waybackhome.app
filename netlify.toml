@@ -1,10 +1,14 @@
 [functions]
   directory = "netlify/functions"
-  external_node_modules = ["@netlify/blobs"]
-  node_bundler = "esbuild"
 
 [functions."push-send"]
   schedule = "0 16 * * *"
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/blobs", "web-push"]
+
+[functions."push-subscribe"]
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/blobs"]
 
 [build.environment]
   NODE_VERSION = "18"

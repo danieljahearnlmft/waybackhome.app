@@ -1552,7 +1552,6 @@ _audio.volume = 0.45;
 function toggleAudio() {
   const btn = document.getElementById('audioBtn');
   if (_audio.paused) {
-    _audio.load();
     _audio.play().then(() => {
       btn.classList.add('playing');
       btn.textContent = '♩ Pause';
