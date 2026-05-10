@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- WBH v2.0 - full rebuild: og fix, PWA prompt, share, copy upgrade, clean CSS -->
+<!-- WBH v3.0 - app-first rebuild: situation-based home, 5 pathways, brand quieted -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,12 +8,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Way Back Home">
 <meta name="theme-color" content="#1C2B1E">
-
 <title>The Way Back Home — Daily Practice for Parents of Teens</title>
-<meta name="description" content="A free, calm daily practice for parents of teens. One condition of secure attachment, one reflection prompt, one quiet moment — grounded in the IAT framework by Daniel Ahearn, LMFT.">
-<!-- Open Graph -->
+<meta name="description" content="Your teen isn't pulling away from you. They're waiting to see if you'll come toward them. A free daily practice for parents of teens — five conditions of secure attachment, by Daniel Ahearn, LMFT.">
 <meta property="og:title" content="The Way Back Home — A Daily Practice for Parents">
-<meta property="og:description" content="One condition of secure attachment. One reflection prompt. A calm daily ritual for parents rebuilding connection with their teen. Free — no app to download.">
+<meta property="og:description" content="The teen years aren't something to survive — they're your most powerful window for repair. A free daily practice for parents of teens by Daniel Ahearn, LMFT.">
 <meta property="og:url" content="https://waybackhome.app">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://waybackhome.app/cond-exploration.jpg">
@@ -21,7 +19,7 @@
 <meta property="og:image:height" content="990">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Way Back Home — A Daily Practice for Parents">
-<meta name="twitter:description" content="One condition of secure attachment. One reflection prompt. A calm daily ritual for parents of teens.">
+<meta name="twitter:description" content="The teen years aren't something to survive — they're your most powerful window for repair. A free daily practice for parents of teens.">
 <meta name="twitter:image" content="https://waybackhome.app/cond-exploration.jpg">
 <link rel="canonical" href="https://waybackhome.app">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -31,9 +29,6 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFeklEQVR4nO3dPVIcSRCG4R6CYxCy8HQUOZjcgANwDg7ADTBxdBQ8LIJ7SIYYNAPT0/WTVZX51fuYGwh6qt/IzWl2tLtloKufP/6M/Plo5/3lbTfi53b7ocSLHpE3/QFEjDWt4m7yTQkZqazDNv1mhIxSVmGbfBNChpXasC9qL4CYYam2p6qgiRkt1HRVNN4JGb3kriDZE5qY0VNub1lBEzNGyOkuOWhixkip/SUFTczwIKXDzaCJGZ5s9Vj9HBrw5GzQTGd4dK7L1aCJGZ6t9XkyaGJGBKc6ZYeGlG9BM50RyddemdCQchQ00xkRHXbLhIaUz6CZzohs3y8TGlIIGlJ2y8K6AR1MaEi5HH0BqPd0d5X8tbeP7w2vZDwmNKQQNKRc8IYQSpjQkELQkELQkELQkELQneQ8K0Y5gu5gHzNRt8dvChs6FfD+n6n/xm4UJnQjW9OYad0GQTeQGitR2yNoY7mRErUtdmgjNWGyV9thQhuwmrJM63oEXck6QqKuQ9AVWsVH1OXYoQv0CI69ugwTOlPv6cm0zkPQGUbFRdTpCDrR6KhG//wo2KE3eAqJvXobE/oMTzEf8npdHhD0Cu/ReL++UQj6hCixRLnOntihD0QMJOI1t8SE/kAYGgh6IWYl0wdNzFqm3aEJWdOUE5qYdU0XNDFrmypoYtY3xQ5NyPOQn9DEfEz9PKSDVr95pZTPRTZo5ZtmQfV8dmr/SwrVG9WS0n9fLTWhibmM0rnJBK10U0ZQOT+JoFVuxmgK5xh6h1a4AV5F3avDTmhibivq+YYMOuphRxPxnMMFHfGQI4t23mF26GgHqyjCXh1iQhOzDxHug/ugIxziTLzfD9dBez+8WXm+Ly53aM8HhmPe9mp3E5qYY/F2v1xO6HO8HaA6bxN4i7sJDdQgaEghaEghaEghaEghaEghaEiR/puTbh5ei/7c8/218ZW0of76SjChIYWgIYWgIYWgIYWgIYWgIUX6sd1IW4/UlB+djUTQxlKfDe+/jrBtEbSR0l9yELYtdmgDpTFbfw8QdDXLEIm6HkFXaBEgUdfhQ7KFWofnZafmQ7LAQARdoMdawOpRhqAhhaAhhaAz9VwFWDvyETSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkhPt7Obx7urv6nfP1t4/vv1pdy4yY0IZyYy79M1hH0EZqwiRqOwQNKezQBrYm7M3D6+ee/Hx/vfq17NP1mNCVLNcFVo96BF2hRYBEXYegC7UMj6jLETSkEHSBHhOUKV2GoDP1DI2o8xF0hhGBEXUenkMnGh0Wz6jTMKETjI7ZyzVEQNCQQtAbPE1GT9fiFUGf4TEgj9fkCUGv8ByO52sbjaBPiBBMhGscgaAhhaC/iDT5Il1rLwR9IGIgEa+5JYL+EDmMyNdujaAXjSAUXoOFy9EXMIPUzxSi3sX7y9tu9EWMpDTZlF5LqalXDsUAFF9TjmmDVr7xyq9ty5RBz3DDZ3iNp0wZNHRdLMuyzPTGcKbJNdNrXZZ/HU81oWe7wcsy32ueJujZbuyhmV770aqh+oHZmW7oOcoftN2vzfITmpj/m+EsjoKe6c0hdBx2Kz2hZ5hIudTP5FvQKlNa/cbVUDqbr71KTmilG9aK6hmdDDrylFa9US1EP6tTna5O6MhRQ99an2dXjmhRR584I0Q8s3NdyuzQEW+MF0pnlzSBVX+DiHi2toakCR1t9YCmlA6TVw6ixkip/WXt0ESNEXK6y35TSNToKbe3qjh5s4hWSgdn1WM7pjVaqOmq+jk0UcNSbU+mMbKCoJTVYGwyXQkbqaz/Dd90XSBsrGm1qnbbf4kbPd5v/QWdlNBXmp/KQwAAAABJRU5ErkJggg==">
-<link rel="apple-touch-icon" sizes="167x167" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKcAAACnCAYAAAB0FkzsAAAFJElEQVR4nO3cu1EjQRRG4ZZqw6DWWm9DWQeTDAiAOAiADDBxNhQ8LEp57BogapDm0d3Tj//ePp+LQDM9p+60pBKH0NjN75//Wj8nyjm9vh9aPVf1JyJG32rGWuUPE+SYSoda9I8RJUIoF2mRP0KUmLM30l2/TJSIkRvpMfcJCROxclvJipMwkSqnmaRxS5TYK+UWH/1AwkRJMZFG3dYJE6XFNLUZJ2Gil+xX68BeW4NvNU6mJmpba2wxTsJEK0utzcZJmGhtrjn2nJB1FSdTE71ctsfkhKxvcTI10du0QSYnZH3FydSEinOLTE7IIk7IOoTALR2amJyQ9aP3AWDb8/1N1OPunk6Vj6QtJidkHdlvQhWTE7KIE7KIE7KIE7KIs6DYt3wQhzgLOYdJoOUQZwGXQRJoGXxCtMNahOefefvUpiUmZ6bY6cgUzUecGVKDI9A8xJkoNzQCTceeM1KJuNiHpmFyRig99ZiicYhzQ62QCHQbca6oHRCBrmPPOaNlNOxDlzE5L/SaZkzRa8Q50TuQ3s+vhjg/qYShchwKht9zKsbAPvTD0JNTMcwp9eOrbdg4rVx4K8dZw5BxjnzBLRlqz0mUtgwzOQnTniHiJEyb3MdJmHa53XMSpX0uJydh+uAuTsL0w1Wco4fp7fwPHv4/p7eLUoKHz+XNT07CnOdhXUzH6eEC1GR9fczGaX3hW7G8Tub2nJYXuzdr+1BTk5Mw97G2fmbitLawqiyto4k4LS2oBVbWU3rPaWURLVPeh8pOTsJsQ3mdJeNUXjCPVNdbLk7VhfJOcd1l9pyKizMqlX2oxOQkTC0q10Nmci5RWSiPVCbkEonJCcwhTsgiTsgiTsgiTsgiTshy9U8Vbh/fkn/n5eFXhSMpw9v5pGJyQhZxQhZxQhZxQhZxQhZxQpart5J6WHu7x9PbOj0QZ4bY9x+njyPUdNzWE+W8Mb7n90ZGnAn2BkagaYgzUqmwCDQecUYoHRSBxuE7RBtqhtT7RRLfITKs9oRjgq4jTsgiTsgizgWtbrnc2pcRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2QRJ2TJf/tS1fP9zd/Yx949nf7UPBavmJwZUsLMeTw+EGei3NAINB3/Za6Q28e3r1v3y8MvQiyAyZlg7/RjeqYhzkilwiLQeMQZoXRQBBqHODfUColAtxHnitoBEeg64oQs4lzQaqoxPZfx8eWMHsHwEec1JueFXpOMCXqNOCd6B9L7+dUQJ2QR5yeVqaVyHAqIM+gFoXY8vQwfp2oIqsfV0tBxqgegfny1DRunlQtv5ThrGDZO6BsyTmvTyNrxljLcx5e1LnSLr2mM9hHnUJPT+gSyfvypjqfX90Pvg2jBy4X1ch4xhpic3i6ot/NZMkScsMl9nF6njNfzmjqGEILXfaf3C+j5/E6v7we3k9PzhZvyfJ5fE9PT+52eL9gSb++BfpucXm/tsOfcorvb+ohTMwSf5/0tTuvT0+MFSuHh/KcNupmcHi5MCZ7W4SpOi9PT0wUpwep6XLZnfnJavRC1WVuXuaE4G6fF6Ql/FienhUCtTYfWrKzPUmurt3XlQK0sfG/q67TWWFR8nj49go6t4Wf+BRFsirkrR8WpfHuHPbE9JUfHLR57pAy65Ns6UxS5UtvJ2nMSKFLlNLMrMm7x2LJnkBWZgESKOXvvsEVvz0SKEMpt+6rsHYl0TKVfi1R/YUOovtV8cfwfD7C4QqNqIN8AAAAASUVORK5CYII=">
-<link rel="apple-touch-icon" sizes="152x152" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAACYCAYAAAAYwiAhAAAEqElEQVR4nO3cPVIbMRiAYdmTY3hS0XGUNJTcgANwDg7ADShpchQ6Ksb3SAowrO39kVb6tN/P+1SZiYFd6Y0kOza71MHh9ve/Hj8H5Y5vHzvJ7y/yzQnKrtbBNf1mhOVHq9CqvwlR+VYbWtUXE1cca0Nb9UWEFVdpaPvSH0BcsZXOf1FgxIWUyjrIDoy4MJTbQ1ZgxIUxOV0sBkZcmLPUx2xgxIUcc51MBkZcKDHVy2hgxIU1xropfh0MKHEVGKsXalz2s5/7S6AWWySaGy5UBAZR34GxPaKlU0+sYBC1S4nVC3JYwSCKwCDq19YXENnLwyHrcffPR+ErkbPn/AVJbJEQRWAQRWAQRWAQRWCFcp/54ROBFTjFRWT5CCzDy8PhKioiy0NgC+ZCGgsP5whsRm48RDaNwCaURkNk4wjsQs22R2TXCGygRSCcy84R2JfWURDZJwJLcjEQWfDAemxn0SMLG1jPiY98LgsZ2FaTHTGyUIFpWEm2/vm9hQlM08RquhZpIQLTOKEar0mC+8CiTKRWbj+2Rlg6uFzBiEsPd4ERly5utkjC0snFCkZcepkPjLh0Mx1YlLgs3+fO4i8/sTzgNSz+lh1zK1jUuFKyee+mArM4wK1ZGwMzW6S1ge3BwpapPjDCmqc9MtVbJHEt0z5GagPTPnCaaB4rdVuk5sGyQNuWqWoFI6562sZQTWDaBsYyTWOpIjBNA+KFljHd9AymZRC82/JcttkKRlz9bDnW6p5FpkR8a2l7BpmSkjMY/CIwiCIwiCIwiCIwiCIwiDL9uci7p/fsx74+3gheSTnL116CFQyiCAyiCAyiCAyiCAyiTD+L7GXqGZ/lZ3e9ENiEnJcRho8htnFskSNKXqOq+ZoICOxCTShEdo3ABloEQmTnCOxLyzCI7AdvmU5yQfQ++POWaYRDYBAVPjDJ8xJnMQKDMAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKAKDKJVvmYYffPB2xsvD4W/O4+6fj3+kr8UqtsgJuXGVPjYaAhuxJhgiG8cWWeDu6f17K3x9vCGoDKxgF2pWIlaxawQ20CIQIjtHYF9ahkFkPwgsyQRBZJ/CByYZApERGISF/q+iXitM5Ff6w65gPbevyFtlyMC2mPCokYULbMuJjhhZqMA0TLCGa+gpVGDoL0xgmlYOTdciLURgGidU4zVJcB+Y5onUfG2tuA7MwgRauMYabl/Jl5g4yTccen213/UKhu3tj28fu60vojWL247Fa87hbgWzPFGWr32Kq8A8TJCHexhyE5inifFyL8e3j93+9IetL6aGlwkZ8nJPfC6yAJ+FLPe9RVpdxbz8Sx9j+d5OPZk+g1megFzW7/EsMEurmPWBL2HtXocdmVzBrA14C1bv+Sow7auY1YFuwcK9X/ZjcgWDTmOL02hgWlcxC/+CpVkbg8kVTFtk1gZWksaxmOplMSKv7xdDO3OL0eIZTNtKBl2W+sg65BMZxuR0kf0sksgwlNtD0csURIaUyjpYFQwH/5jWLDBVKxKhxbF292qy5RGaX7XHoqZnKkLzo9V5W+TQTmg2STyJ+w+42JYT7BoKqQAAAABJRU5ErkJggg==">
-<link rel="apple-touch-icon" sizes="120x120" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAADg0lEQVR4nO2cMXLbMBBFQU2OoUmVLkdRo9I38AFyDh3AN3CZJkdRp0rDeyQVZUcmCQIEsH8//itNirPc578ATY2HUJjjz+9/S1+zN8brfSh1rd0XktD67BGe/UGJbU+O6OQPSKw9KaIPKReWXAxSPGz6TZBYXGJpjiZYcrGJ+VkVLLk+WPO0KFhyfbHka1aw5PpkzlvSLlr444tgpdc3z/4OaweFTz571Igm5yFY6eVi8qkEkzOEoPQyowSTI8HkfLMuwBPvr8fV4y9vY6NKtnPQ+suNRjQ5EkyOBJPTneDYRomNrgRPcnuS3MVj0pzQ6WeIjzYloU9wLK3saaYWvFUes2RawanSWCXTrcF7RDGuy1QJLpVCpjTTCC4thUWy+xFdUwTDyHad4FYp85xmt4JbN92rZJeCvTbbAldrsMSm4ybBkpuHC8GSmw/0iJbY/cAmWHLLACnYq1zEuuEEIzYpBbT6B5TvRaM1pgQIf+KESDCj3BAw7stcMEITamJ9f2Yj2vrGLbAY2SYJ7lFuCDb33Vxwr3InWt9/U8G9y51o2Ycma7DELlN7Xa6eYMldp3Z/THbRvUrvZhct2iHB5EgwORJMDuQ3Os6XW/Sc379+NKjkA8SatqAEkyPB5EgwORJMDuQmqzRLGyTETVFpqAXHdr7TcWbRtCN6y2NNzrneoBScI4xVMp3gPaIYJVO9LiwlqNaarNeFojg0gkuOV6ZRTSNYzCPB5EgwORJMjgSTI8HkSDA5EkyOBJMjweRIMDkSTA7Mv1ESdaD+TlYIIby/Hv+sHX95G0+tarGAekTH5G49xzO0gpfEnS+30/lyO205lwFKwTnCWCVTChYf0Anek0TGFFMJLiGITTLNc3BpMSyPTxQJrpE6liS7F1xTBINk14JbCPAu2bVgEcet4JbJ8pxil4ItGu5VsjvBlo32KNmV4BINnnvZ0LqGlrgRjNRYpFpiHMbrfbAuQtTDRYIRE4NY0xzwgpEbiVzbBLRgDw1Er/Gx/qK9VUJv3DOIb5/G632ATLA3uSHg1vwQjLKbRm3UFpBqn3xCJliU4z/B1ilGSkAuCPfw2eOXBFtJRmhMKSzv5dkfxIhmkjuBck+LaUV7bBJx5qbvYoKt12ORxpKv1REtyT5Y8xRdgyUZm5ifJHlal3HYGrykXbTSjEGKh2xhSnN7cgK2O5ESXZ89k/MfBf9ASdSsDeEAAAAASUVORK5CYII=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -81,29 +76,39 @@
     z-index: 100;
     gap: 16px;
   }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+  }
+  .back-btn {
+    background: none;
+    border: none;
+    color: var(--sage-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    cursor: pointer;
+    padding: 4px 2px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+  .back-btn:hover { color: var(--cream); }
   .header-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.05rem;
     font-weight: 400;
     letter-spacing: 0.02em;
     color: var(--cream);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .header-title em { font-style: italic; color: var(--gold-light); }
   .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-  .header-link {
-    font-size: 0.65rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--sage-light);
-    text-decoration: none;
-    border: 1px solid rgba(107,140,110,0.4);
-    padding: 5px 10px;
-    border-radius: 2px;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .header-link:hover { background: rgba(107,140,110,0.15); color: var(--cream); }
   .btn-install {
     font-size: 0.65rem;
     font-weight: 500;
@@ -120,9 +125,62 @@
   }
   .btn-install.visible { display: block; }
   .btn-install:hover { background: rgba(196,146,58,0.15); }
+  .info-btn {
+    background: none;
+    border: 1px solid rgba(107,140,110,0.35);
+    color: var(--stone-light);
+    font-size: 0.85rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .info-btn:hover { color: var(--cream); border-color: rgba(107,140,110,0.6); }
 
-  /* ── Layout ── */
-  .container { max-width: 720px; margin: 0 auto; padding: 32px 22px 80px; }
+  /* ── About drawer ── */
+  .about-drawer {
+    background: var(--deep-forest);
+    color: var(--cream);
+    padding: 18px 24px 22px;
+    border-bottom: 1px solid rgba(196,146,58,0.2);
+    position: sticky;
+    top: 56px;
+    z-index: 99;
+  }
+  .about-drawer-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 7px;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  .about-drawer-text {
+    font-size: 0.8rem;
+    opacity: 0.72;
+    line-height: 1.62;
+    margin-bottom: 12px;
+  }
+  .about-drawer-links { display: flex; flex-wrap: wrap; gap: 7px; }
+  .about-drawer-link {
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sage-light);
+    text-decoration: none;
+    border: 1px solid rgba(107,140,110,0.35);
+    padding: 5px 10px;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .about-drawer-link:hover { background: rgba(107,140,110,0.15); color: var(--cream); }
 
   /* ── Email Gate ── */
   #emailGate {
@@ -169,20 +227,21 @@
     font-size: 2.1rem;
     font-weight: 300;
     line-height: 1.12;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .gate-title em { font-style: italic; color: var(--gold-light); }
   .gate-subtitle {
-    font-size: 0.92rem;
-    opacity: 0.9;
-    line-height: 1.65;
+    font-size: 0.88rem;
+    opacity: 0.85;
+    line-height: 1.6;
   }
   .gate-body { padding: 28px 36px 32px; }
   .gate-description {
-    font-size: 0.95rem;
-    line-height: 1.72;
+    font-size: 0.92rem;
+    line-height: 1.7;
     color: var(--ink);
-    margin-bottom: 24px;
+    margin-bottom: 22px;
+    opacity: 0.85;
   }
   .gate-label {
     display: block;
@@ -238,11 +297,11 @@
   }
   .gate-skip:hover { color: var(--ink); }
   .gate-privacy {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: var(--stone);
     line-height: 1.6;
     margin-top: 14px;
-    opacity: 0.7;
+    opacity: 0.65;
   }
   .gate-error {
     display: none;
@@ -252,74 +311,426 @@
   }
   .gate-error.visible { display: block; }
 
-  /* ── App ── */
-  #appContent { display: none; }
+  /* ── Home screen ── */
+  #homeScreen {
+    display: none;
+    flex-direction: column;
+    min-height: calc(100vh - 56px);
+  }
 
-  /* ── Intro card ── */
-  .intro-card {
-    background: var(--deep-forest);
-    color: var(--cream);
-    border-radius: 5px;
-    padding: 30px 32px;
-    margin-bottom: 24px;
+  /* Condition hero — full-width immersive card */
+  .home-hero {
     position: relative;
+    height: 56vh;
+    min-height: 320px;
+    max-height: 480px;
     overflow: hidden;
+    flex-shrink: 0;
   }
-  .intro-card::before {
-    content: '';
+  .home-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.68) contrast(1.05) saturate(0.82);
+    animation: kenBurns 18s ease-in-out infinite alternate;
+    transform-origin: center center;
+  }
+  .home-hero-overlay {
     position: absolute;
-    top: -50px; right: -50px;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: rgba(196,146,58,0.06);
-    pointer-events: none;
+    inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(10,20,12,0.08) 0%,
+      rgba(10,20,12,0.15) 40%,
+      rgba(10,20,12,0.75) 100%);
   }
-  .intro-eyebrow {
-    font-size: 0.63rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--gold-light);
-    margin-bottom: 12px;
-  }
-  .intro-card h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.65rem;
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 14px;
-  }
-  .intro-card h2 em { font-style: italic; color: var(--gold-light); }
-  .intro-card p {
-    font-size: 0.93rem;
-    line-height: 1.72;
-    opacity: 0.92;
-    margin-bottom: 8px;
-    max-width: 500px;
-  }
-  .intro-author {
-    margin-top: 18px;
-    font-size: 0.75rem;
-    opacity: 0.5;
-    font-style: italic;
-  }
-  .intro-author strong { opacity: 1; font-style: normal; color: var(--sage-light); }
-  .btn-dismiss {
-    margin-top: 20px;
-    background: rgba(255,255,255,0.1);
+  .home-hero-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px 28px 30px;
     color: var(--cream);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 9px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
+  }
+  .home-hero-eyebrow {
+    font-size: 0.58rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.18em;
+    opacity: 0.65;
+    margin-bottom: 6px;
+  }
+  .home-hero-condition {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .home-hero-tagline {
+    font-size: 0.88rem;
+    opacity: 0.82;
+    line-height: 1.58;
+    max-width: 420px;
+    margin-bottom: 22px;
+  }
+  .home-hero-done {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    border: 1px solid rgba(196,146,58,0.4);
+    padding: 8px 16px;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+  }
+  .btn-begin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cream);
+    color: var(--deep-forest);
+    border: none;
+    padding: 12px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.2s;
   }
-  .btn-dismiss:hover { background: rgba(255,255,255,0.18); }
+  .btn-begin:hover { background: var(--gold-light); color: var(--deep-forest); }
+
+  /* Quick tools section below hero */
+  .home-tools {
+    padding: 28px 24px 48px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .home-tools-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--stone);
+    margin-bottom: 14px;
+  }
+  .home-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--stone-light);
+    margin: 0 auto 20px;
+  }
+  .home-options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .home-btn {
+    width: 100%;
+    background: var(--warm-white);
+    border: 1px solid var(--stone-light);
+    border-left: 3px solid var(--sage);
+    padding: 15px 18px 15px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.97rem;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.15s;
+    line-height: 1.3;
+  }
+  .home-btn:hover {
+    background: #fff;
+    border-color: var(--sage-light);
+    border-left-color: inherit;
+    transform: translateX(2px);
+    box-shadow: 0 2px 12px rgba(28,43,30,0.07);
+  }
+  .home-btn-activated  { border-left-color: var(--rust); }
+  .home-btn-shutdown   { border-left-color: var(--soothing-accent); }
+  .home-btn-rupture    { border-left-color: var(--attunement-accent); }
+  .home-btn-repair     { border-left-color: var(--safety-accent); }
+  .home-btn-good       { border-left-color: var(--gold); }
+  .home-btn-practice   { border-left-color: var(--exploration-accent); }
+  .home-btn-arrow {
+    color: var(--stone-light);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-left: 10px;
+    transition: color 0.15s;
+  }
+  .home-btn:hover .home-btn-arrow { color: var(--stone); }
+  .home-about-link {
+    margin-top: 40px;
+    font-size: 0.72rem;
+    color: var(--stone-light);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+    padding: 6px;
+  }
+  .home-about-link:hover { color: var(--stone); }
+
+  /* ── Pathway screens ── */
+  .pathway-screen {
+    display: none;
+    min-height: calc(100vh - 56px);
+    padding-bottom: 60px;
+  }
+  .pathway-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 32px 24px 16px;
+  }
+  .pathway-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .pathway-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--deep-forest);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .pathway-framing {
+    font-size: 0.93rem;
+    color: var(--stone);
+    line-height: 1.72;
+    margin-bottom: 30px;
+    font-style: italic;
+    border-left: 2px solid var(--stone-light);
+    padding-left: 14px;
+  }
+  .pathway-note {
+    margin-top: 28px;
+    font-size: 0.82rem;
+    color: var(--stone);
+    font-style: italic;
+    line-height: 1.65;
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  /* ── Breathing animation ── */
+  .breath-guide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 0 24px;
+    margin-bottom: 28px;
+  }
+  .breath-ring-wrap {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 22px;
+  }
+  .breath-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--sage-light) 0%, var(--sage) 70%);
+    opacity: 0.3;
+    animation: wbhBreathe 16s ease-in-out infinite;
+  }
+  .breath-ring-inner {
+    position: absolute;
+    inset: 20px;
+    border-radius: 50%;
+    background: var(--sage);
+    opacity: 0.25;
+    animation: wbhBreathe 16s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+  @keyframes wbhBreathe {
+    0%, 100% { transform: scale(0.72); opacity: 0.2; }
+    25%       { transform: scale(1);    opacity: 0.42; }
+    50%       { transform: scale(1);    opacity: 0.38; }
+    75%       { transform: scale(0.72); opacity: 0.2; }
+  }
+  .breath-phase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--deep-forest);
+    text-align: center;
+    min-height: 2rem;
+    margin-bottom: 6px;
+    transition: opacity 0.4s;
+  }
+  .breath-instruction {
+    font-size: 0.72rem;
+    color: var(--stone-light);
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── Grounding steps ── */
+  .grounding-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .grounding-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--warm-white);
+    padding: 14px 16px;
+    border-radius: 3px;
+    border: 1px solid rgba(196,189,181,0.5);
+  }
+  .grounding-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--stone-light);
+    line-height: 1;
+    min-width: 22px;
+    margin-top: 1px;
+  }
+  .grounding-text {
+    font-size: 0.93rem;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+
+  /* ── Attunement cards ── */
+  .attunement-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .attunement-card {
+    background: var(--warm-white);
+    padding: 16px 18px;
+    border-radius: 3px;
+    border: 1px solid rgba(196,189,181,0.5);
+    border-left: 3px solid var(--soothing-accent);
+  }
+  .attunement-card-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--soothing-accent);
+    margin-bottom: 6px;
+  }
+  .attunement-card-text {
+    font-size: 0.93rem;
+    color: var(--ink);
+    line-height: 1.68;
+  }
+
+  /* ── Repair steps ── */
+  .repair-steps {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+  .repair-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(196,189,181,0.4);
+  }
+  .repair-step:last-child { border-bottom: none; }
+  .repair-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--stone-light);
+    line-height: 1;
+    min-width: 28px;
+    margin-top: -1px;
+  }
+  .repair-action {
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+  .repair-text {
+    font-size: 0.93rem;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .repair-script {
+    margin-top: 7px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--forest-mid);
+    line-height: 1.6;
+    padding-left: 12px;
+    border-left: 2px solid var(--sage-light);
+  }
+
+  /* ── Contrast cards (say this / don't say this) ── */
+  .contrast-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .contrast-pair {
+    background: var(--warm-white);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(196,189,181,0.5);
+  }
+  .contrast-dont {
+    padding: 11px 14px;
+    background: rgba(181,81,58,0.05);
+    border-bottom: 1px solid rgba(196,189,181,0.4);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .contrast-do {
+    padding: 11px 14px;
+    background: rgba(74,124,90,0.05);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .contrast-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    min-width: 16px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .contrast-dont .contrast-badge { color: var(--rust); }
+  .contrast-do .contrast-badge { color: var(--safety-accent); }
+  .contrast-text { font-size: 0.92rem; color: var(--ink); line-height: 1.5; }
+
+  /* ── Layout ── */
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 22px 80px; }
 
   /* ── Today card ── */
   .today-card {
@@ -350,11 +761,7 @@
     0%   { transform: scale(1.0) translate(0%, 0%); }
     100% { transform: scale(1.07) translate(-1.5%, -1.2%); }
   }
-  .condition-photo-overlay {
-    position: absolute;
-    inset: 0;
-    /* background set per-condition in JS */
-  }
+  .condition-photo-overlay { position: absolute; inset: 0; }
   .condition-photo-text {
     position: absolute;
     bottom: 0; left: 0; right: 0;
@@ -378,12 +785,7 @@
     margin-bottom: 7px;
     letter-spacing: -0.01em;
   }
-  .condition-tagline {
-    font-size: 0.9rem;
-    opacity: 0.92;
-    line-height: 1.6;
-    max-width: 440px;
-  }
+  .condition-tagline { font-size: 0.9rem; opacity: 0.92; line-height: 1.6; max-width: 440px; }
 
   /* ── Book quote ── */
   .book-quote-area {
@@ -452,7 +854,6 @@
     gap: 12px;
     cursor: pointer;
     transition: background 0.2s;
-    text-decoration: none;
   }
   .vis-strip:hover { background: rgba(107,140,110,0.13); }
   .vis-icon { font-size: 0.95rem; }
@@ -611,11 +1012,7 @@
     color: var(--deep-forest);
     margin-bottom: 6px;
   }
-  .already-done p {
-    font-size: 0.85rem;
-    color: var(--stone);
-    line-height: 1.6;
-  }
+  .already-done p { font-size: 0.85rem; color: var(--stone); line-height: 1.6; }
 
   /* ── Modal ── */
   .modal-overlay {
@@ -746,69 +1143,6 @@
     line-height: 1.65;
   }
 
-  /* ── Footer CTA ── */
-  .footer-cta {
-    background: var(--deep-forest);
-    color: var(--cream);
-    border-radius: 5px;
-    padding: 26px 28px;
-    margin-top: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .footer-cta-text h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 400;
-    margin-bottom: 4px;
-    color: var(--gold-light);
-    font-style: italic;
-  }
-  .footer-cta-text p {
-    font-size: 0.78rem;
-    opacity: 0.58;
-    line-height: 1.55;
-    max-width: 340px;
-  }
-  .footer-links { display: flex; flex-direction: column; gap: 7px; flex-shrink: 0; }
-  .footer-link {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.73rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 8px 18px;
-    border-radius: 2px;
-    transition: all 0.2s;
-  }
-  .footer-link.primary { background: var(--gold); color: var(--deep-forest); }
-  .footer-link.primary:hover { background: var(--gold-light); }
-  .footer-link.secondary { border: 1px solid rgba(255,255,255,0.18); color: var(--cream); }
-  .footer-link.secondary:hover { border-color: rgba(255,255,255,0.45); }
-  .footer-nav {
-    text-align: center;
-    padding: 20px 20px 28px;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    border-top: 1px solid rgba(255,255,255,0.07);
-    margin-top: 4px;
-  }
-  .footer-nav a {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    color: rgba(245,240,232,0.35);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-nav a:hover { color: rgba(245,240,232,0.7); }
-
   /* ── Share toast ── */
   .share-toast {
     position: fixed;
@@ -826,7 +1160,7 @@
   }
   .share-toast.visible { transform: translateX(-50%) translateY(0); }
 
-  /* ── Breath anchor ── */
+  /* ── Breath anchor (in practice screen) ── */
   .breath-section {
     padding: 18px 28px 20px;
     border-bottom: 1px solid rgba(0,0,0,0.055);
@@ -878,23 +1212,6 @@
     opacity: 0.68;
   }
 
-  /* ── Responsive ── */
-  @media (max-width: 500px) {
-    .site-header { padding: 12px 18px; }
-    .header-title { font-size: 0.88rem; }
-    .gate-banner, .gate-body { padding-left: 22px; padding-right: 22px; }
-    .condition-name { font-size: 1.8rem; }
-    .condition-icon { font-size: 1.3rem; }
-    .book-quote-area, .prompt-area, .breath-section,
-    .journal-area, .companion-response, .vis-strip { padding-left: 18px; padding-right: 18px; }
-    .submit-row { flex-direction: column; align-items: stretch; }
-    .submit-actions { justify-content: space-between; }
-    .btn-submit { width: 100%; text-align: center; }
-    .footer-cta { flex-direction: column; }
-    .footer-links { width: 100%; }
-    .footer-link { width: 100%; }
-  }
-
   /* ── Streak badge ── */
   .streak-badge {
     display: none;
@@ -933,7 +1250,7 @@
   .audio-btn.pulse { animation: audioPulse 1.8s ease 2; }
   @keyframes audioPulse { 0%,100%{box-shadow:none} 50%{box-shadow:0 0 0 3px rgba(107,140,110,0.35)} }
 
-  /* ── Notification modal (bottom slide) ── */
+  /* ── Notification modal ── */
   .notif-modal {
     display: none;
     position: fixed;
@@ -952,10 +1269,7 @@
     position: absolute; top: 12px; right: 16px;
     background: none; border: none; color: var(--stone); font-size: 1.1rem; cursor: pointer;
   }
-  .notif-eyebrow {
-    font-size: 0.63rem; font-weight: 500; text-transform: uppercase;
-    letter-spacing: 0.14em; color: var(--gold-light); margin-bottom: 8px;
-  }
+  .notif-eyebrow { font-size: 0.63rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-light); margin-bottom: 8px; }
   .notif-heading { font-size: 1rem; font-weight: 400; margin-bottom: 6px; }
   .notif-body { font-size: 0.84rem; opacity: 0.72; line-height: 1.55; margin-bottom: 16px; }
   .notif-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -970,10 +1284,7 @@
     font-weight: 500; cursor: pointer; transition: opacity 0.2s;
   }
   .notif-enable:hover { opacity: 0.88; }
-  .notif-skip {
-    font-size: 0.78rem; color: var(--stone); background: none; border: none;
-    cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
-  }
+  .notif-skip { font-size: 0.78rem; color: var(--stone); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 
   /* ── Milestone toast ── */
   .milestone-toast {
@@ -990,55 +1301,386 @@
   .milestone-toast.visible { display: block; }
   @keyframes fadeSlideDown { from { opacity:0; transform:translateX(-50%) translateY(-8px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
   .milestone-toast strong { color: var(--gold-light); }
+
+  /* ── Home hero pull quote ── */
+  .home-hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: 300;
+    opacity: 0.82;
+    line-height: 1.58;
+    margin-bottom: 20px;
+    max-width: 380px;
+    color: var(--cream);
+  }
+
+  /* ── Post-practice conversion card ── */
+  .post-practice-card {
+    display: none;
+    margin: 0 30px 20px;
+    padding: 16px 18px;
+    background: rgba(107,140,110,0.06);
+    border-radius: 3px;
+    border: 1px solid rgba(107,140,110,0.22);
+  }
+  .post-practice-card.visible { display: block; }
+  .post-practice-card-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--sage);
+    margin-bottom: 8px;
+  }
+  .post-practice-card-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .post-practice-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .post-practice-link {
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sage);
+    text-decoration: none;
+    border: 1px solid rgba(107,140,110,0.35);
+    padding: 5px 11px;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .post-practice-link:hover { background: rgba(107,140,110,0.12); color: var(--deep-forest); }
+
+  /* ── Responsive ── */
+  @media (max-width: 500px) {
+    .site-header { padding: 12px 16px; gap: 10px; }
+    .header-title { font-size: 0.88rem; }
+    .gate-banner, .gate-body { padding-left: 22px; padding-right: 22px; }
+    .condition-name { font-size: 1.8rem; }
+    .book-quote-area, .prompt-area, .breath-section,
+    .journal-area, .companion-response, .vis-strip { padding-left: 18px; padding-right: 18px; }
+    .submit-row { flex-direction: column; align-items: stretch; }
+    .submit-actions { justify-content: space-between; }
+    .btn-submit { width: 100%; text-align: center; }
+    .pathway-title { font-size: 1.8rem; }
+    #homeScreen { padding: 36px 20px 48px; }
+    .home-title { font-size: 1.7rem; }
+  }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="header-title"><em>The Way Back Home</em> — Daily Practice</div>
+  <div class="header-left">
+    <button class="back-btn" id="backBtn" onclick="goHome()">← Back</button>
+    <div class="header-title" id="headerTitle"><em>The Way Back Home</em></div>
+  </div>
   <div class="header-actions">
     <div class="streak-badge" id="streakBadge" title="Your practice streak"><span class="streak-dot"></span><span id="streakLabel">Day 1</span></div>
     <button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Play soft ambient music during your practice">♩ Music</button>
-    <button class="btn-install" id="installBtn" onclick="installPWA()">Add to Home Screen</button>
-    <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer" class="header-link">danieljahearnlmft.com</a>
+    <button class="btn-install" id="installBtn" onclick="installPWA()">Add to Home</button>
+    <button class="info-btn" id="infoBtn" onclick="toggleAbout()" title="About & Book">ⓘ</button>
   </div>
 </header>
+
+<!-- About drawer -->
+<div class="about-drawer" id="aboutDrawer" style="display:none">
+  <div class="about-drawer-title">The teen years aren't something to survive. They're your most powerful window for repair.</div>
+  <div class="about-drawer-text">Created by <strong>Daniel Ahearn, LMFT</strong> — IAT-certified clinician, trainer, and author. This practice is grounded in the five conditions of secure attachment from his book <em>The Way Back Home</em>.</div>
+  <div class="about-drawer-links">
+    <a href="https://www.amazon.com/Way-Back-Home-Healing-Attachment-ebook/dp/B0GLF2JH8T" target="_blank" rel="noopener noreferrer" class="about-drawer-link">Get the Book</a>
+    <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" class="about-drawer-link">Parent Groups</a>
+    <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer" class="about-drawer-link">danieljahearnlmft.com</a>
+  </div>
+</div>
 
 <!-- ── EMAIL GATE ── -->
 <div id="emailGate">
   <div class="gate-card">
     <div class="gate-banner">
       <div class="gate-eyebrow">A Daily Practice for Parents of Teens</div>
-      <div class="gate-title"><em>The Way Back Home</em><br>Daily Practice</div>
-      <div class="gate-subtitle">One condition of secure attachment. One quiet moment each day. No app to download — just open, reflect, and return.</div>
+      <div class="gate-title"><em>The Way Back Home</em></div>
+      <div class="gate-subtitle">Your teen isn't pulling away from you. They're waiting to see if you'll come toward them.</div>
     </div>
     <div class="gate-body">
-      <p class="gate-description">Each day brings one of the five conditions of secure attachment from <em>The Way Back Home</em> — Safety, Attunement, Soothing, Expressed Delight, Exploration. You'll receive a passage from the book, a reflection prompt, and a quiet AI companion that helps you go one step deeper. Your journal stays private on your device.</p>
+      <p class="gate-description">Five pathways back to connection with your teen — grounded in the IAT framework. Each visit takes 2–5 minutes. Your practice stays private on your device.</p>
       <label class="gate-label" for="gateFirst">First name</label>
       <input type="text" id="gateFirst" class="gate-input" placeholder="Your first name" autocomplete="given-name">
       <label class="gate-label" for="gateEmail">Email address</label>
       <input type="email" id="gateEmail" class="gate-input" placeholder="you@example.com" autocomplete="email">
       <div class="gate-error" id="gateError">Please enter a valid email address.</div>
-      <button class="btn-gate" id="gateBtn" onclick="submitGate()">Begin My Practice →</button>
-      <span class="gate-skip" onclick="skipGate()">Skip for now — just open the app</span>
-      <p class="gate-privacy">Your email is used only to stay connected about the book, parent groups, and upcoming trainings. No spam. Unsubscribe anytime.</p>
+      <button class="btn-gate" id="gateBtn" onclick="submitGate()">Begin →</button>
+      <span class="gate-skip" onclick="skipGate()">Skip — just open the app</span>
+      <p class="gate-privacy">Your email is used only to stay connected. No spam. Unsubscribe anytime.</p>
     </div>
   </div>
 </div>
 
-<!-- ── MAIN APP ── -->
-<div id="appContent">
-  <div class="container">
-
-    <!-- First-visit intro -->
-    <div class="intro-card" id="introCard" style="display:none">
-      <div class="intro-eyebrow">Welcome to Your Practice</div>
-      <h2>One condition.<br><em>One day at a time.</em></h2>
-      <p>Each day you'll be offered one of the five conditions of secure attachment to explore — Safety, Attunement, Soothing, Expressed Delight, or Exploration. You'll receive a quote from the book, a reflection prompt, and a space to write.</p>
-      <p>There is no right answer. The AI companion that responds to your check-in is not a therapist — it's a reflective presence designed to help you go one step deeper. Your journal stays on your device.</p>
-      <p class="intro-author">Created by <strong>Daniel Ahearn, LMFT</strong> — author of <em>The Way Back Home</em>, IAT-certified clinician, Director of Culture at Ascend Healthcare.</p>
-      <button class="btn-dismiss" onclick="dismissIntro()">Begin →</button>
+<!-- ── HOME SCREEN ── -->
+<div id="homeScreen">
+  <!-- Today's condition hero -->
+  <div class="home-hero" id="homeHero">
+    <img class="home-hero-img" id="homeHeroImg" src="" alt="">
+    <div class="home-hero-overlay" id="homeHeroOverlay"></div>
+    <div class="home-hero-content">
+      <div class="home-hero-eyebrow" id="homeHeroEyebrow">Today's Condition</div>
+      <div class="home-hero-condition" id="homeHeroCondition">—</div>
+      <div class="home-hero-tagline" id="homeHeroTagline"></div>
+      <div class="home-hero-quote">The distance between you and your teen isn't failure. It's the doorway.</div>
+      <div id="homeHeroAction"></div>
     </div>
+  </div>
+
+  <!-- Quick tools -->
+  <div class="home-tools">
+    <div class="home-tools-label">In the moment →</div>
+    <div class="home-options">
+      <button class="home-btn home-btn-activated" onclick="goto('activated')">
+        <span>I'm activated</span><span class="home-btn-arrow">→</span>
+      </button>
+      <button class="home-btn home-btn-shutdown" onclick="goto('shutdown')">
+        <span>My teen is shut down</span><span class="home-btn-arrow">→</span>
+      </button>
+      <button class="home-btn home-btn-rupture" onclick="goto('rupture')">
+        <span>We had a rupture</span><span class="home-btn-arrow">→</span>
+      </button>
+      <button class="home-btn home-btn-repair" onclick="goto('repair')">
+        <span>I want to repair</span><span class="home-btn-arrow">→</span>
+      </button>
+      <button class="home-btn home-btn-good" onclick="goto('good')">
+        <span>Things are good</span><span class="home-btn-arrow">→</span>
+      </button>
+    </div>
+    <button class="home-about-link" onclick="toggleAbout()">About · Book · Work with Daniel</button>
+  </div>
+</div>
+
+<!-- ── PATHWAY: I'm Activated ── -->
+<div id="activatedScreen" class="pathway-screen">
+  <div class="pathway-container">
+    <div class="pathway-eyebrow">Nervous System Reset</div>
+    <div class="pathway-title">I'm Activated</div>
+    <div class="pathway-framing">You can't regulate your teen until you regulate yourself. Start here — even 60 seconds helps.</div>
+
+    <div class="breath-guide">
+      <div class="breath-ring-wrap">
+        <div class="breath-ring"></div>
+        <div class="breath-ring-inner"></div>
+      </div>
+      <div class="breath-phase" id="breathPhase">Breathe in...</div>
+      <div class="breath-instruction">Follow the circle</div>
+    </div>
+
+    <div class="grounding-steps">
+      <div class="grounding-item">
+        <div class="grounding-num">1</div>
+        <div class="grounding-text">Notice where you feel this in your body. Name it without judgment — chest, jaw, shoulders.</div>
+      </div>
+      <div class="grounding-item">
+        <div class="grounding-num">2</div>
+        <div class="grounding-text">Name 5 things you can see right now. Slow down. Really look at each one.</div>
+      </div>
+      <div class="grounding-item">
+        <div class="grounding-num">3</div>
+        <div class="grounding-text">Keep breathing until there's even a small shift. You don't need to be calm — just slightly less reactive.</div>
+      </div>
+      <div class="grounding-item">
+        <div class="grounding-num">4</div>
+        <div class="grounding-text">When you're ready: be near your teen. No agenda. No fixing. Your presence is the intervention.</div>
+      </div>
+    </div>
+
+    <div class="pathway-note">Your nervous system is the intervention. Regulation before relationship.</div>
+  </div>
+</div>
+
+<!-- ── PATHWAY: My Teen Is Shut Down ── -->
+<div id="shutdownScreen" class="pathway-screen">
+  <div class="pathway-container">
+    <div class="pathway-eyebrow">Attunement</div>
+    <div class="pathway-title">My Teen Is Shut Down</div>
+    <div class="pathway-framing">Shutdown is a nervous system response, not a choice. Your teen isn't pushing you away — they're protecting themselves. Your job right now is presence, not pursuit.</div>
+
+    <div class="attunement-cards">
+      <div class="attunement-card">
+        <div class="attunement-card-label">Right now</div>
+        <div class="attunement-card-text">Stay nearby. Not hovering — just close. Your regulated, quiet presence is the intervention.</div>
+      </div>
+      <div class="attunement-card">
+        <div class="attunement-card-label">Resist the urge to</div>
+        <div class="attunement-card-text">Draw them out. Fix it. Fill the silence. Process what happened. Silence doesn't need solving — it needs space.</div>
+      </div>
+      <div class="attunement-card">
+        <div class="attunement-card-label">When they surface</div>
+        <div class="attunement-card-text">Stay low-key. "I'm here" is enough. Keep your tone warm and your agenda invisible.</div>
+      </div>
+      <div class="attunement-card">
+        <div class="attunement-card-label">Something that often helps</div>
+        <div class="attunement-card-text">Do something ordinary side by side — no eye contact required. Parallel presence says "I'm with you" without pressure.</div>
+      </div>
+    </div>
+
+    <div class="pathway-note">They are not rejecting you. They are regulating. Your steadiness is what makes it safe to come back.</div>
+  </div>
+</div>
+
+<!-- ── PATHWAY: We Had a Rupture ── -->
+<div id="ruptureScreen" class="pathway-screen">
+  <div class="pathway-container">
+    <div class="pathway-eyebrow">Repair</div>
+    <div class="pathway-title">We Had a Rupture</div>
+    <div class="pathway-framing">Rupture is guaranteed. What you do next is everything.</div>
+
+    <div class="repair-steps">
+      <div class="repair-step">
+        <div class="repair-num">1</div>
+        <div class="repair-content">
+          <div class="repair-action">Wait</div>
+          <div class="repair-text">Give both of you time to settle. Repair attempted while either of you is still activated usually makes it worse.</div>
+        </div>
+      </div>
+      <div class="repair-step">
+        <div class="repair-num">2</div>
+        <div class="repair-content">
+          <div class="repair-action">Approach softly</div>
+          <div class="repair-script">"Hey — I've been thinking about what happened between us."</div>
+        </div>
+      </div>
+      <div class="repair-step">
+        <div class="repair-num">3</div>
+        <div class="repair-content">
+          <div class="repair-action">Own your part first</div>
+          <div class="repair-script">"I got too reactive / loud / harsh. That's on me."</div>
+        </div>
+      </div>
+      <div class="repair-step">
+        <div class="repair-num">4</div>
+        <div class="repair-content">
+          <div class="repair-action">Name their experience</div>
+          <div class="repair-script">"I imagine that felt scary / unfair / like I don't trust you."</div>
+        </div>
+      </div>
+      <div class="repair-step">
+        <div class="repair-num">5</div>
+        <div class="repair-content">
+          <div class="repair-action">Invite their side</div>
+          <div class="repair-script">"Can you help me understand what was happening for you?"</div>
+        </div>
+      </div>
+      <div class="repair-step">
+        <div class="repair-num">6</div>
+        <div class="repair-content">
+          <div class="repair-action">Close with connection</div>
+          <div class="repair-script">"I love you. Nothing about this changes that."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pathway-note">You don't need to solve it in one conversation. Showing up to repair is the whole point.</div>
+  </div>
+</div>
+
+<!-- ── PATHWAY: I Want to Repair ── -->
+<div id="repairScreen" class="pathway-screen">
+  <div class="pathway-container">
+    <div class="pathway-eyebrow">Language of Repair</div>
+    <div class="pathway-title">I Want to Repair</div>
+    <div class="pathway-framing">Repair isn't about being right. It's about restoring connection. These micro-shifts change everything.</div>
+
+    <div class="contrast-grid">
+      <div class="contrast-pair">
+        <div class="contrast-dont">
+          <span class="contrast-badge">✗</span>
+          <span class="contrast-text">"You need to calm down."</span>
+        </div>
+        <div class="contrast-do">
+          <span class="contrast-badge">✓</span>
+          <span class="contrast-text">"I can see you're really upset right now."</span>
+        </div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-dont">
+          <span class="contrast-badge">✗</span>
+          <span class="contrast-text">"Why do you always do this?"</span>
+        </div>
+        <div class="contrast-do">
+          <span class="contrast-badge">✓</span>
+          <span class="contrast-text">"Help me understand what happened."</span>
+        </div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-dont">
+          <span class="contrast-badge">✗</span>
+          <span class="contrast-text">"You started it."</span>
+        </div>
+        <div class="contrast-do">
+          <span class="contrast-badge">✓</span>
+          <span class="contrast-text">"Let me take responsibility for my part."</span>
+        </div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-dont">
+          <span class="contrast-badge">✗</span>
+          <span class="contrast-text">"You're being dramatic."</span>
+        </div>
+        <div class="contrast-do">
+          <span class="contrast-badge">✓</span>
+          <span class="contrast-text">"Your feelings make sense to me."</span>
+        </div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-dont">
+          <span class="contrast-badge">✗</span>
+          <span class="contrast-text">"I'm done talking about this."</span>
+        </div>
+        <div class="contrast-do">
+          <span class="contrast-badge">✓</span>
+          <span class="contrast-text">"I need a few minutes. I'll come back."</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pathway-note">The goal isn't a perfect conversation. It's a repaired one.</div>
+  </div>
+</div>
+
+<!-- ── PATHWAY: Things Are Good ── -->
+<div id="goodScreen" class="pathway-screen">
+  <div class="pathway-container">
+    <div class="pathway-eyebrow">Expressed Delight</div>
+    <div class="pathway-title">Things Are Good</div>
+    <div class="pathway-framing">Good moments are worth tending. Connection deepens when delight is expressed — not just felt internally.</div>
+
+    <div class="attunement-cards">
+      <div class="attunement-card" style="border-left-color: var(--gold);">
+        <div class="attunement-card-label" style="color: var(--gold);">Name it</div>
+        <div class="attunement-card-text">What is one thing about your teen right now that genuinely moves you? Not an achievement — something about who they are.</div>
+      </div>
+      <div class="attunement-card" style="border-left-color: var(--gold);">
+        <div class="attunement-card-label" style="color: var(--gold);">Let it show</div>
+        <div class="attunement-card-text">When did you last let your teen see that their existence delights you? A look, a laugh, a pause to really notice them.</div>
+      </div>
+      <div class="attunement-card" style="border-left-color: var(--gold);">
+        <div class="attunement-card-label" style="color: var(--gold);">Say something</div>
+        <div class="attunement-card-text">Delight expressed out loud wires something in a teen's brain: <em>I am wanted. My presence brings light.</em> They need to hear it, not just sense it.</div>
+      </div>
+      <div class="attunement-card" style="border-left-color: var(--gold);">
+        <div class="attunement-card-label" style="color: var(--gold);">One thing today</div>
+        <div class="attunement-card-text">What could you say or do in the next 24 hours that would tell your teen: you bring me joy, just by being you?</div>
+      </div>
+    </div>
+
+    <div class="pathway-note">The good moments are the practice too. Tend them.</div>
+  </div>
+</div>
+
+<!-- ── PATHWAY: I Need a Practice (daily) ── -->
+<div id="practiceScreen" class="pathway-screen">
+  <div class="container">
 
     <!-- Today's card -->
     <div class="today-card" id="todayCard">
@@ -1075,6 +1717,14 @@
           <div class="loading-dots"><span></span><span></span><span></span></div>
         </div>
       </div>
+      <div class="post-practice-card" id="postPracticeCard">
+        <div class="post-practice-card-label">Go deeper</div>
+        <div class="post-practice-card-text">This practice is drawn from <em>The Way Back Home</em> — a complete guide to healing attachment with your teen. Daniel also leads parent groups if you want support in community.</div>
+        <div class="post-practice-links">
+          <a href="https://www.amazon.com/Way-Back-Home-Healing-Attachment-ebook/dp/B0GLF2JH8T" target="_blank" rel="noopener noreferrer" class="post-practice-link">Get the Book</a>
+          <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" class="post-practice-link">Parent Groups</a>
+        </div>
+      </div>
     </div>
 
     <!-- Journal history -->
@@ -1086,24 +1736,6 @@
         <div class="empty-state">Your check-ins will appear here.<br>Start by completing today's reflection above.</div>
       </div>
     </div>
-
-    <!-- Footer CTA -->
-    <div class="footer-cta">
-      <div class="footer-cta-text">
-        <h3>The Way Back Home</h3>
-        <p>Healing Attachment Wounds with Your Teen — by Daniel Ahearn, LMFT. The book this practice is built on. Available on Amazon.</p>
-      </div>
-      <div class="footer-links">
-        <a href="https://www.amazon.com/Way-Back-Home-Healing-Attachment-ebook/dp/B0GLF2JH8T" target="_blank" rel="noopener noreferrer" class="footer-link primary">Get the Book</a>
-        <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" class="footer-link secondary">Parent Support Groups</a>
-      </div>
-    </div>
-
-    <nav class="footer-nav">
-      <a href="/about/">About this practice</a>
-      <a href="/conditions/">The five conditions</a>
-      <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer">danieljahearnlmft.com</a>
-    </nav>
 
   </div>
 </div>
@@ -1125,6 +1757,82 @@
 <div class="share-toast" id="shareToast">Link copied to clipboard</div>
 
 <script>
+// ─────────────────────────────────────────────
+//  NAVIGATION
+// ─────────────────────────────────────────────
+function renderHomeHero() {
+  const cond = getTodayCondition();
+  const done = checkedInToday();
+  document.getElementById('homeHeroImg').src = cond.image;
+  document.getElementById('homeHeroImg').alt = cond.name;
+  document.getElementById('homeHeroOverlay').style.background =
+    `linear-gradient(to bottom, rgba(10,20,12,0.08) 0%, rgba(10,20,12,0.2) 40%, ${cond.overlayColor} 100%)`;
+  document.getElementById('homeHeroCondition').textContent = cond.name;
+  document.getElementById('homeHeroTagline').textContent = cond.tagline;
+  document.getElementById('homeHeroAction').innerHTML = done
+    ? `<div class="home-hero-done">✓ Practice complete — see you tomorrow</div>`
+    : `<button class="btn-begin" onclick="goto('practice')">Begin Today's Practice →</button>`;
+}
+
+function showHome() {
+  document.getElementById('emailGate').style.display = 'none';
+  document.querySelectorAll('.pathway-screen').forEach(s => s.style.display = 'none');
+  document.getElementById('homeScreen').style.display = 'flex';
+  document.getElementById('backBtn').style.display = 'none';
+  renderHomeHero();
+  renderStreak();
+}
+
+function goto(screen) {
+  document.getElementById('homeScreen').style.display = 'none';
+  document.querySelectorAll('.pathway-screen').forEach(s => s.style.display = 'none');
+  document.getElementById(screen + 'Screen').style.display = 'block';
+  document.getElementById('backBtn').style.display = 'inline-flex';
+  window.scrollTo(0, 0);
+  if (screen === 'activated') startBreathing();
+  else stopBreathing();
+  if (screen === 'practice') initPractice();
+}
+
+function goHome() {
+  stopBreathing();
+  document.querySelectorAll('.pathway-screen').forEach(s => s.style.display = 'none');
+  document.getElementById('homeScreen').style.display = 'flex';
+  document.getElementById('backBtn').style.display = 'none';
+  window.scrollTo(0, 0);
+  renderHomeHero();
+  renderStreak();
+}
+
+function toggleAbout() {
+  const d = document.getElementById('aboutDrawer');
+  d.style.display = d.style.display === 'none' ? 'block' : 'none';
+}
+
+// ─────────────────────────────────────────────
+//  BREATHING ANIMATION
+// ─────────────────────────────────────────────
+let breathTimer = null;
+function startBreathing() {
+  const el = document.getElementById('breathPhase');
+  if (!el || breathTimer) return;
+  const phases = [
+    { text: 'Breathe in...', ms: 4000 },
+    { text: 'Hold...', ms: 4000 },
+    { text: 'Breathe out...', ms: 6000 },
+    { text: '', ms: 2000 }
+  ];
+  let i = 0;
+  function tick() {
+    if (el) el.textContent = phases[i].text;
+    breathTimer = setTimeout(() => { i = (i + 1) % phases.length; tick(); }, phases[i].ms);
+  }
+  tick();
+}
+function stopBreathing() {
+  if (breathTimer) { clearTimeout(breathTimer); breathTimer = null; }
+}
+
 // ─────────────────────────────────────────────
 //  DATA
 // ─────────────────────────────────────────────
@@ -1236,9 +1944,10 @@ const todayKey = new Date().toISOString().split('T')[0];
 let todayCondition = null, todayPrompt = null, todayQuote = null;
 let isSubmitting = false;
 let deferredInstallPrompt = null;
+let practiceDate = null;
 
 // ─────────────────────────────────────────────
-//  STORAGE — IndexedDB (durable) + localStorage (fast) + memory cache
+//  STORAGE — IndexedDB + localStorage + memory cache
 // ─────────────────────────────────────────────
 const _cache = {};
 let _db = null;
@@ -1322,15 +2031,11 @@ async function submitGate() {
       body: JSON.stringify({ email, firstName: first })
     });
   } catch(e) {}
-  document.getElementById('emailGate').style.display = 'none';
-  document.getElementById('appContent').style.display = 'block';
-  initApp();
+  showHome();
 }
 function skipGate() {
   lsSet('wbh_gate_skipped', 'true');
-  document.getElementById('emailGate').style.display = 'none';
-  document.getElementById('appContent').style.display = 'block';
-  initApp();
+  showHome();
 }
 
 // ─────────────────────────────────────────────
@@ -1349,7 +2054,6 @@ function getTodayQuote(cond) {
   return cond.quotes[dayOfYear % cond.quotes.length];
 }
 function checkedInToday() { return !!lsGet('wbh_checkin_' + todayKey); }
-function isFirstVisit() { return !lsGet('wbh_visited'); }
 
 // ─────────────────────────────────────────────
 //  RENDER
@@ -1358,10 +2062,7 @@ function renderBanner(cond) {
   const overlayBg = `linear-gradient(to bottom, rgba(20,32,22,0.04) 0%, rgba(20,32,22,0.18) 38%, ${cond.overlayColor || 'rgba(20,32,22,0.82)'} 100%)`;
   document.getElementById('conditionBanner').innerHTML = `
     <div class="condition-photo-banner">
-      <img class="condition-photo-img"
-           src="${cond.image}"
-           alt="${cond.name}"
-           style="object-position: ${cond.imagePos || 'center'};">
+      <img class="condition-photo-img" src="${cond.image}" alt="${cond.name}" style="object-position: ${cond.imagePos || 'center'};">
       <div class="condition-photo-overlay" style="background:${overlayBg}"></div>
       <div class="condition-photo-text">
         <div class="condition-eyebrow">Today's Condition</div>
@@ -1370,7 +2071,6 @@ function renderBanner(cond) {
       </div>
     </div>`;
 }
-
 function renderBreath(cond) {
   document.getElementById('breathAnchor').innerHTML = `
     <div class="breath-section">
@@ -1403,7 +2103,6 @@ function renderAlreadyDone() {
       ${entry ? `<div style="margin-top:14px;font-size:0.82rem;color:var(--stone);">Today's condition: <strong>${entry.condition || ''}</strong></div>` : ''}
     </div>`;
 }
-
 function renderCheckinList() {
   const list = document.getElementById('checkinList');
   const keys = Object.keys(_cache).filter(k => k.startsWith('wbh_checkin_')).sort().reverse();
@@ -1428,10 +2127,6 @@ function renderCheckinList() {
 // ─────────────────────────────────────────────
 //  ACTIONS
 // ─────────────────────────────────────────────
-function dismissIntro() {
-  lsSet('wbh_visited','true');
-  document.getElementById('introCard').style.display='none';
-}
 function skipDay() { document.getElementById('todayCard').style.display='none'; }
 
 async function submitCheckin() {
@@ -1451,12 +2146,7 @@ async function submitCheckin() {
     const firstName = lsGet('wbh_user_first') || '';
     const res = await fetch('/.netlify/functions/companion', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        condition: todayCondition.name,
-        prompt: todayPrompt,
-        journalText: text,
-        firstName
-      })
+      body: JSON.stringify({ condition: todayCondition.name, prompt: todayPrompt, journalText: text, firstName })
     });
     if (!res.ok) throw new Error('API error');
     const data = await res.json();
@@ -1477,6 +2167,8 @@ async function submitCheckin() {
     renderStreak();
     checkMilestone(newStreak);
     if (!lsGet('wbh_notif_asked')) setTimeout(showNotifPrompt, 2000);
+    const ppc = document.getElementById('postPracticeCard');
+    if (ppc) setTimeout(() => ppc.classList.add('visible'), 1800);
     renderCheckinList();
   } catch(err) {
     respEl.classList.remove('visible');
@@ -1509,11 +2201,10 @@ async function openVis() {
 function closeVis() { document.getElementById('visModal').classList.remove('open'); }
 document.getElementById('visModal').addEventListener('click', function(e) { if(e.target===this) closeVis(); });
 
-// Share
 function shareApp() {
   const shareData = {
     title: 'The Way Back Home — Daily Practice',
-    text: 'A calm daily practice for parents of teens — five conditions of secure attachment, one quiet moment at a time. Free, no app needed.',
+    text: 'The distance between you and your teen isn\'t failure. It\'s the doorway. A free daily practice for parents of teens.',
     url: 'https://waybackhome.app'
   };
   if (navigator.share) {
@@ -1527,7 +2218,6 @@ function shareApp() {
   }
 }
 
-// PWA Install
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredInstallPrompt = e;
@@ -1560,9 +2250,7 @@ function toggleAudio() {
       lsSet('wbh_audio_on', 'true');
       const hint = document.getElementById('audioHint');
       if (hint) hint.style.display = 'none';
-    }).catch(err => {
-      console.warn('Audio blocked:', err);
-    });
+    }).catch(err => { console.warn('Audio blocked:', err); });
   } else {
     audio.pause();
     btn.classList.remove('playing');
@@ -1570,7 +2258,6 @@ function toggleAudio() {
     lsSet('wbh_audio_on', 'false');
   }
 }
-
 function _showAudioHint() {
   if (lsGet('wbh_audio_hint_seen') || lsGet('wbh_audio_on') === 'true') return;
   const hint = document.getElementById('audioHint');
@@ -1586,7 +2273,6 @@ function _showAudioHint() {
 //  STREAK COUNTER
 // ─────────────────────────────────────────────
 function getStreak() { return parseInt(lsGet('wbh_streak') || '0'); }
-
 function updateStreak() {
   const today     = new Date().toISOString().split('T')[0];
   const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
@@ -1599,7 +2285,6 @@ function updateStreak() {
   lsSet('wbh_last_practice', today);
   return streak;
 }
-
 function renderStreak() {
   const streak = getStreak();
   const badge  = document.getElementById('streakBadge');
@@ -1616,7 +2301,6 @@ function renderStreak() {
 //  MILESTONE CELEBRATIONS
 // ─────────────────────────────────────────────
 const MILESTONES = { 1:'First practice complete. Welcome.', 7:'7 days. A week of showing up.', 14:'14 days. The practice is becoming yours.', 21:'21 days. Real commitment.', 30:'30 days. A month of turning toward.', 60:'60 days. Remarkable.', 90:'90 days. This is who you are now.' };
-
 function checkMilestone(streak) {
   const msg = MILESTONES[streak];
   if (!msg) return;
@@ -1630,27 +2314,20 @@ function checkMilestone(streak) {
 //  PUSH NOTIFICATIONS
 // ─────────────────────────────────────────────
 const VAPID_PUBLIC_KEY = 'BFbT7fs04YEpVJKNuRG88hr-w3tSeRlhyYYdSRITO9Z-LnYnrRz3LuSdFg8a48KYmrPPxlhQaWwmA5IPTB_mEWc';
-
 function urlBase64ToUint8Array(b64) {
   const pad = '='.repeat((4 - b64.length % 4) % 4);
   const raw = atob((b64 + pad).replace(/-/g,'+').replace(/_/g,'/'));
   return Uint8Array.from(raw, c => c.charCodeAt(0));
 }
-
 function showNotifPrompt() {
   if (lsGet('wbh_notif_asked') || !('Notification' in window) || !('serviceWorker' in navigator)) return;
-  if (Notification.permission === 'denied') {
-    lsSet('wbh_notif_asked', 'true');
-    return;
-  }
+  if (Notification.permission === 'denied') { lsSet('wbh_notif_asked', 'true'); return; }
   document.getElementById('notifModal').classList.add('visible');
 }
-
 function dismissNotifPrompt() {
   lsSet('wbh_notif_asked', 'true');
   document.getElementById('notifModal').classList.remove('visible');
 }
-
 async function enableNotifications() {
   const hour = parseInt(document.getElementById('notifHour').value);
   const btn  = document.querySelector('.notif-enable');
@@ -1666,9 +2343,7 @@ async function enableNotifications() {
         <div class="notif-row" style="margin-top:12px;"><button class="notif-skip" onclick="dismissNotifPrompt()">Dismiss</button></div>`;
       return;
     }
-    if (permission !== 'granted') {
-      btn.textContent = 'Enable →'; btn.disabled = false; return;
-    }
+    if (permission !== 'granted') { btn.textContent = 'Enable →'; btn.disabled = false; return; }
     const reg = await navigator.serviceWorker.ready;
     const existing = await reg.pushManager.getSubscription();
     if (existing) await existing.unsubscribe();
@@ -1694,55 +2369,59 @@ async function enableNotifications() {
   }
 }
 
-// Enter key on email gate
 document.getElementById('gateEmail').addEventListener('keydown', e => {
   if (e.key === 'Enter') submitGate();
 });
 
 // ─────────────────────────────────────────────
-//  INIT
+//  PRACTICE INIT
 // ─────────────────────────────────────────────
-function initApp() {
-  const hasSignedIn = lsGet('wbh_user_first') || lsGet('wbh_user_email') || lsGet('wbh_gate_skipped');
-  if (isFirstVisit() && !hasSignedIn) document.getElementById('introCard').style.display='block';
+function initPractice() {
+  const today = new Date().toISOString().split('T')[0];
   if (checkedInToday()) {
     renderAlreadyDone();
+    renderCheckinList();
+    renderStreak();
+    return;
+  }
+  if (practiceDate === today) {
+    renderCheckinList();
+    return;
+  }
+  practiceDate = today;
+  todayCondition = getTodayCondition();
+  todayPrompt    = getTodayPrompt(todayCondition);
+  todayQuote     = getTodayQuote(todayCondition);
+  renderBanner(todayCondition);
+  renderQuote(todayQuote);
+  renderBreath(todayCondition);
+  document.getElementById('promptText').textContent = todayPrompt;
+  const strip = document.getElementById('visStrip');
+  document.getElementById('visStripText').textContent = `Guided visualization — ${todayCondition.name}`;
+  if (todayCondition.youtubeUrl) {
+    strip.onclick = () => window.open(todayCondition.youtubeUrl, '_blank');
+    document.getElementById('visStripBadge').textContent = 'YouTube ↗';
   } else {
-    todayCondition = getTodayCondition();
-    todayPrompt    = getTodayPrompt(todayCondition);
-    todayQuote     = getTodayQuote(todayCondition);
-    renderBanner(todayCondition);
-    renderQuote(todayQuote);
-    renderBreath(todayCondition);
-    document.getElementById('promptText').textContent = todayPrompt;
-    // Vis strip: YouTube for Safety, AI visualization for all others
-    const strip = document.getElementById('visStrip');
-    document.getElementById('visStripText').textContent = `Guided visualization — ${todayCondition.name}`;
-    if (todayCondition.youtubeUrl) {
-      strip.onclick = () => window.open(todayCondition.youtubeUrl, '_blank');
-      document.getElementById('visStripBadge').textContent = 'YouTube ↗';
-    } else {
-      strip.onclick = openVis;
-      document.getElementById('visStripBadge').textContent = 'Open →';
-    }
+    strip.onclick = openVis;
+    document.getElementById('visStripBadge').textContent = 'Open →';
   }
   renderCheckinList();
   renderStreak();
   setTimeout(_showAudioHint, 2500);
 }
 
+// ─────────────────────────────────────────────
+//  STARTUP
+// ─────────────────────────────────────────────
 (async () => {
   await _preloadCache();
   if (gateAlreadyPassed()) {
-    document.getElementById('emailGate').style.display='none';
-    document.getElementById('appContent').style.display='block';
-    initApp();
+    showHome();
   }
 })();
 </script>
-<script>
 
-// iOS install banner — show once per session if on iOS Safari and not already installed
+<script>
 (function() {
   var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
   var isStandalone = window.navigator.standalone === true;
@@ -1758,7 +2437,6 @@ function initApp() {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      // Unregister any old service workers first, then register fresh
       const regs = await navigator.serviceWorker.getRegistrations();
       for (const reg of regs) {
         const swUrl = reg.active?.scriptURL || '';
@@ -1827,7 +2505,7 @@ if ('serviceWorker' in navigator) {
     style="position:absolute;top:10px;right:14px;background:none;border:none;color:#8B8378;font-size:1.1rem;cursor:pointer;">✕</button>
   <div style="display:flex;align-items:center;gap:14px;">
     <div style="width:48px;height:48px;border-radius:12px;overflow:hidden;flex-shrink:0;background:#2A3E2C;">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAADg0lEQVR4nO2cMXLbMBBFQU2OoUmVLkdRo9I38AFyDh3AN3CZJkdRp0rDeyQVZUcmCQIEsH8//itNirPc578ATY2HUJjjz+9/S1+zN8brfSh1rd0XktD67BGe/UGJbU+O6OQPSKw9KaIPKReWXAxSPGz6TZBYXGJpjiZYcrGJ+VkVLLk+WPO0KFhyfbHka1aw5PpkzlvSLlr444tgpdc3z/4OaweFTz571Igm5yFY6eVi8qkEkzOEoPQyowSTI8HkfLMuwBPvr8fV4y9vY6NKtnPQ+suNRjQ5EkyOBJPTneDYRomNrgRPcnuS3MVj0pzQ6WeIjzYloU9wLK3saaYWvFUes2RawanSWCXTrcF7RDGuy1QJLpVCpjTTCC4thUWy+xFdUwTDyHad4FYp85xmt4JbN92rZJeCvTbbAldrsMSm4ybBkpuHC8GSmw/0iJbY/cAmWHLLACnYq1zEuuEEIzYpBbT6B5TvRaM1pgQIf+KESDCj3BAw7stcMEITamJ9f2Yj2vrGLbAY2SYJ7lFuCDb33Vxwr3InWt9/U8G9y51o2Ycma7DELlN7Xa6eYMldp3Z/THbRvUrvZhct2iHB5EgwORJMDuQ3Os6XW/Sc379+NKjkA8SatqAEkyPB5EgwORJMDuQmqzRLGyTETVFpqAXHdr7TcWbRtCN6y2NNzrneoBScI4xVMp3gPaIYJVO9LiwlqNaarNeFojg0gkuOV6ZRTSNYzCPB5EgwORJMjgSTI8HkSDA5EkyOBJMjweRIMDkSTA7Mv1ESdaD+TlYIIby/Hv+sHX95G0+tarGAekTH5G49xzO0gpfEnS+30/lyO205lwFKwTnCWCVTChYf0Anek0TGFFMJLiGITTLNc3BpMSyPTxQJrpE6liS7F1xTBINk14JbCPAu2bVgEcet4JbJ8pxil4ItGu5VsjvBlo32KNmV4BINnnvZ0LqGlrgRjNRYpFpiHMbrfbAuQtTDRYIRE4NY0xzwgpEbiVzbBLRgDw1Er/Gx/qK9VUJv3DOIb5/G632ATLA3uSHg1vwQjLKbRm3UFpBqn3xCJliU4z/B1ilGSkAuCPfw2eOXBFtJRmhMKSzv5dkfxIhmkjuBck+LaUV7bBJx5qbvYoKt12ORxpKv1REtyT5Y8xRdgyUZm5ifJHlal3HYGrykXbTSjEGKh2xhSnN7cgK2O5ESXZ89k/MfBf9ASdSsDeEAAAAASUVORK5CYII=" width="48" height="48" alt="">
+      <img src="/icon-192.png" width="48" height="48" alt="">
     </div>
     <div>
       <div style="font-size:0.78rem;font-weight:500;color:#C4923A;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;">Add to Home Screen</div>
