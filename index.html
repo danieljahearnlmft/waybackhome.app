@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- WBH v3.1 - rupture pathway restructured as R.E.A.L. method -->
+<!-- WBH v3.2 - fix timezone bug blocking next-day practice for evening users -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1929,7 +1929,14 @@ const CONDITIONS = [
 // ─────────────────────────────────────────────
 //  STATE
 // ─────────────────────────────────────────────
-const todayKey = new Date().toISOString().split('T')[0];
+function localDateKey(d) {
+  d = d || new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${dd}`;
+}
+const todayKey = localDateKey();
 let todayCondition = null, todayPrompt = null, todayQuote = null;
 let isSubmitting = false;
 let deferredInstallPrompt = null;
@@ -2263,8 +2270,8 @@ function _showAudioHint() {
 // ─────────────────────────────────────────────
 function getStreak() { return parseInt(lsGet('wbh_streak') || '0'); }
 function updateStreak() {
-  const today     = new Date().toISOString().split('T')[0];
-  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  const today     = localDateKey();
+  const yesterday = localDateKey(new Date(Date.now() - 86400000));
   const last      = lsGet('wbh_last_practice');
   if (last === today) return getStreak();
   let streak = last === yesterday ? getStreak() + 1 : 1;
@@ -2366,7 +2373,7 @@ document.getElementById('gateEmail').addEventListener('keydown', e => {
 //  PRACTICE INIT
 // ─────────────────────────────────────────────
 function initPractice() {
-  const today = new Date().toISOString().split('T')[0];
+  const today = localDateKey();
   if (checkedInToday()) {
     renderAlreadyDone();
     renderCheckinList();
