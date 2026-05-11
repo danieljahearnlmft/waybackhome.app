@@ -41,15 +41,20 @@ const SUNDAY = { title: 'Sunday.', body: 'Five minutes. One condition. The week 
 const DAY_7  = { title: 'Day 7.',  body: 'A week of showing up. That changes something in both of you.' };
 const DAY_30 = { title: 'Day 30.', body: 'A month of turning toward. This is who you are now.' };
 
+function dayOfYearUTC(d) {
+  const start = Date.UTC(d.getUTCFullYear(), 0, 0);
+  return Math.floor((d.getTime() - start) / 86400000);
+}
+
 function payloadForUser(now, createdIso) {
   const created = new Date(createdIso || now.toISOString()).getTime();
   const daysSinceSub = Math.floor((now.getTime() - created) / 86400000);
   if (daysSinceSub === 7) return DAY_7;
   if (daysSinceSub === 30) return DAY_30;
   if (now.getUTCDay() === 0) return SUNDAY;
-  const dayIndex = Math.floor(now.getTime() / 86400000);
-  const condition = CONDITIONS[dayIndex % CONDITIONS.length];
-  const variant = Math.floor(dayIndex / CONDITIONS.length) % 3;
+  const doy = dayOfYearUTC(now);
+  const condition = CONDITIONS[doy % CONDITIONS.length];
+  const variant = Math.floor(doy / CONDITIONS.length) % 3;
   return DAILY[condition][variant];
 }
 
