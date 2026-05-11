@@ -125,13 +125,15 @@
   }
   .btn-install.visible { display: block; }
   .btn-install:hover { background: rgba(196,146,58,0.15); }
-  .info-btn {
+  .menu-btn {
+    position: relative;
     background: none;
     border: 1px solid rgba(107,140,110,0.35);
-    color: var(--stone-light);
-    font-size: 0.85rem;
-    width: 28px;
-    height: 28px;
+    color: var(--cream);
+    font-size: 1.1rem;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -139,9 +141,61 @@
     justify-content: center;
     transition: all 0.2s;
     flex-shrink: 0;
-    line-height: 1;
+    letter-spacing: 0.05em;
   }
-  .info-btn:hover { color: var(--cream); border-color: rgba(107,140,110,0.6); }
+  .menu-btn:hover { border-color: rgba(196,146,58,0.6); color: var(--gold-light); }
+  .menu-btn[aria-expanded="true"] {
+    background: rgba(196,146,58,0.12);
+    border-color: rgba(196,146,58,0.6);
+    color: var(--gold-light);
+  }
+
+  .overflow-menu {
+    display: none;
+    position: fixed;
+    top: 56px;
+    right: 12px;
+    z-index: 150;
+    background: var(--deep-forest);
+    border: 1px solid rgba(196,146,58,0.3);
+    border-radius: 4px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+    min-width: 220px;
+    padding: 6px;
+    animation: menuFade 0.16s ease;
+  }
+  .overflow-menu.visible { display: block; }
+  @keyframes menuFade {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    padding: 10px 12px;
+    background: none;
+    border: none;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.86rem;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .menu-item:hover { background: rgba(107,140,110,0.18); }
+  .menu-item.playing { color: var(--gold-light); }
+  .menu-item-icon {
+    width: 20px;
+    text-align: center;
+    color: var(--gold-light);
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .menu-item-label { flex: 1; }
 
   /* ── About drawer ── */
   .about-drawer {
@@ -1381,16 +1435,33 @@
   </div>
   <div class="header-actions">
     <div class="streak-badge" id="streakBadge" title="Your practice streak"><span class="streak-dot"></span><span id="streakLabel">Day 1</span></div>
-    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Play soft ambient music during your practice">♩ Music</button>
-    <button class="btn-install" id="installBtn" onclick="installPWA()">Add to Home</button>
-    <button class="info-btn" id="infoBtn" onclick="toggleAbout()" title="About & Book">ⓘ</button>
+    <button class="menu-btn" id="menuBtn" onclick="toggleMenu(event)" aria-label="Menu" aria-expanded="false">⋯</button>
   </div>
 </header>
+
+<!-- Overflow menu -->
+<div class="overflow-menu" id="overflowMenu" role="menu">
+  <button class="menu-item" id="audioBtn" onclick="toggleAudio()" role="menuitem">
+    <span class="menu-item-icon">♩</span><span class="menu-item-label" id="audioBtnLabel">Play ambient music</span>
+  </button>
+  <button class="menu-item" id="installBtn" onclick="installPWA()" role="menuitem" hidden>
+    <span class="menu-item-icon">⤓</span><span class="menu-item-label">Add to Home Screen</span>
+  </button>
+  <button class="menu-item" id="infoBtn" onclick="toggleAbout()" role="menuitem">
+    <span class="menu-item-icon">ⓘ</span><span class="menu-item-label">About &amp; Book</span>
+  </button>
+  <a class="menu-item" href="https://danieljahearnlmft.substack.com" target="_blank" rel="noopener noreferrer" role="menuitem">
+    <span class="menu-item-icon">✉</span><span class="menu-item-label">Read the Substack</span>
+  </a>
+  <a class="menu-item" href="/conditions/" role="menuitem">
+    <span class="menu-item-icon">✦</span><span class="menu-item-label">The five conditions</span>
+  </a>
+</div>
 
 <!-- About drawer -->
 <div class="about-drawer" id="aboutDrawer" style="display:none">
   <div class="about-drawer-title">The teen years aren't something to survive. They're your most powerful window for repair.</div>
-  <div class="about-drawer-text">Created by <strong>Daniel Ahearn, LMFT</strong> — IAT-certified clinician, trainer, and author. This practice is grounded in the five conditions of secure attachment from his book <em>The Way Back Home</em>.</div>
+  <div class="about-drawer-text">Created by <strong>Daniel Ahearn, LMFT</strong> — IAT-certified clinician, trainer, and author. This practice is grounded in exploring the five conditions of secure attachment from his book <em>The Way Back Home</em>.</div>
   <div class="about-drawer-links">
     <a href="https://www.amazon.com/Way-Back-Home-Healing-Attachment-ebook/dp/B0GLF2JH8T" target="_blank" rel="noopener noreferrer" class="about-drawer-link">Get the Book</a>
     <a href="https://danieljahearnlmft.substack.com" target="_blank" rel="noopener noreferrer" class="about-drawer-link">Substack</a>
@@ -1796,9 +1867,33 @@ function goHome() {
 }
 
 function toggleAbout() {
+  closeMenu();
   const d = document.getElementById('aboutDrawer');
   d.style.display = d.style.display === 'none' ? 'block' : 'none';
 }
+
+function toggleMenu(e) {
+  if (e) e.stopPropagation();
+  const menu = document.getElementById('overflowMenu');
+  const btn  = document.getElementById('menuBtn');
+  const open = menu.classList.toggle('visible');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function closeMenu() {
+  const menu = document.getElementById('overflowMenu');
+  const btn  = document.getElementById('menuBtn');
+  if (menu) menu.classList.remove('visible');
+  if (btn)  btn.setAttribute('aria-expanded', 'false');
+}
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('overflowMenu');
+  const btn  = document.getElementById('menuBtn');
+  if (!menu || !btn) return;
+  if (menu.classList.contains('visible') && !menu.contains(e.target) && !btn.contains(e.target)) {
+    closeMenu();
+  }
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
 // ─────────────────────────────────────────────
 //  BREATHING ANIMATION
@@ -2219,18 +2314,19 @@ function shareApp() {
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredInstallPrompt = e;
-  document.getElementById('installBtn').classList.add('visible');
+  document.getElementById('installBtn').hidden = false;
 });
 function installPWA() {
   if (!deferredInstallPrompt) return;
+  closeMenu();
   deferredInstallPrompt.prompt();
   deferredInstallPrompt.userChoice.then(() => {
     deferredInstallPrompt = null;
-    document.getElementById('installBtn').classList.remove('visible');
+    document.getElementById('installBtn').hidden = true;
   });
 }
 window.addEventListener('appinstalled', () => {
-  document.getElementById('installBtn').classList.remove('visible');
+  document.getElementById('installBtn').hidden = true;
 });
 
 // ─────────────────────────────────────────────
@@ -2239,12 +2335,13 @@ window.addEventListener('appinstalled', () => {
 function toggleAudio() {
   const audio = document.getElementById('ambientAudio');
   const btn   = document.getElementById('audioBtn');
+  const label = document.getElementById('audioBtnLabel');
   if (!audio) return;
   audio.volume = 0.45;
   if (audio.paused) {
     audio.play().then(() => {
       btn.classList.add('playing');
-      btn.textContent = '♩ Pause';
+      if (label) label.textContent = 'Pause ambient music';
       lsSet('wbh_audio_on', 'true');
       const hint = document.getElementById('audioHint');
       if (hint) hint.style.display = 'none';
@@ -2252,7 +2349,7 @@ function toggleAudio() {
   } else {
     audio.pause();
     btn.classList.remove('playing');
-    btn.textContent = '♩ Music';
+    if (label) label.textContent = 'Play ambient music';
     lsSet('wbh_audio_on', 'false');
   }
 }
