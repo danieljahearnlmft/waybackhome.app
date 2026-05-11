@@ -2313,22 +2313,21 @@ function maybeShowEmailPull() {
   setTimeout(() => pull.classList.add('visible'), 1800);
 }
 
-async function submitEmailPull(event) {
+function submitEmailPull(event) {
   event.preventDefault();
   const input = document.getElementById('emailPullInput');
   const email = (input.value || '').trim();
   if (!email) return;
-  const btn = document.getElementById('emailPullBtn');
-  btn.disabled = true; btn.textContent = '…';
-  try {
-    await fetch('/.netlify/functions/subscribe', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ email, firstName: '' })
-    });
-  } catch(e) {}
+  const url = `https://danieljahearnlmft.substack.com/subscribe?email=${encodeURIComponent(email)}`;
+  const win = window.open(url, '_blank', 'noopener');
   lsSet('wbh_email_asked', '1');
   const pull = document.getElementById('emailPull');
-  if (pull) pull.innerHTML = '<div class="email-pull-thanks">Thanks. See you Sunday.</div>';
+  if (!pull) return;
+  if (win) {
+    pull.innerHTML = '<div class="email-pull-thanks">Confirm in the new tab to start getting the Sunday note.</div>';
+  } else {
+    pull.innerHTML = `<div class="email-pull-thanks">Almost there — <a href="${url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">finish subscribing here</a>.</div>`;
+  }
 }
 
 function skipEmailPull() {
