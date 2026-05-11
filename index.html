@@ -2953,6 +2953,8 @@ function setupDailyAudio() {
     audio.src = src;
     document.getElementById('audioConditionLabel').textContent = todayCondition.name;
     block.hidden = false;
+    const vis = document.getElementById('visStrip');
+    if (vis) vis.style.display = 'none';
   }).catch(() => {});
   audio.onloadedmetadata = () => {
     document.getElementById('audioDuration').textContent = fmtAudioTime(audio.duration);
