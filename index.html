@@ -1469,6 +1469,8 @@
     .home-title { font-size: 1.7rem; }
   }
 </style>
+<script defer data-domain="waybackhome.app" src="https://plausible.io/js/script.tagged-events.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
 <body>
 
@@ -1950,6 +1952,7 @@ function goto(screen) {
   if (screen === 'activated') startBreathing();
   else stopBreathing();
   if (screen === 'practice') initPractice();
+  if (window.plausible) window.plausible('Pathway Opened', { props: { pathway: screen } });
 }
 
 function toggleDeep(key, btn) {
@@ -2321,6 +2324,7 @@ function submitEmailPull(event) {
   const url = `https://danieljahearnlmft.substack.com/subscribe?email=${encodeURIComponent(email)}`;
   const win = window.open(url, '_blank', 'noopener');
   lsSet('wbh_email_asked', '1');
+  if (window.plausible) window.plausible('Email Submitted');
   const pull = document.getElementById('emailPull');
   if (!pull) return;
   if (win) {
@@ -2368,6 +2372,7 @@ function completePracticeShort() {
   if (closing) setTimeout(() => closing.classList.add('visible'), 600);
   maybeShowEmailPull();
   renderCheckinList();
+  if (window.plausible) window.plausible('Practice Complete Short', { props: { condition: todayCondition.name } });
 }
 
 async function submitCheckin() {
@@ -2412,6 +2417,7 @@ async function submitCheckin() {
     if (closing) setTimeout(() => closing.classList.add('visible'), 2400);
     maybeShowEmailPull();
     renderCheckinList();
+    if (window.plausible) window.plausible('Practice Complete Deep', { props: { condition: todayCondition.name } });
   } catch(err) {
     respEl.classList.remove('visible');
     const errEl = document.getElementById('submitError');
@@ -2603,6 +2609,7 @@ async function enableNotifications() {
     lsSet('wbh_notif_asked', 'true');
     lsSet('wbh_notif_enabled', 'true');
     dismissNotifPrompt();
+    if (window.plausible) window.plausible('Push Subscribed');
     const toast = document.getElementById('milestoneToast');
     toast.innerHTML = 'Reminders on — see you tomorrow.';
     toast.classList.add('visible');
