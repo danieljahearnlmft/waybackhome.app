@@ -236,134 +236,6 @@
   }
   .about-drawer-link:hover { background: rgba(107,140,110,0.15); color: var(--cream); }
 
-  /* ── Email Gate ── */
-  #emailGate {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 22px;
-  }
-  .gate-card {
-    background: var(--warm-white);
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 8px 48px rgba(28,43,30,0.14);
-    max-width: 500px;
-    width: 100%;
-  }
-  .gate-banner {
-    background: linear-gradient(140deg, #1C2B1E 0%, #2A3E2C 100%);
-    padding: 36px 36px 30px;
-    color: var(--cream);
-    position: relative;
-    overflow: hidden;
-  }
-  .gate-banner::after {
-    content: '';
-    position: absolute;
-    right: -20px; bottom: -30px;
-    width: 160px; height: 160px;
-    border-radius: 50%;
-    background: rgba(196,146,58,0.08);
-    pointer-events: none;
-  }
-  .gate-eyebrow {
-    font-size: 0.63rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--gold-light);
-    margin-bottom: 12px;
-  }
-  .gate-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.1rem;
-    font-weight: 300;
-    line-height: 1.12;
-    margin-bottom: 10px;
-  }
-  .gate-title em { font-style: italic; color: var(--gold-light); }
-  .gate-subtitle {
-    font-size: 0.88rem;
-    opacity: 0.85;
-    line-height: 1.6;
-  }
-  .gate-body { padding: 28px 36px 32px; }
-  .gate-description {
-    font-size: 0.92rem;
-    line-height: 1.7;
-    color: var(--ink);
-    margin-bottom: 22px;
-    opacity: 0.85;
-  }
-  .gate-label {
-    display: block;
-    font-size: 0.68rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--stone);
-    margin-bottom: 7px;
-  }
-  .gate-input {
-    width: 100%;
-    border: 1px solid var(--stone-light);
-    border-radius: 3px;
-    padding: 12px 15px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.92rem;
-    color: var(--ink);
-    background: var(--cream);
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 12px;
-  }
-  .gate-input:focus { border-color: var(--sage); }
-  .gate-input::placeholder { color: var(--stone-light); }
-  .btn-gate {
-    width: 100%;
-    background: var(--deep-forest);
-    color: var(--cream);
-    border: none;
-    padding: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.83rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 4px;
-  }
-  .btn-gate:hover { background: var(--forest-mid); }
-  .btn-gate:disabled { opacity: 0.5; cursor: not-allowed; }
-  .gate-skip {
-    display: block;
-    text-align: center;
-    margin-top: 14px;
-    font-size: 0.75rem;
-    color: var(--stone);
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .gate-skip:hover { color: var(--ink); }
-  .gate-privacy {
-    font-size: 0.75rem;
-    color: var(--stone);
-    line-height: 1.6;
-    margin-top: 14px;
-    opacity: 0.65;
-  }
-  .gate-error {
-    display: none;
-    font-size: 0.78rem;
-    color: var(--rust);
-    margin-top: 6px;
-  }
-  .gate-error.visible { display: block; }
 
   /* ── Home screen ── */
   #homeScreen {
@@ -1413,7 +1285,6 @@
   @media (max-width: 500px) {
     .site-header { padding: 12px 16px; gap: 10px; }
     .header-title { font-size: 0.88rem; }
-    .gate-banner, .gate-body { padding-left: 22px; padding-right: 22px; }
     .condition-name { font-size: 1.8rem; }
     .book-quote-area, .prompt-area, .breath-section,
     .journal-area, .companion-response, .vis-strip { padding-left: 18px; padding-right: 18px; }
@@ -1468,28 +1339,6 @@
     <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" class="about-drawer-link">Parent Groups</a>
     <a href="/conditions/" class="about-drawer-link">The five conditions</a>
     <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer" class="about-drawer-link">danieljahearnlmft.com</a>
-  </div>
-</div>
-
-<!-- ── EMAIL GATE ── -->
-<div id="emailGate">
-  <div class="gate-card">
-    <div class="gate-banner">
-      <div class="gate-eyebrow">A Daily Practice for Parents of Teens</div>
-      <div class="gate-title"><em>The Way Back Home</em></div>
-      <div class="gate-subtitle">Your teen isn't pulling away from you. They're waiting to see if you'll come toward them.</div>
-    </div>
-    <div class="gate-body">
-      <p class="gate-description">Five pathways back to connection with your teen — grounded in the IAT framework. Each visit takes 2–5 minutes. Your practice stays private on your device.</p>
-      <label class="gate-label" for="gateFirst">First name</label>
-      <input type="text" id="gateFirst" class="gate-input" placeholder="Your first name" autocomplete="given-name">
-      <label class="gate-label" for="gateEmail">Email address</label>
-      <input type="email" id="gateEmail" class="gate-input" placeholder="you@example.com" autocomplete="email">
-      <div class="gate-error" id="gateError">Please enter a valid email address.</div>
-      <button class="btn-gate" id="gateBtn" onclick="submitGate()">Begin →</button>
-      <span class="gate-skip" onclick="skipGate()">Skip — just open the app</span>
-      <p class="gate-privacy">Your email is used only to stay connected. No spam. Unsubscribe anytime.</p>
-    </div>
   </div>
 </div>
 
@@ -1837,7 +1686,6 @@ function renderHomeHero() {
 }
 
 function showHome() {
-  document.getElementById('emailGate').style.display = 'none';
   document.querySelectorAll('.pathway-screen').forEach(s => s.style.display = 'none');
   document.getElementById('homeScreen').style.display = 'flex';
   document.getElementById('backBtn').style.display = 'none';
@@ -2103,34 +1951,6 @@ function lsSet(k, v) {
 // ─────────────────────────────────────────────
 //  GATE
 // ─────────────────────────────────────────────
-function gateAlreadyPassed() {
-  return !!(lsGet('wbh_user_email') || lsGet('wbh_gate_skipped'));
-}
-async function submitGate() {
-  const email = document.getElementById('gateEmail').value.trim();
-  const first = document.getElementById('gateFirst').value.trim();
-  const errEl = document.getElementById('gateError');
-  errEl.classList.remove('visible');
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    errEl.classList.add('visible'); return;
-  }
-  const btn = document.getElementById('gateBtn');
-  btn.disabled = true; btn.textContent = 'Starting…';
-  lsSet('wbh_user_email', email);
-  if (first) lsSet('wbh_user_first', first);
-  try {
-    await fetch('/.netlify/functions/subscribe', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ email, firstName: first })
-    });
-  } catch(e) {}
-  showHome();
-}
-function skipGate() {
-  lsSet('wbh_gate_skipped', 'true');
-  showHome();
-}
-
 // ─────────────────────────────────────────────
 //  CONDITION / PROMPT LOGIC
 // ─────────────────────────────────────────────
@@ -2236,7 +2056,7 @@ async function submitCheckin() {
   textEl.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
   document.getElementById('submitError').classList.remove('visible');
   try {
-    const firstName = lsGet('wbh_user_first') || '';
+    const firstName = '';
     const res = await fetch('/.netlify/functions/companion', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ condition: todayCondition.name, prompt: todayPrompt, journalText: text, firstName })
@@ -2464,10 +2284,6 @@ async function enableNotifications() {
   }
 }
 
-document.getElementById('gateEmail').addEventListener('keydown', e => {
-  if (e.key === 'Enter') submitGate();
-});
-
 // ─────────────────────────────────────────────
 //  PRACTICE INIT
 // ─────────────────────────────────────────────
@@ -2510,9 +2326,7 @@ function initPractice() {
 // ─────────────────────────────────────────────
 (async () => {
   await _preloadCache();
-  if (gateAlreadyPassed()) {
-    showHome();
-  }
+  showHome();
 })();
 </script>
 
