@@ -1516,6 +1516,124 @@
     margin-top: 6px;
   }
 
+  /* ── Onboarding ── */
+  #onboarding {
+    position: fixed;
+    inset: 0;
+    background: var(--deep-forest);
+    color: var(--cream);
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 28px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  #onboarding.visible { display: flex; opacity: 1; }
+  #onboarding.fading-out { opacity: 0; }
+  .onboard-skip {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    background: none;
+    border: none;
+    color: var(--stone-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    padding: 6px 10px;
+    transition: color 0.2s;
+  }
+  .onboard-skip:hover { color: var(--cream); }
+  .onboard-dots {
+    display: flex;
+    gap: 9px;
+    margin-bottom: 36px;
+  }
+  .onboard-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(232,225,212,0.22);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .onboard-dot.active {
+    background: var(--gold-light);
+    transform: scale(1.2);
+  }
+  .onboard-cards {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+  }
+  .onboard-card {
+    display: none;
+    text-align: center;
+    animation: onboardFade 0.5s ease;
+  }
+  .onboard-card.active { display: block; }
+  @keyframes onboardFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .onboard-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 22px;
+  }
+  .onboard-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.95rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 22px;
+    letter-spacing: -0.005em;
+  }
+  .onboard-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: rgba(232,225,212,0.84);
+    max-width: 380px;
+    margin: 0 auto 38px;
+  }
+  .onboard-next {
+    background: none;
+    color: var(--cream);
+    border: 1px solid rgba(196,146,58,0.5);
+    padding: 14px 30px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .onboard-next:hover {
+    background: rgba(196,146,58,0.12);
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+  }
+  .onboard-next.primary {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--deep-forest);
+  }
+  .onboard-next.primary:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
   /* ── Responsive ── */
   @media (max-width: 500px) {
     .site-header { padding: 12px 16px; gap: 10px; }
@@ -1539,6 +1657,37 @@
 </script>
 </head>
 <body>
+
+<!-- ── Onboarding overlay (first-run only) ── -->
+<div id="onboarding" role="dialog" aria-modal="true" aria-label="Welcome to The Way Back Home">
+  <button class="onboard-skip" onclick="finishOnboarding(true)">Skip →</button>
+  <div class="onboard-dots" aria-hidden="true">
+    <div class="onboard-dot active"></div>
+    <div class="onboard-dot"></div>
+    <div class="onboard-dot"></div>
+  </div>
+  <div class="onboard-cards">
+    <div class="onboard-card active" data-card="1">
+      <div class="onboard-eyebrow">Welcome</div>
+      <h2 class="onboard-heading">The teen years are your most powerful window for repair.</h2>
+      <p class="onboard-body">A daily practice for parents who want to show up differently — not perfectly. Just more present.</p>
+      <button class="onboard-next" onclick="nextOnboardingCard()">Next</button>
+    </div>
+    <div class="onboard-card" data-card="2">
+      <div class="onboard-eyebrow">How it works</div>
+      <h2 class="onboard-heading">One quiet moment. Every day.</h2>
+      <p class="onboard-body">Five minutes. One condition of secure attachment. A breath. A reflection. An optional voice from Daniel.</p>
+      <button class="onboard-next" onclick="nextOnboardingCard()">Next</button>
+    </div>
+    <div class="onboard-card" data-card="3">
+      <div class="onboard-eyebrow">Your privacy</div>
+      <h2 class="onboard-heading">What you write stays yours.</h2>
+      <p class="onboard-body">Your journal lives on your device. When you ask for a reflection, what you wrote is sent to Claude to respond — not stored, not used for training, not sold.</p>
+      <button class="onboard-next primary" onclick="finishOnboarding(false)">Begin the practice</button>
+    </div>
+  </div>
+</div>
+
 
 <header class="site-header">
   <div class="header-left">
@@ -2825,8 +2974,51 @@ function fmtAudioTime(s) {
 // ─────────────────────────────────────────────
 //  STARTUP
 // ─────────────────────────────────────────────
+function maybeShowOnboarding() {
+  if (lsGet('wbh_onboarded')) return false;
+  const onb = document.getElementById('onboarding');
+  if (!onb) return false;
+  onb.classList.add('visible');
+  document.addEventListener('keydown', onboardingKeydown);
+  return true;
+}
+
+function onboardingKeydown(e) {
+  if (e.key === 'ArrowRight' || e.key === 'Enter') {
+    const last = document.querySelector('.onboard-card.active[data-card="3"]');
+    if (last) finishOnboarding(false);
+    else nextOnboardingCard();
+  } else if (e.key === 'Escape') {
+    finishOnboarding(true);
+  }
+}
+
+function nextOnboardingCard() {
+  const cards = document.querySelectorAll('.onboard-card');
+  const dots = document.querySelectorAll('.onboard-dot');
+  let idx = 0;
+  cards.forEach((c, i) => { if (c.classList.contains('active')) idx = i; });
+  const next = Math.min(idx + 1, cards.length - 1);
+  cards[idx].classList.remove('active');
+  cards[next].classList.add('active');
+  dots.forEach((d, i) => d.classList.toggle('active', i === next));
+}
+
+function finishOnboarding(skipped) {
+  lsSet('wbh_onboarded', '1');
+  document.removeEventListener('keydown', onboardingKeydown);
+  const onb = document.getElementById('onboarding');
+  if (!onb) return;
+  onb.classList.add('fading-out');
+  setTimeout(() => { onb.classList.remove('visible', 'fading-out'); }, 600);
+  if (window.plausible) {
+    window.plausible(skipped ? 'Onboarding Skipped' : 'Onboarding Completed');
+  }
+}
+
 (async () => {
   await _preloadCache();
+  maybeShowOnboarding();
   showHome();
 })();
 </script>
