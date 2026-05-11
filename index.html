@@ -454,6 +454,74 @@
     padding: 0 12px;
   }
 
+  /* ── Compact pathway (in-the-moment) ── */
+  .pathway-compact {
+    margin: 18px 0 8px;
+  }
+  .compact-breath {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: rgba(107, 140, 110, 0.08);
+    border-radius: 4px;
+    margin-bottom: 22px;
+  }
+  .compact-breath-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--sage);
+    flex-shrink: 0;
+    animation: compactPulse 4s ease-in-out infinite;
+  }
+  @keyframes compactPulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 0.9; transform: scale(1.25); }
+  }
+  .compact-breath-text {
+    font-size: 0.86rem;
+    color: var(--deep-forest);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .compact-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--deep-forest);
+    line-height: 1.35;
+    margin-bottom: 20px;
+    padding: 0 2px;
+  }
+  .compact-move {
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 16px 20px;
+    background: var(--warm-white);
+    border-left: 2px solid var(--gold);
+    border-radius: 2px;
+  }
+  .pathway-more-toggle {
+    display: block;
+    margin: 32px auto 0;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--stone);
+    cursor: pointer;
+    padding: 10px 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .pathway-more-toggle:hover { color: var(--deep-forest); }
+  .pathway-deep { margin-top: 22px; }
+
   /* ── Breathing animation ── */
   .breath-guide {
     display: flex;
@@ -1241,45 +1309,150 @@
     color: var(--cream);
   }
 
-  /* ── Post-practice conversion card ── */
-  .post-practice-card {
+  /* ── Closing line (after AI response) ── */
+  .closing-line {
     display: none;
-    margin: 0 30px 20px;
-    padding: 16px 18px;
-    background: rgba(107,140,110,0.06);
-    border-radius: 3px;
-    border: 1px solid rgba(107,140,110,0.22);
-  }
-  .post-practice-card.visible { display: block; }
-  .post-practice-card-label {
-    font-size: 0.6rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--sage);
-    margin-bottom: 8px;
-  }
-  .post-practice-card-text {
+    margin: 28px 30px 8px;
+    padding: 0;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.97rem;
-    line-height: 1.7;
-    color: var(--ink);
-    margin-bottom: 12px;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--stone);
+    text-align: center;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    transition: opacity 1.4s ease-in;
   }
-  .post-practice-links { display: flex; flex-wrap: wrap; gap: 8px; }
-  .post-practice-link {
-    font-size: 0.68rem;
+  .closing-line.visible { display: block; opacity: 0.85; }
+
+  /* ── Earned email opt-in (post-Day-2) ── */
+  .email-pull {
+    display: none;
+    margin: 22px 30px 8px;
+    padding: 18px 20px 16px;
+    background: rgba(196,146,58,0.05);
+    border: 1px solid rgba(196,146,58,0.22);
+    border-radius: 3px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.9s ease-in;
+  }
+  .email-pull.visible { display: block; opacity: 1; }
+  .email-pull-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .email-pull-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .email-pull-form input {
+    flex: 1;
+    border: 1px solid var(--stone-light);
+    border-radius: 2px;
+    padding: 10px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ink);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .email-pull-form input:focus { border-color: var(--sage); }
+  .email-pull-form button {
+    background: var(--deep-forest);
+    color: var(--cream);
+    border: none;
+    padding: 10px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.74rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--sage);
-    text-decoration: none;
-    border: 1px solid rgba(107,140,110,0.35);
-    padding: 5px 11px;
+    letter-spacing: 0.1em;
     border-radius: 2px;
-    transition: all 0.2s;
+    cursor: pointer;
+    transition: background 0.2s;
   }
-  .post-practice-link:hover { background: rgba(107,140,110,0.12); color: var(--deep-forest); }
+  .email-pull-form button:hover { background: var(--forest-mid); }
+  .email-pull-form button:disabled { opacity: 0.5; }
+  .email-pull-skip {
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.74rem;
+    color: var(--stone);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    padding: 4px 8px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .email-pull-skip:hover { color: var(--ink); }
+  .email-pull-thanks {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--sage);
+    padding: 4px 0;
+  }
+
+  /* ── Practice close row (90s default) ── */
+  .practice-close-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 28px 30px 8px;
+  }
+  .btn-practice-complete {
+    width: 100%;
+    max-width: 340px;
+    background: var(--deep-forest);
+    color: var(--cream);
+    border: none;
+    padding: 16px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-practice-complete:hover { background: var(--forest-mid); }
+  .btn-practice-complete:disabled { opacity: 0.5; cursor: default; }
+  .reflect-link {
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--stone);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 4px 8px;
+    margin-top: 2px;
+  }
+  .reflect-link:hover { color: var(--deep-forest); }
+  .journal-area.deep-hidden { display: none; }
+  .checkin-item.short-entry .checkin-entry,
+  .checkin-item.short-entry .checkin-response { display: none; }
+  .checkin-item.short-entry .checkin-meta { margin-bottom: 0; }
+  .checkin-item.short-entry::after {
+    content: '✓ Practice complete';
+    display: block;
+    font-size: 0.72rem;
+    color: var(--stone-light);
+    letter-spacing: 0.06em;
+    margin-top: 6px;
+  }
 
   /* ── Responsive ── */
   @media (max-width: 500px) {
@@ -1425,28 +1598,44 @@
   <div class="pathway-container">
     <div class="pathway-eyebrow">Attunement</div>
     <div class="pathway-title">My Teen Is Shut Down</div>
-    <div class="pathway-framing">Shutdown is a nervous system response, not a choice. Your teen isn't pushing you away — they're protecting themselves. Your job right now is presence, not pursuit.</div>
 
-    <div class="attunement-cards">
-      <div class="attunement-card">
-        <div class="attunement-card-label">Right now</div>
-        <div class="attunement-card-text">Stay nearby. Not hovering — just close. Your regulated, quiet presence is the intervention.</div>
+    <div class="pathway-compact">
+      <div class="compact-breath">
+        <div class="compact-breath-dot"></div>
+        <div class="compact-breath-text">Three slow breaths.</div>
       </div>
-      <div class="attunement-card">
-        <div class="attunement-card-label">Resist the urge to</div>
-        <div class="attunement-card-text">Draw them out. Fix it. Fill the silence. Process what happened. Silence doesn't need solving — it needs space.</div>
-      </div>
-      <div class="attunement-card">
-        <div class="attunement-card-label">When they surface</div>
-        <div class="attunement-card-text">Stay low-key. "I'm here" is enough. Keep your tone warm and your agenda invisible.</div>
-      </div>
-      <div class="attunement-card">
-        <div class="attunement-card-label">Something that often helps</div>
-        <div class="attunement-card-text">Do something ordinary side by side — no eye contact required. Parallel presence says "I'm with you" without pressure.</div>
-      </div>
+      <div class="compact-line">They are not rejecting you. They are regulating.</div>
+      <div class="compact-move">Go sit in the same room. Don't speak first. Your steady, quiet presence is what makes it safe to come back.</div>
     </div>
 
-    <div class="pathway-note">They are not rejecting you. They are regulating. Your steadiness is what makes it safe to come back.</div>
+    <button class="pathway-more-toggle" onclick="toggleDeep('shutdown', this)">
+      <span class="pathway-more-text">More on this →</span>
+    </button>
+
+    <div class="pathway-deep" id="shutdownDeep" hidden>
+      <div class="pathway-framing">Shutdown is a nervous system response, not a choice. Your teen isn't pushing you away — they're protecting themselves. Your job right now is presence, not pursuit.</div>
+
+      <div class="attunement-cards">
+        <div class="attunement-card">
+          <div class="attunement-card-label">Right now</div>
+          <div class="attunement-card-text">Stay nearby. Not hovering — just close. Your regulated, quiet presence is the intervention.</div>
+        </div>
+        <div class="attunement-card">
+          <div class="attunement-card-label">Resist the urge to</div>
+          <div class="attunement-card-text">Draw them out. Fix it. Fill the silence. Process what happened. Silence doesn't need solving — it needs space.</div>
+        </div>
+        <div class="attunement-card">
+          <div class="attunement-card-label">When they surface</div>
+          <div class="attunement-card-text">Stay low-key. "I'm here" is enough. Keep your tone warm and your agenda invisible.</div>
+        </div>
+        <div class="attunement-card">
+          <div class="attunement-card-label">Something that often helps</div>
+          <div class="attunement-card-text">Do something ordinary side by side — no eye contact required. Parallel presence says "I'm with you" without pressure.</div>
+        </div>
+      </div>
+
+      <div class="pathway-note">They are not rejecting you. They are regulating. Your steadiness is what makes it safe to come back.</div>
+    </div>
   </div>
 </div>
 
@@ -1455,43 +1644,59 @@
   <div class="pathway-container">
     <div class="pathway-eyebrow">The R.E.A.L. Method</div>
     <div class="pathway-title">We Had a Rupture</div>
-    <div class="pathway-framing">Ruptures aren't the failure. Unrepaired ruptures are. Four steps, in order.</div>
 
-    <div class="repair-steps">
-      <div class="repair-step">
-        <div class="repair-num">R</div>
-        <div class="repair-content">
-          <div class="repair-action">Regulate the Breath</div>
-          <div class="repair-text">Before anything else, pause. Three to five slow breaths. Feet on the ground. Soften your jaw. Their nervous system is watching yours — settle yours first.</div>
-        </div>
+    <div class="pathway-compact">
+      <div class="compact-breath">
+        <div class="compact-breath-dot"></div>
+        <div class="compact-breath-text">Three slow breaths before any words.</div>
       </div>
-      <div class="repair-step">
-        <div class="repair-num">E</div>
-        <div class="repair-content">
-          <div class="repair-action">Explore the Moment</div>
-          <div class="repair-text">Lead with curiosity, not correction. Don't defend, fix, or explain why they're wrong.</div>
-          <div class="repair-script">"What was going on for you?"</div>
-        </div>
-      </div>
-      <div class="repair-step">
-        <div class="repair-num">A</div>
-        <div class="repair-content">
-          <div class="repair-action">Attune with Empathy</div>
-          <div class="repair-text">Reflect what you heard. Understanding isn't agreement — it's the signal that they're not alone in this.</div>
-          <div class="repair-script">"It sounds like you felt ___ when I ___."</div>
-        </div>
-      </div>
-      <div class="repair-step">
-        <div class="repair-num">L</div>
-        <div class="repair-content">
-          <div class="repair-action">Lean Back In</div>
-          <div class="repair-text">The gesture of return. Not a lecture, not a solution — just the signal: <em>I'm still here. We're still connected.</em></div>
-          <div class="repair-script">"I messed up. I'm sorry. Can we start over?"</div>
-        </div>
-      </div>
+      <div class="compact-line">Ruptures aren't the failure. Unrepaired ruptures are.</div>
+      <div class="compact-move">Go in with curiosity, not correction. One question, said softly: <em>"What was going on for you?"</em> Then listen, all the way through.</div>
     </div>
 
-    <div class="pathway-note">Securely attached kids don't have perfect parents. They have parents who repair.</div>
+    <button class="pathway-more-toggle" onclick="toggleDeep('rupture', this)">
+      <span class="pathway-more-text">The full R.E.A.L. method →</span>
+    </button>
+
+    <div class="pathway-deep" id="ruptureDeep" hidden>
+      <div class="pathway-framing">Four steps, in order.</div>
+
+      <div class="repair-steps">
+        <div class="repair-step">
+          <div class="repair-num">R</div>
+          <div class="repair-content">
+            <div class="repair-action">Regulate the Breath</div>
+            <div class="repair-text">Before anything else, pause. Three to five slow breaths. Feet on the ground. Soften your jaw. Their nervous system is watching yours — settle yours first.</div>
+          </div>
+        </div>
+        <div class="repair-step">
+          <div class="repair-num">E</div>
+          <div class="repair-content">
+            <div class="repair-action">Explore the Moment</div>
+            <div class="repair-text">Lead with curiosity, not correction. Don't defend, fix, or explain why they're wrong.</div>
+            <div class="repair-script">"What was going on for you?"</div>
+          </div>
+        </div>
+        <div class="repair-step">
+          <div class="repair-num">A</div>
+          <div class="repair-content">
+            <div class="repair-action">Attune with Empathy</div>
+            <div class="repair-text">Reflect what you heard. Understanding isn't agreement — it's the signal that they're not alone in this.</div>
+            <div class="repair-script">"It sounds like you felt ___ when I ___."</div>
+          </div>
+        </div>
+        <div class="repair-step">
+          <div class="repair-num">L</div>
+          <div class="repair-content">
+            <div class="repair-action">Lean Back In</div>
+            <div class="repair-text">The gesture of return. Not a lecture, not a solution — just the signal: <em>I'm still here. We're still connected.</em></div>
+            <div class="repair-script">"I messed up. I'm sorry. Can we start over?"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pathway-note">Securely attached kids don't have perfect parents. They have parents who repair.</div>
+    </div>
   </div>
 </div>
 
@@ -1500,9 +1705,24 @@
   <div class="pathway-container">
     <div class="pathway-eyebrow">Language of Repair</div>
     <div class="pathway-title">I Want to Repair</div>
-    <div class="pathway-framing">Repair isn't about being right. It's about restoring connection. These micro-shifts change everything.</div>
 
-    <div class="contrast-grid">
+    <div class="pathway-compact">
+      <div class="compact-breath">
+        <div class="compact-breath-dot"></div>
+        <div class="compact-breath-text">Soft eyes. Slow voice.</div>
+      </div>
+      <div class="compact-line">Repair isn't being right. It's restoring connection.</div>
+      <div class="compact-move">One phrase, said quietly: <em>"Help me understand what happened."</em> Or: <em>"Let me take responsibility for my part."</em></div>
+    </div>
+
+    <button class="pathway-more-toggle" onclick="toggleDeep('repair', this)">
+      <span class="pathway-more-text">More phrases →</span>
+    </button>
+
+    <div class="pathway-deep" id="repairDeep" hidden>
+      <div class="pathway-framing">These micro-shifts change everything.</div>
+
+      <div class="contrast-grid">
       <div class="contrast-pair">
         <div class="contrast-dont">
           <span class="contrast-badge">✗</span>
@@ -1555,7 +1775,8 @@
       </div>
     </div>
 
-    <div class="pathway-note">The goal isn't a perfect conversation. It's a repaired one.</div>
+      <div class="pathway-note">The goal isn't a perfect conversation. It's a repaired one.</div>
+    </div>
   </div>
 </div>
 
@@ -1564,28 +1785,44 @@
   <div class="pathway-container">
     <div class="pathway-eyebrow">Expressed Delight</div>
     <div class="pathway-title">Things Are Good</div>
-    <div class="pathway-framing">Good moments are worth tending. Connection deepens when delight is expressed — not just felt internally.</div>
 
-    <div class="attunement-cards">
-      <div class="attunement-card" style="border-left-color: var(--gold);">
-        <div class="attunement-card-label" style="color: var(--gold);">Name it</div>
-        <div class="attunement-card-text">What is one thing about your teen right now that genuinely moves you? Not an achievement — something about who they are.</div>
+    <div class="pathway-compact">
+      <div class="compact-breath">
+        <div class="compact-breath-dot"></div>
+        <div class="compact-breath-text">Take a breath. Notice the quiet.</div>
       </div>
-      <div class="attunement-card" style="border-left-color: var(--gold);">
-        <div class="attunement-card-label" style="color: var(--gold);">Let it show</div>
-        <div class="attunement-card-text">When did you last let your teen see that their existence delights you? A look, a laugh, a pause to really notice them.</div>
-      </div>
-      <div class="attunement-card" style="border-left-color: var(--gold);">
-        <div class="attunement-card-label" style="color: var(--gold);">Say something</div>
-        <div class="attunement-card-text">Delight expressed out loud wires something in a teen's brain: <em>I am wanted. My presence brings light.</em> They need to hear it, not just sense it.</div>
-      </div>
-      <div class="attunement-card" style="border-left-color: var(--gold);">
-        <div class="attunement-card-label" style="color: var(--gold);">One thing today</div>
-        <div class="attunement-card-text">What could you say or do in the next 24 hours that would tell your teen: you bring me joy, just by being you?</div>
-      </div>
+      <div class="compact-line">Connection deepens when delight is expressed, not just felt.</div>
+      <div class="compact-move">Find one specific thing about your teen that genuinely moves you. In the next twenty-four hours, let them know you noticed. A sentence is enough.</div>
     </div>
 
-    <div class="pathway-note">The good moments are the practice too. Tend them.</div>
+    <button class="pathway-more-toggle" onclick="toggleDeep('good', this)">
+      <span class="pathway-more-text">More on delight →</span>
+    </button>
+
+    <div class="pathway-deep" id="goodDeep" hidden>
+      <div class="pathway-framing">Good moments are worth tending. Connection deepens when delight is expressed — not just felt internally.</div>
+
+      <div class="attunement-cards">
+        <div class="attunement-card" style="border-left-color: var(--gold);">
+          <div class="attunement-card-label" style="color: var(--gold);">Name it</div>
+          <div class="attunement-card-text">What is one thing about your teen right now that genuinely moves you? Not an achievement — something about who they are.</div>
+        </div>
+        <div class="attunement-card" style="border-left-color: var(--gold);">
+          <div class="attunement-card-label" style="color: var(--gold);">Let it show</div>
+          <div class="attunement-card-text">When did you last let your teen see that their existence delights you? A look, a laugh, a pause to really notice them.</div>
+        </div>
+        <div class="attunement-card" style="border-left-color: var(--gold);">
+          <div class="attunement-card-label" style="color: var(--gold);">Say something</div>
+          <div class="attunement-card-text">Delight expressed out loud wires something in a teen's brain: <em>I am wanted. My presence brings light.</em> They need to hear it, not just sense it.</div>
+        </div>
+        <div class="attunement-card" style="border-left-color: var(--gold);">
+          <div class="attunement-card-label" style="color: var(--gold);">One thing today</div>
+          <div class="attunement-card-text">What could you say or do in the next 24 hours that would tell your teen: you bring me joy, just by being you?</div>
+        </div>
+      </div>
+
+      <div class="pathway-note">The good moments are the practice too. Tend them.</div>
+    </div>
   </div>
 </div>
 
@@ -1607,7 +1844,11 @@
         <span class="vis-text" id="visStripText">Guided visualization</span>
         <span class="vis-badge" id="visStripBadge">Open →</span>
       </div>
-      <div class="journal-area">
+      <div class="practice-close-row" id="practiceCloseRow">
+        <button class="btn-practice-complete" id="practiceCompleteBtn" onclick="completePracticeShort()">Practice complete →</button>
+        <button class="reflect-link" onclick="enterDeepMode()">or reflect in writing →</button>
+      </div>
+      <div class="journal-area deep-hidden" id="journalArea">
         <div class="journal-label">Your Check-In</div>
         <textarea id="journalInput" class="journal-textarea" rows="5"
           placeholder="Write whatever comes up. There is no right answer — just what's true for you right now."></textarea>
@@ -1628,13 +1869,14 @@
           <div class="loading-dots"><span></span><span></span><span></span></div>
         </div>
       </div>
-      <div class="post-practice-card" id="postPracticeCard">
-        <div class="post-practice-card-label">Go deeper</div>
-        <div class="post-practice-card-text">This practice is drawn from <em>The Way Back Home</em> — a complete guide to healing attachment with your teen. Daniel also leads parent groups if you want support in community.</div>
-        <div class="post-practice-links">
-          <a href="https://www.amazon.com/Way-Back-Home-Healing-Attachment-ebook/dp/B0GLF2JH8T" target="_blank" rel="noopener noreferrer" class="post-practice-link">Get the Book</a>
-          <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" class="post-practice-link">Parent Groups</a>
-        </div>
+      <div class="closing-line" id="closingLine">See you tomorrow.</div>
+      <div class="email-pull" id="emailPull">
+        <div class="email-pull-text">A short note from Daniel, each Sunday. One read. No spam.</div>
+        <form class="email-pull-form" onsubmit="submitEmailPull(event)">
+          <input type="email" id="emailPullInput" placeholder="you@example.com" required autocomplete="email">
+          <button type="submit" id="emailPullBtn">Subscribe</button>
+        </form>
+        <button class="email-pull-skip" onclick="skipEmailPull()">Not now</button>
       </div>
     </div>
 
@@ -1696,12 +1938,31 @@ function showHome() {
 function goto(screen) {
   document.getElementById('homeScreen').style.display = 'none';
   document.querySelectorAll('.pathway-screen').forEach(s => s.style.display = 'none');
+  document.querySelectorAll('.pathway-deep').forEach(d => {
+    d.setAttribute('hidden', '');
+  });
+  document.querySelectorAll('.pathway-more-toggle .pathway-more-text').forEach(t => {
+    if (t.dataset.collapsed) t.textContent = t.dataset.collapsed;
+  });
   document.getElementById(screen + 'Screen').style.display = 'block';
   document.getElementById('backBtn').style.display = 'inline-flex';
   window.scrollTo(0, 0);
   if (screen === 'activated') startBreathing();
   else stopBreathing();
   if (screen === 'practice') initPractice();
+}
+
+function toggleDeep(key, btn) {
+  const deep = document.getElementById(key + 'Deep');
+  const textEl = btn.querySelector('.pathway-more-text');
+  if (!textEl.dataset.collapsed) textEl.dataset.collapsed = textEl.textContent;
+  if (deep.hasAttribute('hidden')) {
+    deep.removeAttribute('hidden');
+    textEl.textContent = 'Show less ←';
+  } else {
+    deep.setAttribute('hidden', '');
+    textEl.textContent = textEl.dataset.collapsed;
+  }
 }
 
 function goHome() {
@@ -2026,7 +2287,8 @@ function renderCheckinList() {
     if (!e) return '';
     const d = new Date(e.timestamp || k.replace('wbh_checkin_',''));
     const dateStr = d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-    return `<div class="checkin-item ${e.histClass||''}">
+    const isShort = !!e.short || (!e.journalText && !e.response);
+    return `<div class="checkin-item ${e.histClass||''}${isShort ? ' short-entry' : ''}">
       <div class="checkin-meta">
         <span class="checkin-date">${dateStr}</span>
         ${e.condition ? `<span class="checkin-cond">${e.condition}</span>` : ''}
@@ -2041,6 +2303,73 @@ function renderCheckinList() {
 //  ACTIONS
 // ─────────────────────────────────────────────
 function skipDay() { document.getElementById('todayCard').style.display='none'; }
+
+function maybeShowEmailPull() {
+  if (lsGet('wbh_email_asked')) return;
+  const streak = parseInt(lsGet('wbh_streak') || '0', 10);
+  if (streak < 2) return;
+  const pull = document.getElementById('emailPull');
+  if (!pull) return;
+  setTimeout(() => pull.classList.add('visible'), 1800);
+}
+
+async function submitEmailPull(event) {
+  event.preventDefault();
+  const input = document.getElementById('emailPullInput');
+  const email = (input.value || '').trim();
+  if (!email) return;
+  const btn = document.getElementById('emailPullBtn');
+  btn.disabled = true; btn.textContent = '…';
+  try {
+    await fetch('/.netlify/functions/subscribe', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email, firstName: '' })
+    });
+  } catch(e) {}
+  lsSet('wbh_email_asked', '1');
+  const pull = document.getElementById('emailPull');
+  if (pull) pull.innerHTML = '<div class="email-pull-thanks">Thanks. See you Sunday.</div>';
+}
+
+function skipEmailPull() {
+  lsSet('wbh_email_asked', '1');
+  const pull = document.getElementById('emailPull');
+  if (!pull) return;
+  pull.classList.remove('visible');
+  setTimeout(() => { pull.style.display = 'none'; }, 600);
+}
+
+function enterDeepMode() {
+  document.getElementById('practiceCloseRow').style.display = 'none';
+  document.getElementById('journalArea').classList.remove('deep-hidden');
+  setTimeout(() => { document.getElementById('journalInput').focus(); }, 80);
+}
+
+function completePracticeShort() {
+  if (!todayCondition) return;
+  const btn = document.getElementById('practiceCompleteBtn');
+  btn.disabled = true;
+  lsSet('wbh_checkin_' + todayKey, JSON.stringify({
+    condition: todayCondition.name,
+    histClass: todayCondition.histClass || '',
+    prompt: todayPrompt || '',
+    journalText: '',
+    response: '',
+    short: true,
+    timestamp: new Date().toISOString()
+  }));
+  document.getElementById('practiceCloseRow').style.display = 'none';
+  document.getElementById('journalArea').classList.add('deep-hidden');
+  document.getElementById('visStrip').style.display = 'none';
+  const newStreak = updateStreak();
+  renderStreak();
+  checkMilestone(newStreak);
+  if (!lsGet('wbh_notif_asked')) setTimeout(showNotifPrompt, 2000);
+  const closing = document.getElementById('closingLine');
+  if (closing) setTimeout(() => closing.classList.add('visible'), 600);
+  maybeShowEmailPull();
+  renderCheckinList();
+}
 
 async function submitCheckin() {
   if (isSubmitting) return;
@@ -2080,8 +2409,9 @@ async function submitCheckin() {
     renderStreak();
     checkMilestone(newStreak);
     if (!lsGet('wbh_notif_asked')) setTimeout(showNotifPrompt, 2000);
-    const ppc = document.getElementById('postPracticeCard');
-    if (ppc) setTimeout(() => ppc.classList.add('visible'), 1800);
+    const closing = document.getElementById('closingLine');
+    if (closing) setTimeout(() => closing.classList.add('visible'), 2400);
+    maybeShowEmailPull();
     renderCheckinList();
   } catch(err) {
     respEl.classList.remove('visible');
@@ -2307,6 +2637,21 @@ function initPractice() {
   renderQuote(todayQuote);
   renderBreath(todayCondition);
   document.getElementById('promptText').textContent = todayPrompt;
+  // Reset 90s/deep state for a fresh day
+  const closeRow = document.getElementById('practiceCloseRow');
+  if (closeRow) closeRow.style.display = '';
+  const completeBtn = document.getElementById('practiceCompleteBtn');
+  if (completeBtn) completeBtn.disabled = false;
+  document.getElementById('journalArea').classList.add('deep-hidden');
+  document.getElementById('journalInput').value = '';
+  document.getElementById('journalInput').readOnly = false;
+  document.getElementById('journalInput').style.opacity = '';
+  document.querySelector('.submit-row').style.display = '';
+  document.getElementById('companionResponse').classList.remove('visible');
+  document.getElementById('closingLine').classList.remove('visible');
+  document.getElementById('visStrip').style.display = '';
+  const emailPullEl = document.getElementById('emailPull');
+  if (emailPullEl) { emailPullEl.classList.remove('visible'); emailPullEl.style.display = ''; }
   const strip = document.getElementById('visStrip');
   document.getElementById('visStripText').textContent = `Guided visualization — ${todayCondition.name}`;
   if (todayCondition.youtubeUrl) {

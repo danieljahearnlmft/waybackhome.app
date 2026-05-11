@@ -1,4 +1,4 @@
-const CACHE = 'wbh-v8';
+const CACHE = 'wbh-v9';
 const PRECACHE = ['/ambient.mp3', '/manifest.json', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {
