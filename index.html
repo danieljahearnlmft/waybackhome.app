@@ -1634,6 +1634,16 @@
     border-color: var(--gold-light);
   }
 
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   /* ── Responsive ── */
   @media (max-width: 500px) {
     .site-header { padding: 12px 16px; gap: 10px; }
@@ -2220,6 +2230,10 @@ function toggleMenu(e) {
   const btn  = document.getElementById('menuBtn');
   const open = menu.classList.toggle('visible');
   btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if (open) {
+    const first = menu.querySelector('.menu-item:not([hidden])');
+    if (first) setTimeout(() => first.focus(), 30);
+  }
 }
 function closeMenu() {
   const menu = document.getElementById('overflowMenu');
@@ -2235,7 +2249,23 @@ document.addEventListener('click', (e) => {
     closeMenu();
   }
 });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+document.addEventListener('keydown', (e) => {
+  const menu = document.getElementById('overflowMenu');
+  const btn = document.getElementById('menuBtn');
+  if (e.key === 'Escape') { closeMenu(); if (btn) btn.focus(); return; }
+  if (!menu || !menu.classList.contains('visible')) return;
+  if (!['ArrowDown','ArrowUp','Home','End'].includes(e.key)) return;
+  const items = Array.from(menu.querySelectorAll('.menu-item')).filter(el => !el.hasAttribute('hidden'));
+  if (!items.length) return;
+  const cur = items.indexOf(document.activeElement);
+  let next = cur;
+  if (e.key === 'ArrowDown') next = cur < 0 ? 0 : (cur + 1) % items.length;
+  else if (e.key === 'ArrowUp') next = cur < 0 ? items.length - 1 : (cur - 1 + items.length) % items.length;
+  else if (e.key === 'Home') next = 0;
+  else if (e.key === 'End') next = items.length - 1;
+  e.preventDefault();
+  items[next].focus();
+});
 
 // ─────────────────────────────────────────────
 //  BREATHING ANIMATION
