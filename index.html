@@ -522,6 +522,68 @@
   .pathway-more-toggle:hover { color: var(--deep-forest); }
   .pathway-deep { margin-top: 22px; }
 
+  /* ── Daily audio player ── */
+  .audio-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 30px 22px;
+    padding: 14px 16px;
+    background: rgba(107,140,110,0.08);
+    border-radius: 4px;
+  }
+  .audio-block[hidden] { display: none; }
+  .audio-play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(196,146,58,0.5);
+    background: var(--cream);
+    color: var(--deep-forest);
+    font-size: 1.05rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .audio-play-btn:hover {
+    background: var(--deep-forest);
+    color: var(--gold-light);
+    border-color: var(--gold);
+  }
+  .audio-meta { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .audio-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .audio-progress-wrap { display: flex; align-items: center; gap: 10px; }
+  .audio-progress-bar {
+    flex: 1;
+    height: 3px;
+    background: rgba(107,140,110,0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .audio-progress-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0;
+    transition: width 0.12s linear;
+  }
+  .audio-time {
+    font-size: 0.7rem;
+    color: var(--stone);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
   /* ── Breathing animation ── */
   .breath-guide {
     display: flex;
@@ -1840,6 +1902,21 @@
     <div class="today-card" id="todayCard">
       <div id="conditionBanner"></div>
       <div id="bookQuoteArea"></div>
+      <div class="audio-block" id="audioBlock" hidden>
+        <button class="audio-play-btn" id="audioPlayBtn" type="button" onclick="toggleDailyAudio()" aria-label="Play today's audio">
+          <span class="audio-play-icon" id="audioPlayIcon">▶</span>
+        </button>
+        <div class="audio-meta">
+          <div class="audio-label">Today's practice — <span id="audioConditionLabel">—</span></div>
+          <div class="audio-progress-wrap">
+            <div class="audio-progress-bar" id="audioProgressBar" onclick="seekDailyAudio(event)">
+              <div class="audio-progress-fill" id="audioProgressFill"></div>
+            </div>
+            <div class="audio-time"><span id="audioCurrent">0:00</span> / <span id="audioDuration">–:––</span></div>
+          </div>
+        </div>
+        <audio id="dailyAudio" preload="metadata"></audio>
+      </div>
       <div id="breathAnchor"></div>
       <div class="prompt-area">
         <div class="prompt-label">Today's Reflection Prompt</div>
@@ -2674,6 +2751,75 @@ function initPractice() {
   renderCheckinList();
   renderStreak();
   setTimeout(_showAudioHint, 2500);
+  setupDailyAudio();
+}
+
+function setupDailyAudio() {
+  const block = document.getElementById('audioBlock');
+  const audio = document.getElementById('dailyAudio');
+  if (!block || !audio || !todayCondition) return;
+  audio.pause();
+  audio.removeAttribute('src');
+  audio.load();
+  document.getElementById('audioPlayIcon').textContent = '▶';
+  document.getElementById('audioCurrent').textContent = '0:00';
+  document.getElementById('audioDuration').textContent = '–:––';
+  document.getElementById('audioProgressFill').style.width = '0';
+  block.hidden = true;
+  const slug = (todayCondition.histClass || '').replace('hist-','');
+  if (!slug) return;
+  const src = `/audio/wbh-${slug}.m4a`;
+  fetch(src, { method: 'HEAD' }).then(r => {
+    if (!r.ok) return;
+    audio.src = src;
+    document.getElementById('audioConditionLabel').textContent = todayCondition.name;
+    block.hidden = false;
+  }).catch(() => {});
+  audio.onloadedmetadata = () => {
+    document.getElementById('audioDuration').textContent = fmtAudioTime(audio.duration);
+  };
+  audio.ontimeupdate = () => {
+    document.getElementById('audioCurrent').textContent = fmtAudioTime(audio.currentTime);
+    const pct = audio.duration ? (audio.currentTime / audio.duration * 100) : 0;
+    document.getElementById('audioProgressFill').style.width = pct + '%';
+  };
+  audio.onended = () => {
+    document.getElementById('audioPlayIcon').textContent = '▶';
+    if (window.plausible) window.plausible('Audio Completed', { props: { condition: todayCondition.name } });
+  };
+}
+
+function toggleDailyAudio() {
+  const audio = document.getElementById('dailyAudio');
+  const icon = document.getElementById('audioPlayIcon');
+  if (!audio || !audio.src) return;
+  if (audio.paused) {
+    const firstPlay = audio.currentTime < 0.5;
+    audio.play().then(() => {
+      icon.textContent = '⏸';
+      if (firstPlay && window.plausible) {
+        window.plausible('Audio Played', { props: { condition: todayCondition.name } });
+      }
+    }).catch(e => console.warn('Audio play blocked:', e));
+  } else {
+    audio.pause();
+    icon.textContent = '▶';
+  }
+}
+
+function seekDailyAudio(e) {
+  const audio = document.getElementById('dailyAudio');
+  if (!audio || !audio.duration) return;
+  const bar = e.currentTarget.getBoundingClientRect();
+  const pct = Math.max(0, Math.min(1, (e.clientX - bar.left) / bar.width));
+  audio.currentTime = pct * audio.duration;
+}
+
+function fmtAudioTime(s) {
+  if (!isFinite(s)) return '0:00';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2,'0')}`;
 }
 
 // ─────────────────────────────────────────────
