@@ -1,11 +1,5 @@
-const webpush = require('web-push');
-const { getStore } = require('@netlify/blobs');
-
-webpush.setVapidDetails(
-  'mailto:danieljahearn@gmail.com',
-  process.env.VAPID_PUBLIC_KEY,
-  process.env.VAPID_PRIVATE_KEY
-);
+import webpush from 'web-push';
+import { getStore } from '@netlify/blobs';
 
 const CONDITIONS = ['Safety', 'Attunement', 'Soothing', 'Expressed Delight', 'Exploration'];
 
@@ -58,13 +52,22 @@ function payloadForUser(now, createdIso) {
   return DAILY[condition][variant];
 }
 
-exports.handler = async () => {
+export default async () => {
+  webpush.setVapidDetails(
+    'mailto:danieljahearn@gmail.com',
+    Netlify.env.get('VAPID_PUBLIC_KEY'),
+    Netlify.env.get('VAPID_PRIVATE_KEY')
+  );
+
   const now = new Date();
 
   try {
     const store = getStore({ name: 'push-subscriptions', consistency: 'strong' });
     const { blobs } = await store.list();
-    if (!blobs.length) return { statusCode: 200, body: 'No subscribers' };
+    if (!blobs.length) {
+      console.log('push-send: no subscribers');
+      return new Response('No subscribers');
+    }
 
     let sent = 0, removed = 0;
     await Promise.allSettled(
@@ -76,7 +79,7 @@ exports.handler = async () => {
           const payload = JSON.stringify(payloadForUser(now, created));
           await webpush.sendNotification(subscription, payload);
           sent++;
-        } catch(e) {
+        } catch (e) {
           if (e.statusCode === 410 || e.statusCode === 404) {
             await store.delete(key).catch(() => {});
             removed++;
@@ -87,10 +90,16 @@ exports.handler = async () => {
       })
     );
 
-    console.log(`Push sent: ${sent}, removed stale: ${removed}`);
-    return { statusCode: 200, body: JSON.stringify({ sent, removed }) };
-  } catch(e) {
+    console.log(`push-send: sent ${sent}, removed stale ${removed}`);
+    return new Response(JSON.stringify({ sent, removed }), {
+      headers: { 'Content-Type': 'application/json' }
+    });
+  } catch (e) {
     console.error('push-send error:', e);
-    return { statusCode: 500, body: 'Error' };
+    return new Response('Error', { status: 500 });
   }
+};
+
+export const config = {
+  schedule: '0 16 * * *'
 };
