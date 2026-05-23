@@ -2113,7 +2113,7 @@
       </div>
       <div class="closing-line" id="closingLine">See you tomorrow.</div>
       <div class="email-pull" id="emailPull">
-        <div class="email-pull-text">A short note from Daniel, each Sunday. One read. No spam.</div>
+        <div class="email-pull-text">A reflection on Tuesdays and a shorter note midweek — on attachment and parenting teens. No spam, unsubscribe anytime.</div>
         <form class="email-pull-form" onsubmit="submitEmailPull(event)">
           <input type="email" id="emailPullInput" placeholder="you@example.com" required autocomplete="email">
           <button type="submit" id="emailPullBtn">Subscribe</button>
@@ -2569,8 +2569,6 @@ function skipDay() { document.getElementById('todayCard').style.display='none'; 
 
 function maybeShowEmailPull() {
   if (lsGet('wbh_email_asked')) return;
-  const streak = parseInt(lsGet('wbh_streak') || '0', 10);
-  if (streak < 2) return;
   const pull = document.getElementById('emailPull');
   if (!pull) return;
   setTimeout(() => pull.classList.add('visible'), 1800);
