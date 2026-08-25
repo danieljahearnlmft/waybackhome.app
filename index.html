@@ -1069,6 +1069,26 @@
     margin-bottom: 6px;
   }
   .already-done p { font-size: 0.85rem; color: var(--stone); line-height: 1.6; }
+  .done-aside {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(28,43,30,0.09);
+  }
+  .done-aside p { font-size: 0.82rem; color: var(--stone); line-height: 1.6; }
+  .done-aside a {
+    color: var(--deep-forest);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sage);
+    padding-bottom: 1px;
+  }
+  .done-aside a:hover { border-bottom-color: var(--deep-forest); }
+  .done-aside .done-aside-note {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    color: var(--stone);
+    opacity: 0.8;
+  }
 
   /* ── Modal ── */
   .modal-overlay {
@@ -2535,6 +2555,11 @@ function renderAlreadyDone() {
       <h3>Practice complete for today.</h3>
       <p>You've already checked in today. Come back tomorrow for a new condition and prompt.</p>
       ${entry ? `<div style="margin-top:14px;font-size:0.82rem;color:var(--stone);">Today's condition: <strong>${entry.condition || ''}</strong></div>` : ''}
+      <div class="done-aside">
+        <p>Some parents do this work alongside others.
+        <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer">Parent support groups</a>
+        <span class="done-aside-note">Small groups on Zoom, capped at 12, open to parents anywhere in the country.</span></p>
+      </div>
     </div>`;
 }
 function renderCheckinList() {
