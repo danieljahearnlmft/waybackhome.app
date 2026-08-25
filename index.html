@@ -1069,26 +1069,6 @@
     margin-bottom: 6px;
   }
   .already-done p { font-size: 0.85rem; color: var(--stone); line-height: 1.6; }
-  .done-aside {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(28,43,30,0.09);
-  }
-  .done-aside p { font-size: 0.82rem; color: var(--stone); line-height: 1.6; }
-  .done-aside a {
-    color: var(--deep-forest);
-    text-decoration: none;
-    border-bottom: 1px solid var(--sage);
-    padding-bottom: 1px;
-  }
-  .done-aside a:hover { border-bottom-color: var(--deep-forest); }
-  .done-aside .done-aside-note {
-    display: block;
-    margin-top: 4px;
-    font-size: 0.75rem;
-    color: var(--stone);
-    opacity: 0.8;
-  }
 
   /* ── Modal ── */
   .modal-overlay {
@@ -1406,6 +1386,32 @@
     transition: opacity 1.4s ease-in;
   }
   .closing-line.visible { display: block; opacity: 0.85; }
+
+  /* ── Parent groups aside (post-practice, throttled) ── */
+  .groups-aside {
+    display: none;
+    margin: 22px 30px 8px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(28,43,30,0.09);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .groups-aside.visible { display: block; opacity: 1; }
+  .groups-aside p { font-size: 0.82rem; color: var(--stone); line-height: 1.6; }
+  .groups-aside a {
+    color: var(--deep-forest);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sage);
+    padding-bottom: 1px;
+  }
+  .groups-aside a:hover { border-bottom-color: var(--deep-forest); }
+  .groups-aside-note {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
 
   /* ── Earned email opt-in (post-Day-2) ── */
   .email-pull {
@@ -1746,6 +1752,9 @@
   </a>
   <a class="menu-item" href="/conditions/" role="menuitem">
     <span class="menu-item-icon">✦</span><span class="menu-item-label">The five conditions</span>
+  </a>
+  <a class="menu-item" href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" role="menuitem">
+    <span class="menu-item-icon">◎</span><span class="menu-item-label">Parent groups</span>
   </a>
 </div>
 
@@ -2132,6 +2141,11 @@
         </div>
       </div>
       <div class="closing-line" id="closingLine">See you tomorrow.</div>
+      <div class="groups-aside" id="groupsAside">
+        <p>Some parents do this work alongside others.
+        <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer">Parent support groups</a>
+        <span class="groups-aside-note">Ongoing, Mondays at 5pm PST. Small groups on Zoom, capped at 12.</span></p>
+      </div>
       <div class="email-pull" id="emailPull">
         <div class="email-pull-text">A reflection on Tuesdays and a shorter note midweek — on attachment and parenting teens. No spam, unsubscribe anytime.</div>
         <iframe src="https://danieljahearnlmft.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white; max-width:100%;" frameborder="0" scrolling="no"></iframe>
@@ -2555,11 +2569,6 @@ function renderAlreadyDone() {
       <h3>Practice complete for today.</h3>
       <p>You've already checked in today. Come back tomorrow for a new condition and prompt.</p>
       ${entry ? `<div style="margin-top:14px;font-size:0.82rem;color:var(--stone);">Today's condition: <strong>${entry.condition || ''}</strong></div>` : ''}
-      <div class="done-aside">
-        <p>Some parents do this work alongside others.
-        <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer">Parent support groups</a>
-        <span class="done-aside-note">Small groups on Zoom, capped at 12, open to parents anywhere in the country.</span></p>
-      </div>
     </div>`;
 }
 function renderCheckinList() {
@@ -2596,6 +2605,23 @@ function maybeShowEmailPull() {
   setTimeout(() => {
     pull.classList.add('visible');
     lsSet('wbh_email_asked', '1');
+  }, 1800);
+}
+
+function maybeShowGroupsAside() {
+  const el = document.getElementById('groupsAside');
+  if (!el) return;
+  // Don't stack two asks: the email opt-in takes precedence the one time it shows.
+  if (!lsGet('wbh_email_asked')) return;
+  // Only once there's some practice history behind them.
+  const completed = Object.keys(_cache).filter(k => k.startsWith('wbh_checkin_')).length;
+  if (completed < 2) return;
+  // At most once every few days.
+  const last = parseInt(lsGet('wbh_groups_shown') || '0', 10);
+  if (last && (Date.now() - last) < 3 * 24 * 60 * 60 * 1000) return;
+  setTimeout(() => {
+    el.classList.add('visible');
+    lsSet('wbh_groups_shown', String(Date.now()));
   }, 1800);
 }
 
@@ -2636,6 +2662,7 @@ function completePracticeShort() {
   const closing = document.getElementById('closingLine');
   if (closing) setTimeout(() => closing.classList.add('visible'), 600);
   maybeShowEmailPull();
+  maybeShowGroupsAside();
   renderCheckinList();
   if (window.plausible) window.plausible('Practice Complete Short', { props: { condition: todayCondition.name } });
 }
@@ -2681,6 +2708,7 @@ async function submitCheckin() {
     const closing = document.getElementById('closingLine');
     if (closing) setTimeout(() => closing.classList.add('visible'), 2400);
     maybeShowEmailPull();
+    maybeShowGroupsAside();
     renderCheckinList();
     if (window.plausible) window.plausible('Practice Complete Deep', { props: { condition: todayCondition.name } });
   } catch(err) {
@@ -2923,6 +2951,8 @@ function initPractice() {
   document.getElementById('visStrip').style.display = '';
   const emailPullEl = document.getElementById('emailPull');
   if (emailPullEl) { emailPullEl.classList.remove('visible'); emailPullEl.style.display = ''; }
+  const groupsAsideEl = document.getElementById('groupsAside');
+  if (groupsAsideEl) groupsAsideEl.classList.remove('visible');
   const strip = document.getElementById('visStrip');
   document.getElementById('visStripText').textContent = `Guided visualization — ${todayCondition.name}`;
   if (todayCondition.youtubeUrl) {
