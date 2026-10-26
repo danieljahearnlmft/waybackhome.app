@@ -1,9 +1,9 @@
 const CONDITION_CONTEXTS = {
-  Safety: "creating the felt sense of not being alone — a steady, safe presence that settles the nervous system before any words are spoken",
-  Attunement: "accurate mirroring of the teen's inner world — being truly seen without being fixed, known without being judged",
-  Soothing: "co-regulation — the parent's own settled body offering the teen's nervous system an invitation to return to calm",
-  'Expressed Delight': "micro-moments of joy — the light in your eyes when your teen enters the room, the pause to notice who they are rather than what they did",
-  Exploration: "holding steady while the teen moves outward — available for return, not holding back, the paradox of loving someone toward their freedom"
+  Safety: "creating the felt sense of not being alone, a steady, safe presence that settles the nervous system before any words are spoken",
+  Attunement: "accurate mirroring of the teen's inner world, being truly seen without being fixed, known without being judged",
+  Soothing: "co-regulation, the parent's own settled body offering the teen's nervous system an invitation to return to calm",
+  'Expressed Delight': "micro-moments of joy, the light in your eyes when your teen enters the room, the pause to notice who they are rather than what they did",
+  Exploration: "holding steady while the teen moves outward, available for return, not holding back, the paradox of loving someone toward their freedom"
 };
 
 exports.handler = async (event) => {
@@ -30,7 +30,7 @@ exports.handler = async (event) => {
         max_tokens: 380,
         messages: [{
           role: 'user',
-          content: `You are writing a brief guided visualization for a parent doing daily reflective practice on secure attachment with their teenager. This is grounded in the IAT (Ideal Parent Figure) framework from "The Way Back Home" by Daniel Ahearn, LMFT.
+          content: `You are writing a brief guided visualization for a parent doing daily reflective practice on secure attachment with their teenager. This is grounded in the IAT (Ideal Parent Figure) framework from "The Way Back Home" by Daniel J. Ahearn, LMFT.
 
 Today's condition: ${condition}
 What this condition opens toward: ${context}
@@ -38,11 +38,12 @@ What this condition opens toward: ${context}
 Write a guided visualization of 4-5 sentences. Requirements:
 - Open with one grounding instruction (body, breath, or sensory anchor)
 - Invite a specific felt sense or image directly related to ${condition}
-- Let it unfold slowly — don't rush to the insight
+- Let it unfold slowly, don't rush to the insight
 - End with a gentle bridge toward the reflection ahead ("From here, you might notice..." or similar)
 - Second person, present tense
 - Quiet, unhurried, literary prose. No labels, no headers, no lists.
-- 90-130 words.`
+- 90-130 words.
+- Never use em dashes or en dashes.`
         }]
       })
     });
