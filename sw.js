@@ -1,4 +1,4 @@
-const CACHE = 'wbh-v17';
+const CACHE = 'wbh-v18';
 const PRECACHE = ['/ambient.mp3', '/manifest.json', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {
@@ -23,7 +23,7 @@ self.addEventListener('fetch', e => {
   const isHTML = url.pathname === '/' || url.pathname.endsWith('.html');
 
   if (isHTML) {
-    // Network-first for HTML — always get fresh app code
+    // Network-first for HTML, always get fresh app code
     e.respondWith(
       fetch(e.request).then(res => {
         if (res.ok) {

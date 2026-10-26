@@ -8,18 +8,18 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Way Back Home">
 <meta name="theme-color" content="#1C2B1E">
-<title>The Way Back Home — Daily Practice for Parents of Teens</title>
-<meta name="description" content="Your teen isn't pulling away from you. They're waiting to see if you'll come toward them. A free daily practice for parents of teens — five conditions of secure attachment, by Daniel Ahearn, LMFT.">
-<meta property="og:title" content="The Way Back Home — A Daily Practice for Parents">
-<meta property="og:description" content="The teen years aren't something to survive — they're your most powerful window for repair. A free daily practice for parents of teens by Daniel Ahearn, LMFT.">
+<title>The Way Back Home: Daily Practice for Parents of Teens</title>
+<meta name="description" content="Your teen isn't pulling away from you. They're waiting to see if you'll come toward them. A free daily practice for parents of teens, five conditions of secure attachment, by Daniel J. Ahearn, LMFT.">
+<meta property="og:title" content="The Way Back Home: A Daily Practice for Parents">
+<meta property="og:description" content="The teen years aren't something to survive, they're your most powerful window for repair. A free daily practice for parents of teens by Daniel J. Ahearn, LMFT.">
 <meta property="og:url" content="https://waybackhome.app">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://waybackhome.app/cond-exploration.jpg">
 <meta property="og:image:width" content="1320">
 <meta property="og:image:height" content="990">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Way Back Home — A Daily Practice for Parents">
-<meta name="twitter:description" content="The teen years aren't something to survive — they're your most powerful window for repair. A free daily practice for parents of teens.">
+<meta name="twitter:title" content="The Way Back Home: A Daily Practice for Parents">
+<meta name="twitter:description" content="The teen years aren't something to survive, they're your most powerful window for repair. A free daily practice for parents of teens.">
 <meta name="twitter:image" content="https://waybackhome.app/cond-exploration.jpg">
 <link rel="canonical" href="https://waybackhome.app">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -244,7 +244,7 @@
     min-height: calc(100vh - 56px);
   }
 
-  /* Condition hero — full-width immersive card */
+  /* Condition hero, full-width immersive card */
   .home-hero {
     position: relative;
     height: 56vh;
@@ -408,6 +408,29 @@
   }
   .home-about-link:hover { color: var(--stone); }
 
+  .home-invitation {
+    display: block;
+    margin: 36px auto 0;
+    padding: 6px 8px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--sage);
+    opacity: 0.85;
+    letter-spacing: 0.01em;
+    text-align: center;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .home-invitation:hover { opacity: 1; color: var(--forest-mid); }
+  .home-invitation .glyph {
+    margin-right: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    color: var(--sage-light);
+    opacity: 0.7;
+  }
+
   /* ── Pathway screens ── */
   .pathway-screen {
     display: none;
@@ -452,6 +475,269 @@
     line-height: 1.65;
     text-align: center;
     padding: 0 12px;
+  }
+
+  /* ── R.E.A.L. strip (appears on state screens) ── */
+  .real-strip { margin: 26px 0 8px; padding: 18px 18px 14px; border: 1px solid rgba(28,43,30,0.14); border-radius: 12px; background: rgba(28,43,30,0.03); }
+  .real-strip-head { font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--stone); margin-bottom: 12px; }
+  .real-strip-row { display: flex; align-items: baseline; gap: 14px; padding: 7px 0; opacity: 0.45; }
+  .real-strip-row.on { opacity: 1; }
+  .real-strip-letter { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.7rem; line-height: 1; width: 1.4rem; flex: none; }
+  .real-strip-row[data-l="R"] .real-strip-letter { color: #3F6E4B; }
+  .real-strip-row[data-l="E"] .real-strip-letter { color: #8A6420; }
+  .real-strip-row[data-l="A"] .real-strip-letter { color: #3B5F85; }
+  .real-strip-row[data-l="L"] .real-strip-letter { color: #A04A32; }
+  .real-strip-text { font-size: 0.95rem; line-height: 1.45; color: var(--ink); }
+  .real-strip-foot { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(28,43,30,0.1); font-size: 0.8rem; line-height: 1.5; color: var(--stone); }
+  .real-strip-foot a { color: var(--forest-mid); text-decoration: underline; text-underline-offset: 3px; }
+  .rw-sub { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.2rem; color: var(--stone); margin: -8px 0 16px; }
+  .rw-authority { font-size: 0.9rem; line-height: 1.6; color: var(--ink); opacity: 0.8; border-left: 3px solid var(--gold); padding: 4px 0 4px 14px; margin: 0 0 24px; }
+  /* ── R.E.A.L. Guided Walk ── */
+  .rw-container { max-width: 620px; }
+  .rw-progress {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .rw-dot {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--stone-light);
+    background: transparent;
+    border: 1px solid rgba(139, 131, 120, 0.3);
+    transition: all 0.25s;
+  }
+  .rw-dot.done {
+    color: var(--sage);
+    border-color: var(--sage);
+    background: rgba(107, 140, 110, 0.12);
+  }
+  .rw-dot.active {
+    color: var(--cream);
+    background: var(--deep-forest);
+    border-color: var(--deep-forest);
+    transform: scale(1.08);
+  }
+
+  .rw-step { animation: rwFadeIn 0.4s ease-out; }
+  @keyframes rwFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .rw-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .rw-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 2.4rem;
+    color: var(--deep-forest);
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .rw-lede {
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: var(--ink);
+    opacity: 0.86;
+    margin-bottom: 30px;
+  }
+  .rw-lede em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05em;
+  }
+
+  .rw-breath {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    margin: 12px 0 28px;
+  }
+  .rw-pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--deep-forest);
+    opacity: 0.85;
+    text-align: center;
+    padding: 18px 22px;
+    background: rgba(28, 43, 30, 0.05);
+    border-left: 3px solid var(--sage);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 28px;
+  }
+
+  .rw-label {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--stone);
+    margin-bottom: 10px;
+  }
+  .rw-textarea {
+    width: 100%;
+    padding: 16px 18px;
+    background: var(--warm-white);
+    border: 1px solid rgba(139, 131, 120, 0.28);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: var(--ink);
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s;
+  }
+  .rw-textarea:focus {
+    outline: none;
+    border-color: var(--sage);
+  }
+  .rw-textarea::placeholder { color: var(--stone-light); font-style: italic; }
+
+  .rw-companion {
+    margin-top: 22px;
+    padding: 20px 22px;
+    background: rgba(107, 140, 110, 0.08);
+    border-left: 3px solid var(--sage-light);
+    border-radius: 0 6px 6px 0;
+    animation: rwFadeIn 0.4s ease-out;
+  }
+  .rw-companion-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--sage);
+    margin-bottom: 8px;
+    opacity: 0.85;
+  }
+  .rw-companion-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--deep-forest);
+    opacity: 0.9;
+  }
+
+  .rw-gestures {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .rw-gesture {
+    padding: 16px 18px;
+    background: var(--warm-white);
+    border: 1px solid rgba(139, 131, 120, 0.24);
+    border-left: 3px solid var(--sage-light);
+    border-radius: 0 6px 6px 0;
+  }
+  .rw-gesture-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--sage);
+    margin-bottom: 6px;
+  }
+  .rw-gesture-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: var(--deep-forest);
+    opacity: 0.88;
+  }
+
+  .rw-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .rw-nav-single { justify-content: center; }
+  .rw-btn-primary {
+    background: var(--deep-forest);
+    color: var(--cream);
+    border: 1px solid var(--deep-forest);
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .rw-btn-primary:hover:not(:disabled) { background: var(--forest-mid); }
+  .rw-btn-primary:disabled { opacity: 0.55; cursor: default; }
+  .rw-btn-secondary {
+    background: none;
+    border: none;
+    color: var(--stone);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.84rem;
+    cursor: pointer;
+    padding: 8px 6px;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .rw-btn-secondary:hover { color: var(--deep-forest); }
+  .rw-skip {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.78rem;
+  }
+  .rw-skip a {
+    color: var(--stone-light);
+    font-style: italic;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .rw-skip a:hover { color: var(--stone); }
+
+  .rw-close { text-align: center; padding: 40px 0 20px; }
+  .rw-close-glyph {
+    font-size: 1.4rem;
+    color: var(--sage-light);
+    opacity: 0.7;
+    margin-bottom: 18px;
+  }
+  .rw-close-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--deep-forest);
+    margin-bottom: 20px;
+  }
+  .rw-close-sub {
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: var(--stone);
+    max-width: 440px;
+    margin: 0 auto 32px;
   }
 
   /* ── Compact pathway (in-the-moment) ── */
@@ -1706,7 +1992,7 @@
     <div class="onboard-card active" data-card="1">
       <div class="onboard-eyebrow">Welcome</div>
       <h2 class="onboard-heading">The teen years are your most powerful window for repair.</h2>
-      <p class="onboard-body">A daily practice for parents who want to show up differently — not perfectly. Just more present.</p>
+      <p class="onboard-body">A daily practice for parents who want to show up differently, not perfectly. Just more present.</p>
       <button class="onboard-next" onclick="nextOnboardingCard()">Next</button>
     </div>
     <div class="onboard-card" data-card="2">
@@ -1718,7 +2004,7 @@
     <div class="onboard-card" data-card="3">
       <div class="onboard-eyebrow">Your privacy</div>
       <h2 class="onboard-heading">What you write stays yours.</h2>
-      <p class="onboard-body">Your journal lives on your device. When you ask for a reflection, what you wrote is sent to Claude to respond — not stored, not used for training, not sold.</p>
+      <p class="onboard-body">Your journal lives on your device. When you ask for a reflection, what you wrote is sent to Claude, Anthropic's AI, to write a response. This app does not save it, and it is not sold.</p>
       <button class="onboard-next primary" onclick="finishOnboarding(false)">Begin the practice</button>
     </div>
   </div>
@@ -1753,6 +2039,9 @@
   <a class="menu-item" href="/conditions/" role="menuitem">
     <span class="menu-item-icon">✦</span><span class="menu-item-label">The five conditions</span>
   </a>
+  <a class="menu-item" href="/real/" role="menuitem">
+    <span class="menu-item-icon">❯</span><span class="menu-item-label">The R.E.A.L. Method</span>
+  </a>
   <a class="menu-item" href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" role="menuitem">
     <span class="menu-item-icon">◎</span><span class="menu-item-label">Parent groups</span>
   </a>
@@ -1761,12 +2050,13 @@
 <!-- About drawer -->
 <div class="about-drawer" id="aboutDrawer" style="display:none">
   <div class="about-drawer-title">The teen years aren't something to survive. They're your most powerful window for repair.</div>
-  <div class="about-drawer-text">Created by <strong>Daniel Ahearn, LMFT</strong> — IAT-certified clinician, trainer, and author. This practice is grounded in exploring the five conditions of secure attachment from his book <em>The Way Back Home</em>.</div>
+  <div class="about-drawer-text">Created by <strong>Daniel J. Ahearn, LMFT</strong>, IAT-certified clinician, trainer, and author. This practice is grounded in exploring the five conditions of secure attachment from his book <em>The Way Back Home</em>.</div>
   <div class="about-drawer-links">
     <a href="https://www.amazon.com/Way-Back-Home-Healing-Attachment-ebook/dp/B0GLF2JH8T" target="_blank" rel="noopener noreferrer" class="about-drawer-link">Get the Book</a>
     <a href="https://danieljahearnlmft.substack.com" target="_blank" rel="noopener noreferrer" class="about-drawer-link">Substack</a>
     <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer" class="about-drawer-link">Parent Groups</a>
     <a href="/conditions/" class="about-drawer-link">The five conditions</a>
+    <a href="/real/" class="about-drawer-link">The R.E.A.L. Method</a>
     <a href="https://danieljahearnlmft.com" target="_blank" rel="noopener noreferrer" class="about-drawer-link">danieljahearnlmft.com</a>
   </div>
 </div>
@@ -1779,7 +2069,7 @@
     <div class="home-hero-overlay" id="homeHeroOverlay"></div>
     <div class="home-hero-content">
       <div class="home-hero-eyebrow" id="homeHeroEyebrow">Today's Condition</div>
-      <div class="home-hero-condition" id="homeHeroCondition">—</div>
+      <div class="home-hero-condition" id="homeHeroCondition">Today</div>
       <div class="home-hero-tagline" id="homeHeroTagline"></div>
       <div class="home-hero-quote">The distance between you and your teen isn't failure. It's the doorway.</div>
       <div id="homeHeroAction"></div>
@@ -1806,6 +2096,7 @@
         <span>Things are good</span><span class="home-btn-arrow">→</span>
       </button>
     </div>
+    <a class="home-invitation" href="/real/"><span class="glyph">❯</span>the way back home is always right here</a>
     <a class="home-about-link" href="/about/">About · Book · Work with Daniel</a>
   </div>
 </div>
@@ -1815,7 +2106,7 @@
   <div class="pathway-container">
     <div class="pathway-eyebrow">Before You Reach Them</div>
     <div class="pathway-title">I'm Activated</div>
-    <div class="pathway-framing">You can't regulate your teen until you regulate yourself. Start here — even 60 seconds helps.</div>
+    <div class="pathway-framing">You can't regulate your teen until you regulate yourself. Start here, even 60 seconds helps.</div>
 
     <div class="breath-guide">
       <div class="breath-ring-wrap">
@@ -1829,7 +2120,7 @@
     <div class="grounding-steps">
       <div class="grounding-item">
         <div class="grounding-num">1</div>
-        <div class="grounding-text">Notice where you feel this in your body. Name it without judgment — chest, jaw, shoulders.</div>
+        <div class="grounding-text">Notice where you feel this in your body. Name it without judgment, chest, jaw, shoulders.</div>
       </div>
       <div class="grounding-item">
         <div class="grounding-num">2</div>
@@ -1837,13 +2128,16 @@
       </div>
       <div class="grounding-item">
         <div class="grounding-num">3</div>
-        <div class="grounding-text">Keep breathing until there's even a small shift. You don't need to be calm — just slightly less reactive.</div>
+        <div class="grounding-text">Keep breathing until there's even a small shift. You don't need to be calm, just slightly less reactive.</div>
       </div>
       <div class="grounding-item">
         <div class="grounding-num">4</div>
         <div class="grounding-text">When you're ready: be near your teen. No agenda. No fixing. Your presence is the intervention.</div>
       </div>
     </div>
+
+    <div class="real-strip" role="group" aria-label="The R.E.A.L. method"><div class="real-strip-head">The R.E.A.L. method</div><div class="real-strip-row on" data-l="R"><span class="real-strip-letter">R</span><span class="real-strip-text">Stay regulated.</span></div><div class="real-strip-row on" data-l="E"><span class="real-strip-letter">E</span><span class="real-strip-text">Look at your own story.</span></div><div class="real-strip-row" data-l="A"><span class="real-strip-letter">A</span><span class="real-strip-text">The story your teen may have.</span></div><div class="real-strip-row" data-l="L"><span class="real-strip-letter">L</span><span class="real-strip-text">Find a way to connect and support the relationship.</span></div><div class="real-strip-foot">Working collaboratively does not mean giving up your authority as the parent. R.E.A.L. is from <a href="https://danieljahearnlmft.com/the-way-back-home/" target="_blank" rel="noopener noreferrer"><em>The Way Back Home</em></a>.</div></div>
+    <button class="rw-btn-primary" style="display:block;margin:20px auto 8px;" onclick="startWalk('R')">Walk through R.E.A.L. with me →</button>
 
     <div class="pathway-note">Your nervous system is the intervention. Regulation before relationship.</div>
   </div>
@@ -1864,21 +2158,24 @@
       <div class="compact-move">Go sit in the same room. Don't speak first. Your steady, quiet presence is what makes it safe to come back.</div>
     </div>
 
+    <div class="real-strip" role="group" aria-label="The R.E.A.L. method"><div class="real-strip-head">The R.E.A.L. method</div><div class="real-strip-row on" data-l="R"><span class="real-strip-letter">R</span><span class="real-strip-text">Stay regulated.</span></div><div class="real-strip-row on" data-l="E"><span class="real-strip-letter">E</span><span class="real-strip-text">Look at your own story.</span></div><div class="real-strip-row on" data-l="A"><span class="real-strip-letter">A</span><span class="real-strip-text">The story your teen may have.</span></div><div class="real-strip-row" data-l="L"><span class="real-strip-letter">L</span><span class="real-strip-text">Find a way to connect and support the relationship.</span></div><div class="real-strip-foot">Working collaboratively does not mean giving up your authority as the parent. R.E.A.L. is from <a href="https://danieljahearnlmft.com/the-way-back-home/" target="_blank" rel="noopener noreferrer"><em>The Way Back Home</em></a>.</div></div>
+    <button class="rw-btn-primary" style="display:block;margin:20px auto 8px;" onclick="startWalk('R')">Walk through R.E.A.L. with me →</button>
+
     <button class="pathway-more-toggle" onclick="toggleDeep('shutdown', this)">
       <span class="pathway-more-text">More on this →</span>
     </button>
 
     <div class="pathway-deep" id="shutdownDeep" hidden>
-      <div class="pathway-framing">Shutdown is a nervous system response, not a choice. Your teen isn't pushing you away — they're protecting themselves. Your job right now is presence, not pursuit.</div>
+      <div class="pathway-framing">Shutdown is a nervous system response, not a choice. Your teen isn't pushing you away. They're protecting themselves. Your job right now is presence, not pursuit.</div>
 
       <div class="attunement-cards">
         <div class="attunement-card">
           <div class="attunement-card-label">Right now</div>
-          <div class="attunement-card-text">Stay nearby. Not hovering — just close. Your regulated, quiet presence is the intervention.</div>
+          <div class="attunement-card-text">Stay nearby. Not hovering, just close. Your regulated, quiet presence is the intervention.</div>
         </div>
         <div class="attunement-card">
           <div class="attunement-card-label">Resist the urge to</div>
-          <div class="attunement-card-text">Draw them out. Fix it. Fill the silence. Process what happened. Silence doesn't need solving — it needs space.</div>
+          <div class="attunement-card-text">Draw them out. Fix it. Fill the silence. Process what happened. Silence doesn't need solving, it needs space.</div>
         </div>
         <div class="attunement-card">
           <div class="attunement-card-label">When they surface</div>
@@ -1886,7 +2183,7 @@
         </div>
         <div class="attunement-card">
           <div class="attunement-card-label">Something that often helps</div>
-          <div class="attunement-card-text">Do something ordinary side by side — no eye contact required. Parallel presence says "I'm with you" without pressure.</div>
+          <div class="attunement-card-text">Do something ordinary side by side, no eye contact required. Parallel presence says "I'm with you" without pressure.</div>
         </div>
       </div>
 
@@ -1904,52 +2201,60 @@
     <div class="pathway-compact">
       <div class="compact-breath">
         <div class="compact-breath-dot"></div>
-        <div class="compact-breath-text">Three slow breaths before any words.</div>
+        <div class="compact-breath-text">Pause first. However you get there.</div>
       </div>
       <div class="compact-line">Ruptures aren't the failure. Unrepaired ruptures are.</div>
-      <div class="compact-move">Go in with curiosity, not correction. One question, said softly: <em>"What was going on for you?"</em> Then listen, all the way through.</div>
+      <div class="compact-move">Check in with yourself first, what just got activated in <em>you</em>? Then turn to your teen: <em>"Help me understand what just happened for you."</em> You may get it wrong. The try is what matters. Stay in the room.</div>
     </div>
+
+    <div class="real-strip" role="group" aria-label="The R.E.A.L. method"><div class="real-strip-head">The R.E.A.L. method</div><div class="real-strip-row on" data-l="R"><span class="real-strip-letter">R</span><span class="real-strip-text">Stay regulated.</span></div><div class="real-strip-row on" data-l="E"><span class="real-strip-letter">E</span><span class="real-strip-text">Look at your own story.</span></div><div class="real-strip-row on" data-l="A"><span class="real-strip-letter">A</span><span class="real-strip-text">The story your teen may have.</span></div><div class="real-strip-row on" data-l="L"><span class="real-strip-letter">L</span><span class="real-strip-text">Find a way to connect and support the relationship.</span></div><div class="real-strip-foot">Working collaboratively does not mean giving up your authority as the parent. R.E.A.L. is from <a href="https://danieljahearnlmft.com/the-way-back-home/" target="_blank" rel="noopener noreferrer"><em>The Way Back Home</em></a>.</div></div>
+    <button class="rw-btn-primary" style="display:block;margin:24px auto 8px;" onclick="startWalk('R')">Walk through R.E.A.L. with me →</button>
 
     <button class="pathway-more-toggle" onclick="toggleDeep('rupture', this)">
       <span class="pathway-more-text">The full R.E.A.L. method →</span>
     </button>
 
     <div class="pathway-deep" id="ruptureDeep" hidden>
-      <div class="pathway-framing">Four steps, in order.</div>
+      <div class="pathway-framing">Four steps, in order. Not a script, a pattern you can return to when things go sideways, and it still counts when your teen isn't ready to respond.</div>
 
       <div class="repair-steps">
         <div class="repair-step">
           <div class="repair-num">R</div>
           <div class="repair-content">
             <div class="repair-action">Regulate the Breath</div>
-            <div class="repair-text">Before anything else, pause. Three to five slow breaths. Feet on the ground. Soften your jaw. Their nervous system is watching yours — settle yours first.</div>
+            <div class="repair-text">Repair can't start from a flooded nervous system. Regulate is whatever brings you to a pause, three to five slow breaths, a splash of water on your face, a walk to the other room. You don't need to be calm, only more regulated than you were thirty seconds ago.</div>
+            <div class="repair-script">Pause first. Your teen's nervous system is watching yours.</div>
           </div>
         </div>
         <div class="repair-step">
           <div class="repair-num">E</div>
           <div class="repair-content">
             <div class="repair-action">Explore the Moment</div>
-            <div class="repair-text">Lead with curiosity, not correction. Don't defend, fix, or explain why they're wrong.</div>
-            <div class="repair-script">"What was going on for you?"</div>
+            <div class="repair-text">Before you turn toward your teen, turn toward yourself. What just happened in <em>you</em>? What got activated? Explore your own state of mind first, so when you come back to them you're not still riding the wave that just took you under.</div>
+            <div class="repair-script">"What just got activated in me?"</div>
           </div>
         </div>
         <div class="repair-step">
           <div class="repair-num">A</div>
           <div class="repair-content">
             <div class="repair-action">Attune with Empathy</div>
-            <div class="repair-text">Reflect what you heard. Understanding isn't agreement — it's the signal that they're not alone in this.</div>
-            <div class="repair-script">"It sounds like you felt ___ when I ___."</div>
+            <div class="repair-text">Now turn toward your teen. Try to understand what happened for them. You may get it wrong, the try is what matters. What your teen registers is that someone is attempting to know them. Empathy is not agreement; you can attune and still hold the limit.</div>
+            <div class="repair-script">"Help me understand what just happened for you."</div>
           </div>
         </div>
         <div class="repair-step">
           <div class="repair-num">L</div>
           <div class="repair-content">
             <div class="repair-action">Lean Back In</div>
-            <div class="repair-text">The gesture of return. Not a lecture, not a solution — just the signal: <em>I'm still here. We're still connected.</em></div>
-            <div class="repair-script">"I messed up. I'm sorry. Can we start over?"</div>
+            <div class="repair-text">The gesture of return, calibrated to what the moment needs. Sometimes it's an apology out loud. Sometimes it's sitting down next to them and staying in the room. Sometimes it's the smallest signal, a look, a touch, that says: <em>the relationship is still here.</em></div>
+            <div class="repair-script">"I'm sorry I raised my voice. I'm still here."</div>
           </div>
         </div>
       </div>
+
+      <a href="/real/" class="pathway-more-toggle" style="text-decoration:none;display:inline-block;margin-top:24px">
+        <span class="pathway-more-text">Read the full framework →</span>
+      </a>
 
       <div class="pathway-note">Securely attached kids don't have perfect parents. They have parents who repair.</div>
     </div>
@@ -1970,6 +2275,9 @@
       <div class="compact-line">Repair isn't being right. It's restoring connection.</div>
       <div class="compact-move">One phrase, said quietly: <em>"Help me understand what happened."</em> Or: <em>"Let me take responsibility for my part."</em></div>
     </div>
+
+    <div class="real-strip" role="group" aria-label="The R.E.A.L. method"><div class="real-strip-head">The R.E.A.L. method</div><div class="real-strip-row" data-l="R"><span class="real-strip-letter">R</span><span class="real-strip-text">Stay regulated.</span></div><div class="real-strip-row on" data-l="E"><span class="real-strip-letter">E</span><span class="real-strip-text">Look at your own story.</span></div><div class="real-strip-row on" data-l="A"><span class="real-strip-letter">A</span><span class="real-strip-text">The story your teen may have.</span></div><div class="real-strip-row on" data-l="L"><span class="real-strip-letter">L</span><span class="real-strip-text">Find a way to connect and support the relationship.</span></div><div class="real-strip-foot">Working collaboratively does not mean giving up your authority as the parent. R.E.A.L. is from <a href="https://danieljahearnlmft.com/the-way-back-home/" target="_blank" rel="noopener noreferrer"><em>The Way Back Home</em></a>.</div></div>
+    <button class="rw-btn-primary" style="display:block;margin:20px auto 8px;" onclick="startWalk('E')">Walk through R.E.A.L. with me →</button>
 
     <button class="pathway-more-toggle" onclick="toggleDeep('repair', this)">
       <span class="pathway-more-text">More phrases →</span>
@@ -2056,12 +2364,12 @@
     </button>
 
     <div class="pathway-deep" id="goodDeep" hidden>
-      <div class="pathway-framing">Good moments are worth tending. Connection deepens when delight is expressed — not just felt internally.</div>
+      <div class="pathway-framing">Good moments are worth tending. Connection deepens when delight is expressed, not just felt internally.</div>
 
       <div class="attunement-cards">
         <div class="attunement-card" style="border-left-color: var(--gold);">
           <div class="attunement-card-label" style="color: var(--gold);">Name it</div>
-          <div class="attunement-card-text">What is one thing about your teen right now that genuinely moves you? Not an achievement — something about who they are.</div>
+          <div class="attunement-card-text">What is one thing about your teen right now that genuinely moves you? Not an achievement, something about who they are.</div>
         </div>
         <div class="attunement-card" style="border-left-color: var(--gold);">
           <div class="attunement-card-label" style="color: var(--gold);">Let it show</div>
@@ -2095,12 +2403,12 @@
           <span class="audio-play-icon" id="audioPlayIcon">▶</span>
         </button>
         <div class="audio-meta">
-          <div class="audio-label">Today's practice — <span id="audioConditionLabel">—</span></div>
+          <div class="audio-label">Today's practice: <span id="audioConditionLabel"></span></div>
           <div class="audio-progress-wrap">
             <div class="audio-progress-bar" id="audioProgressBar" onclick="seekDailyAudio(event)">
               <div class="audio-progress-fill" id="audioProgressFill"></div>
             </div>
-            <div class="audio-time"><span id="audioCurrent">0:00</span> / <span id="audioDuration">–:––</span></div>
+            <div class="audio-time"><span id="audioCurrent">0:00</span> / <span id="audioDuration">0:00</span></div>
           </div>
         </div>
         <audio id="dailyAudio" preload="metadata"></audio>
@@ -2122,7 +2430,7 @@
       <div class="journal-area deep-hidden" id="journalArea">
         <div class="journal-label">Your Check-In</div>
         <textarea id="journalInput" class="journal-textarea" rows="5"
-          placeholder="Write whatever comes up. There is no right answer — just what's true for you right now."></textarea>
+          placeholder="Write whatever comes up. There is no right answer, just what's true for you right now."></textarea>
         <div class="submit-row">
           <div class="submit-actions">
             <button class="btn-share" onclick="shareApp()" title="Share with another parent">
@@ -2144,10 +2452,10 @@
       <div class="groups-aside" id="groupsAside">
         <p>Some parents do this work alongside others.
         <a href="https://danieljahearnlmft.com/parent-support-groups" target="_blank" rel="noopener noreferrer">Parent support groups</a>
-        <span class="groups-aside-note">Ongoing, Mondays at 5pm PST. Small groups on Zoom, capped at 12.</span></p>
+        <span class="groups-aside-note">Ongoing, Mondays at 5pm PT. Small groups on Zoom, capped at 12.</span></p>
       </div>
       <div class="email-pull" id="emailPull">
-        <div class="email-pull-text">A reflection on Tuesdays and a shorter note midweek — on attachment and parenting teens. No spam, unsubscribe anytime.</div>
+        <div class="email-pull-text">A reflection on Tuesdays and a shorter note midweek, on attachment and parenting teens. No spam, unsubscribe anytime.</div>
         <iframe src="https://danieljahearnlmft.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white; max-width:100%;" frameborder="0" scrolling="no"></iframe>
         <button class="email-pull-skip" onclick="skipEmailPull()">Not now</button>
       </div>
@@ -2160,6 +2468,132 @@
       </div>
       <div class="checkin-list" id="checkinList">
         <div class="empty-state">Your check-ins will appear here.<br>Start by completing today's reflection above.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── PATHWAY: R.E.A.L. Guided Walk ── -->
+<div id="realWalkScreen" class="pathway-screen">
+  <div class="pathway-container rw-container">
+
+    <div class="rw-progress" aria-hidden="true">
+      <div class="rw-dot" data-step="R">R</div>
+      <div class="rw-dot" data-step="E">E</div>
+      <div class="rw-dot" data-step="A">A</div>
+      <div class="rw-dot" data-step="L">L</div>
+    </div>
+
+    <!-- R -->
+    <div class="rw-step" id="rwStep-R">
+      <div class="rw-eyebrow">R.E.A.L.: Step one</div>
+      <h2 class="rw-title">Regulate</h2>
+      <div class="rw-sub">Stay regulated.</div>
+      <div class="rw-lede">Repair can't start from a flooded nervous system. Follow the breath, or find another way to pause. A splash of water on your face. A walk to the other room. You don't need to be calm, only more regulated than you were thirty seconds ago.</div>
+
+      <div class="rw-breath">
+        <div class="breath-ring-wrap">
+          <div class="breath-ring"></div>
+          <div class="breath-ring-inner"></div>
+        </div>
+        <div class="breath-phase" id="rwBreathPhase">Breathe in...</div>
+      </div>
+
+      <div class="rw-pull">Pause first. Your teen's nervous system is watching yours.</div>
+
+      <div class="rw-nav">
+        <button class="rw-btn-secondary" onclick="rwExit()">Not now</button>
+        <button class="rw-btn-primary" onclick="rwNext()">When you're steadier →</button>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="rw-step" id="rwStep-E" hidden>
+      <div class="rw-eyebrow">R.E.A.L.: Step two</div>
+      <h2 class="rw-title">Explore</h2>
+      <div class="rw-sub">Look at your own story.</div>
+      <div class="rw-lede">Before you turn toward your teen, turn toward yourself. What just happened in <em>you</em>? What got activated, the fear, the memory, the old wound?</div>
+
+      <label class="rw-label" for="rwEText">In your own words</label>
+      <textarea class="rw-textarea" id="rwEText" placeholder="What just got activated in me?" rows="5"></textarea>
+
+      <div class="rw-companion" id="rwECompanion" hidden>
+        <div class="rw-companion-label">A quiet mirror</div>
+        <div class="rw-companion-text" id="rwECompanionText"></div>
+      </div>
+
+      <div class="rw-nav">
+        <button class="rw-btn-secondary" onclick="rwBack()">← Back</button>
+        <button class="rw-btn-primary" id="rwEBtn" onclick="rwSubmitE()">Reflect →</button>
+      </div>
+      <div class="rw-skip"><a href="javascript:void(0)" onclick="rwNext()">Skip the mirror, continue to Attune →</a></div>
+    </div>
+
+    <!-- A -->
+    <div class="rw-step" id="rwStep-A" hidden>
+      <div class="rw-eyebrow">R.E.A.L.: Step three</div>
+      <h2 class="rw-title">Attune</h2>
+      <div class="rw-sub">The story your teen may have.</div>
+      <div class="rw-lede">Now turn toward your teen. Try to understand what happened for them. You may get it wrong, the try is what matters. What your teen registers is that someone is attempting to know them.</div>
+
+      <label class="rw-label" for="rwAText">Try to name it</label>
+      <textarea class="rw-textarea" id="rwAText" placeholder="What might have been happening for them? What might they have felt?" rows="5"></textarea>
+
+      <div class="rw-companion" id="rwACompanion" hidden>
+        <div class="rw-companion-label">A quiet mirror</div>
+        <div class="rw-companion-text" id="rwACompanionText"></div>
+      </div>
+
+      <div class="rw-nav">
+        <button class="rw-btn-secondary" onclick="rwBack()">← Back</button>
+        <button class="rw-btn-primary" id="rwABtn" onclick="rwSubmitA()">Reflect →</button>
+      </div>
+      <div class="rw-skip"><a href="javascript:void(0)" onclick="rwNext()">Skip the mirror, continue to Lean In →</a></div>
+    </div>
+
+    <!-- L -->
+    <div class="rw-step" id="rwStep-L" hidden>
+      <div class="rw-eyebrow">R.E.A.L.: Step four</div>
+      <h2 class="rw-title">Lean back in</h2>
+      <div class="rw-sub">Find a way to connect and support the relationship.</div>
+      <div class="rw-lede">The gesture of return, calibrated to what this moment actually needs. Not a lecture, not a solution, just the signal: <em>the relationship is still here.</em></div>
+
+      <div class="rw-authority">Working collaboratively does not mean giving up your authority as the parent. You can lean back in and still hold the line.</div>
+
+      <div class="rw-gestures">
+        <div class="rw-gesture">
+          <div class="rw-gesture-label">Say something</div>
+          <div class="rw-gesture-text">"I'm sorry I raised my voice. I'm still here."</div>
+        </div>
+        <div class="rw-gesture">
+          <div class="rw-gesture-label">Be near</div>
+          <div class="rw-gesture-text">Go sit in the same room. No agenda. Presence is the gesture.</div>
+        </div>
+        <div class="rw-gesture">
+          <div class="rw-gesture-label">A small signal</div>
+          <div class="rw-gesture-text">A look. A hand on the shoulder. Any small thing that says: I'm still here.</div>
+        </div>
+        <div class="rw-gesture">
+          <div class="rw-gesture-label">Your own</div>
+          <div class="rw-gesture-text">Something that fits this teen, this moment.</div>
+        </div>
+      </div>
+
+      <div class="rw-nav">
+        <button class="rw-btn-secondary" onclick="rwBack()">← Back</button>
+        <button class="rw-btn-primary" onclick="rwDone()">I leaned back in →</button>
+      </div>
+      <div class="rw-skip"><a href="javascript:void(0)" onclick="rwNotYet()">Not yet, I'll come back to this</a></div>
+    </div>
+
+    <!-- Close -->
+    <div class="rw-step rw-close" id="rwStep-close" hidden>
+      <div class="rw-close-glyph">❯</div>
+      <div class="rw-close-line">the way back home is always right here</div>
+      <div class="rw-close-sub" id="rwCloseSub">You did the work of return. That still counts even when your teen isn't ready to respond.</div>
+      <div class="rw-nav rw-nav-single">
+        <button class="rw-btn-primary" onclick="goHome()">Return home</button>
       </div>
     </div>
 
@@ -2196,7 +2630,7 @@ function renderHomeHero() {
   document.getElementById('homeHeroCondition').textContent = cond.name;
   document.getElementById('homeHeroTagline').textContent = cond.tagline;
   document.getElementById('homeHeroAction').innerHTML = done
-    ? `<div class="home-hero-done">✓ Practice complete — see you tomorrow</div>`
+    ? `<div class="home-hero-done">✓ Practice complete, see you tomorrow</div>`
     : `<button class="btn-begin" onclick="goto('practice')">Begin Today's Practice →</button>`;
 }
 
@@ -2223,6 +2657,7 @@ function goto(screen) {
   if (screen === 'activated') startBreathing();
   else stopBreathing();
   if (screen === 'practice') initPractice();
+  if (screen === 'realWalk') rwStart();
   if (window.plausible) window.plausible('Pathway Opened', { props: { pathway: screen } });
 }
 
@@ -2302,9 +2737,10 @@ document.addEventListener('keydown', (e) => {
 //  BREATHING ANIMATION
 // ─────────────────────────────────────────────
 let breathTimer = null;
-function startBreathing() {
-  const el = document.getElementById('breathPhase');
-  if (!el || breathTimer) return;
+function startBreathing(elId = 'breathPhase') {
+  stopBreathing();
+  const el = document.getElementById(elId);
+  if (!el) return;
   const phases = [
     { text: 'Breathe in...', ms: 4000 },
     { text: 'Hold...', ms: 4000 },
@@ -2323,6 +2759,144 @@ function stopBreathing() {
 }
 
 // ─────────────────────────────────────────────
+//  R.E.A.L. GUIDED WALK
+// ─────────────────────────────────────────────
+const rwState = { step: 'R', eText: '', aText: '' };
+const RW_ORDER = ['R', 'E', 'A', 'L', 'close'];
+
+function startWalk(entry) {
+  window.rwEntry = entry || 'R';
+  goto('realWalk');
+}
+
+function rwStart() {
+  rwState.step = 'R';
+  rwState.eText = '';
+  rwState.aText = '';
+  document.getElementById('rwEText').value = '';
+  document.getElementById('rwAText').value = '';
+  document.getElementById('rwECompanion').setAttribute('hidden', '');
+  document.getElementById('rwACompanion').setAttribute('hidden', '');
+  const eBtn = document.getElementById('rwEBtn');
+  eBtn.disabled = false;
+  eBtn.textContent = 'Reflect →';
+  eBtn.onclick = rwSubmitE;
+  const aBtn = document.getElementById('rwABtn');
+  aBtn.disabled = false;
+  aBtn.textContent = 'Reflect →';
+  aBtn.onclick = rwSubmitA;
+  const entry = window.rwEntry || 'R';
+  window.rwEntry = 'R';
+  rwShow(entry);
+}
+
+function rwShow(step) {
+  rwState.step = step;
+  document.querySelectorAll('#realWalkScreen .rw-step').forEach(s => s.setAttribute('hidden', ''));
+  const el = document.getElementById('rwStep-' + step);
+  if (el) el.removeAttribute('hidden');
+  document.querySelectorAll('.rw-dot').forEach(d => d.classList.remove('active', 'done'));
+  const idx = RW_ORDER.indexOf(step);
+  RW_ORDER.slice(0, idx).forEach(k => {
+    const d = document.querySelector(`.rw-dot[data-step="${k}"]`);
+    if (d) d.classList.add('done');
+  });
+  const cur = document.querySelector(`.rw-dot[data-step="${step}"]`);
+  if (cur) cur.classList.add('active');
+  window.scrollTo(0, 0);
+  if (step === 'R') startBreathing('rwBreathPhase');
+  else stopBreathing();
+  if (window.plausible) window.plausible('RealWalk Step', { props: { step } });
+}
+
+function rwNext() {
+  const map = { R: 'E', E: 'A', A: 'L', L: 'close' };
+  if (map[rwState.step]) rwShow(map[rwState.step]);
+}
+
+function rwBack() {
+  const map = { E: 'R', A: 'E', L: 'A' };
+  if (map[rwState.step]) rwShow(map[rwState.step]);
+}
+
+function rwExit() {
+  stopBreathing();
+  if (window.plausible) window.plausible('RealWalk Exited', { props: { atStep: rwState.step } });
+  goHome();
+}
+
+async function rwCall(step, text) {
+  const payload = { step, text, firstName: '' };
+  if (step === 'A' && rwState.eText) payload.eText = rwState.eText;
+  const res = await fetch('/.netlify/functions/real-companion', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Reflection unavailable');
+  return data.response;
+}
+
+async function rwSubmitE() {
+  const text = document.getElementById('rwEText').value.trim();
+  if (!text) return;
+  rwState.eText = text;
+  const btn = document.getElementById('rwEBtn');
+  btn.disabled = true;
+  btn.textContent = 'Listening…';
+  try {
+    const reflection = await rwCall('E', text);
+    document.getElementById('rwECompanionText').textContent = reflection;
+    document.getElementById('rwECompanion').removeAttribute('hidden');
+    btn.disabled = false;
+    btn.textContent = 'Continue to Attune →';
+    btn.onclick = rwNext;
+  } catch (err) {
+    console.error('E reflection failed', err);
+    btn.disabled = false;
+    btn.textContent = 'Continue to Attune →';
+    btn.onclick = rwNext;
+  }
+}
+
+async function rwSubmitA() {
+  const text = document.getElementById('rwAText').value.trim();
+  if (!text) return;
+  rwState.aText = text;
+  const btn = document.getElementById('rwABtn');
+  btn.disabled = true;
+  btn.textContent = 'Listening…';
+  try {
+    const reflection = await rwCall('A', text);
+    document.getElementById('rwACompanionText').textContent = reflection;
+    document.getElementById('rwACompanion').removeAttribute('hidden');
+    btn.disabled = false;
+    btn.textContent = 'Continue to Lean In →';
+    btn.onclick = rwNext;
+  } catch (err) {
+    console.error('A reflection failed', err);
+    btn.disabled = false;
+    btn.textContent = 'Continue to Lean In →';
+    btn.onclick = rwNext;
+  }
+}
+
+function rwDone() {
+  let n = 1;
+  try { n = (parseInt(localStorage.getItem('wbh_repairs') || '0', 10) || 0) + 1; localStorage.setItem('wbh_repairs', String(n)); } catch (e) {}
+  document.getElementById('rwCloseSub').textContent = "You did the work of return. That still counts even when your teen isn't ready to respond. Repair attempts so far: " + n + ".";
+  if (window.plausible) window.plausible('RealWalk Completed');
+  rwShow('close');
+}
+
+function rwNotYet() {
+  document.getElementById('rwCloseSub').textContent = "It still counts. The way back home is always right here, come back when you're ready.";
+  if (window.plausible) window.plausible('RealWalk NotYet');
+  rwShow('close');
+}
+
+// ─────────────────────────────────────────────
 //  DATA
 // ─────────────────────────────────────────────
 const CONDITIONS = [
@@ -2330,9 +2904,9 @@ const CONDITIONS = [
     key:'safety', name:'Safety', icon:'🌱',
     image:'cond-safety.jpg', imagePos:'center 25%',
     overlayColor:'rgba(38, 62, 42, 0.86)',
-    breathInvitation:'Let your weight settle. Feel your feet on the floor. Breathe in, and notice — you are here. Breathe out. Before anything else, this: you are not alone, and neither is your teen.',
+    breathInvitation:'Let your weight settle. Feel your feet on the floor. Breathe in, and notice, you are here. Breathe out. Before anything else, this: you are not alone, and neither is your teen.',
     colorClass:'cond-safety', histClass:'hist-safety',
-    tagline:"Creating the conditions where your teen's nervous system can settle — where they know they are not alone.",
+    tagline:"Creating the conditions where your teen's nervous system can settle, where they know they are not alone.",
     youtubeUrl: 'https://youtu.be/JdDb2kE56dM?si=1BpjoDI4vo3f1ybY',
     quotes:[
       { text:"The truth is, the real work begins not with insight or tools, but with presence — a collaborative, steady, safe presence. Before any transformation is possible, the nervous system must be taught, gently, consistently, and often wordlessly, that it is safe to exist.", chapter:"Chapter 2" },
@@ -2350,9 +2924,9 @@ const CONDITIONS = [
     key:'attunement', name:'Attunement', icon:'🌊',
     image:'cond-attunement.jpg', imagePos:'center 55%',
     overlayColor:'rgba(22, 46, 78, 0.84)',
-    breathInvitation:'Soften your gaze. Breathe in quietly — not to fix anything, just to arrive. On the exhale, release the day\'s agenda. You are about to become curious about someone you love.',
+    breathInvitation:'Soften your gaze. Breathe in quietly, not to fix anything, just to arrive. On the exhale, release the day\'s agenda. You are about to become curious about someone you love.',
     colorClass:'cond-attunement', histClass:'hist-attunement',
-    tagline:"Being curious about your teen's inner world — not to fix it, but to know it.",
+    tagline:"Being curious about your teen's inner world, not to fix it, but to know it.",
     youtubeUrl: null,
     quotes:[
       { text:"When a child feels truly seen, their armor loosens, their defenses falter. In that trembling silence, a door opens. And sometimes, that single risk — to sit closer, to be known, to let another presence in — changes the direction of a life.", chapter:"Chapter 3" },
@@ -2363,7 +2937,7 @@ const CONDITIONS = [
       "Describe a recent interaction with your teen. What do you think they were feeling underneath what they said or did?",
       "Where do you find it hardest to stay curious rather than reactive? What's happening inside you in those moments?",
       "What is something your teen cares deeply about that you don't fully understand? What would it take to get genuinely curious about it?",
-      "Think of a moment you got it wrong — misread your teen. What would it look like to go back and repair that misattunement?"
+      "Think of a moment you got it wrong, misread your teen. What would it look like to go back and repair that misattunement?"
     ]
   },
   {
@@ -2372,7 +2946,7 @@ const CONDITIONS = [
     overlayColor:'rgba(82, 46, 14, 0.84)',
     breathInvitation:'Place a hand anywhere that feels right. Breathe in warmth. On the exhale, feel the body\'s natural intelligence begin its work. You don\'t have to do anything. Let the settling come to you.',
     colorClass:'cond-soothing', histClass:'hist-soothing',
-    tagline:"Helping your teen return to calm — and learning to do the same for yourself.",
+    tagline:"Helping your teen return to calm, and learning to do the same for yourself.",
     youtubeUrl: null,
     quotes:[
       { text:"When your teen rages, they're asking if you'll stay — not if you'll fix it.", chapter:"Chapter 4" },
@@ -2381,7 +2955,7 @@ const CONDITIONS = [
     ],
     prompts:[
       "How do you soothe yourself when you're overwhelmed? Did someone model that for you, or did you have to figure it out alone?",
-      "What does your teen look like when their nervous system is dysregulated? What do they need in those moments — even if they can't ask for it?",
+      "What does your teen look like when their nervous system is dysregulated? What do they need in those moments, even if they can't ask for it?",
       "Think of a time you stayed regulated while your teen was not. What made that possible? What did that do for them?",
       "What gets in the way of you being a soothing presence? What activates your own dysregulation?"
     ]
@@ -2390,19 +2964,19 @@ const CONDITIONS = [
     key:'delight', name:'Expressed Delight', icon:'✨',
     image:'cond-delight.jpg', imagePos:'center 35%',
     overlayColor:'rgba(92, 68, 10, 0.80)',
-    breathInvitation:'Bring to mind your teen\'s face — not in a hard moment, but in an ordinary one. Hold it lightly. Breathe in and let something open. Breathe out. Their existence still moves something in you.',
+    breathInvitation:'Bring to mind your teen\'s face, not in a hard moment, but in an ordinary one. Hold it lightly. Breathe in and let something open. Breathe out. Their existence still moves something in you.',
     colorClass:'cond-delight', histClass:'hist-delight',
-    tagline:"Letting your teen know — through your face, your voice, your presence — that their existence brings you joy.",
+    tagline:"Letting your teen know, through your face, your voice, your presence, that their existence brings you joy.",
     youtubeUrl: null,
     quotes:[
       { text:"Expressed delight does not mean grand praise or artificial positivity. It shows up in micro-moments: the light in your eyes when your teen walks in the room. The way you laugh at their jokes. The pause to notice their effort, their presence. These moments wire a self that knows: I am wanted. My being brings light.", chapter:"Chapter 5" },
       { text:"The question that changes everything: when was the last time my teen felt truly seen by me? Not for what they did — but for who they are?", chapter:"Chapter 5" }
     ],
     prompts:[
-      "When did you last feel genuine delight in your teen? Not pride in their achievement — delight in who they are. What was happening?",
+      "When did you last feel genuine delight in your teen? Not pride in their achievement, delight in who they are. What was happening?",
       "Was delight expressed freely in your own childhood? How does that history live in the way you show up now?",
       "What is something unique and wonderful about your teen that you haven't said out loud to them recently?",
-      "If your teen were asked: 'Does your parent genuinely enjoy you?' — what do you think they would say? What would you want them to say?"
+      "If your teen were asked: 'Does your parent genuinely enjoy you?', what do you think they would say? What would you want them to say?"
     ]
   },
   {
@@ -2411,7 +2985,7 @@ const CONDITIONS = [
     overlayColor:'rgba(32, 24, 12, 0.88)',
     breathInvitation:'Breathe in and feel both feet on the ground. Breathe out and sense the space around you. The further they go, the more they need to know you are here. Find your center. They are still coming home to you.',
     colorClass:'cond-exploration', histClass:'hist-exploration',
-    tagline:"Supporting your teen's emerging self — trusting the process of becoming, even when it's uncomfortable.",
+    tagline:"Supporting your teen's emerging self, trusting the process of becoming, even when it's uncomfortable.",
     youtubeUrl: null,
     quotes:[
       { text:"Imagine offering your teen this same balance. Steady enough that they can leave. Present enough that they can return. Not holding them back. Not pushing them forward. Just available.", chapter:"Chapter 6" },
@@ -2443,7 +3017,7 @@ let deferredInstallPrompt = null;
 let practiceDate = null;
 
 // ─────────────────────────────────────────────
-//  STORAGE — IndexedDB + localStorage + memory cache
+//  STORAGE, IndexedDB + localStorage + memory cache
 // ─────────────────────────────────────────────
 const _cache = {};
 let _db = null;
@@ -2557,7 +3131,7 @@ function renderQuote(quote) {
     <div class="book-quote-area">
       <div class="quote-label">From the Book</div>
       <div class="quote-text">"${quote.text}"</div>
-      <div class="quote-chapter">${quote.chapter} — <em>The Way Back Home</em></div>
+      <div class="quote-chapter">${quote.chapter}, <em>The Way Back Home</em></div>
     </div>`;
 }
 function renderAlreadyDone() {
@@ -2723,7 +3297,7 @@ async function submitCheckin() {
 
 async function openVis() {
   if (!todayCondition) return;
-  document.getElementById('visTitle').textContent = `Visualization — ${todayCondition.name}`;
+  document.getElementById('visTitle').textContent = `Visualization: ${todayCondition.name}`;
   document.getElementById('visBody').innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
   document.getElementById('visModal').classList.add('open');
   try {
@@ -2744,7 +3318,7 @@ document.getElementById('visModal').addEventListener('click', function(e) { if(e
 
 function shareApp() {
   const shareData = {
-    title: 'The Way Back Home — Daily Practice',
+    title: 'The Way Back Home, Daily Practice',
     text: 'The distance between you and your teen isn\'t failure. It\'s the doorway. A free daily practice for parents of teens.',
     url: 'https://waybackhome.app'
   };
@@ -2848,7 +3422,7 @@ function checkMilestone(streak) {
   const msg = MILESTONES[streak];
   if (!msg) return;
   const toast = document.getElementById('milestoneToast');
-  toast.innerHTML = `<strong>${streak === 1 ? '✦' : `Day ${streak}`}</strong> — ${msg}`;
+  toast.innerHTML = `<strong>${streak === 1 ? '✦' : `Day ${streak}`}</strong>: ${msg}`;
   toast.classList.add('visible');
   setTimeout(() => toast.classList.remove('visible'), 4500);
 }
@@ -2904,7 +3478,7 @@ async function enableNotifications() {
     dismissNotifPrompt();
     if (window.plausible) window.plausible('Push Subscribed');
     const toast = document.getElementById('milestoneToast');
-    toast.innerHTML = 'Reminders on — see you tomorrow.';
+    toast.innerHTML = 'Reminders on, see you tomorrow.';
     toast.classList.add('visible');
     setTimeout(() => toast.classList.remove('visible'), 3000);
   } catch(e) {
@@ -2954,7 +3528,7 @@ function initPractice() {
   const groupsAsideEl = document.getElementById('groupsAside');
   if (groupsAsideEl) groupsAsideEl.classList.remove('visible');
   const strip = document.getElementById('visStrip');
-  document.getElementById('visStripText').textContent = `Guided visualization — ${todayCondition.name}`;
+  document.getElementById('visStripText').textContent = `Guided visualization: ${todayCondition.name}`;
   if (todayCondition.youtubeUrl) {
     strip.onclick = () => window.open(todayCondition.youtubeUrl, '_blank');
     document.getElementById('visStripBadge').textContent = 'YouTube ↗';
@@ -2977,7 +3551,7 @@ function setupDailyAudio() {
   audio.load();
   document.getElementById('audioPlayIcon').textContent = '▶';
   document.getElementById('audioCurrent').textContent = '0:00';
-  document.getElementById('audioDuration').textContent = '–:––';
+  document.getElementById('audioDuration').textContent = '0:00';
   document.getElementById('audioProgressFill').style.width = '0';
   block.hidden = true;
   const slug = (todayCondition.histClass || '').replace('hist-','');
@@ -3087,6 +3661,10 @@ function finishOnboarding(skipped) {
   await _preloadCache();
   maybeShowOnboarding();
   showHome();
+  if (window.location.hash === '#walk=real') {
+    history.replaceState(null, '', window.location.pathname);
+    goto('realWalk');
+  }
 })();
 </script>
 
@@ -3144,7 +3722,7 @@ if ('serviceWorker' in navigator) {
   <button class="notif-close" onclick="dismissNotifPrompt()">✕</button>
   <div class="notif-eyebrow">Daily Reminder</div>
   <div class="notif-heading">Get a gentle nudge each day?</div>
-  <div class="notif-body">A quiet daily notification — the day's condition and reflection prompt, delivered when you're ready.</div>
+  <div class="notif-body">A quiet daily notification, the day's condition and reflection prompt, delivered when you're ready.</div>
   <div class="notif-row">
     <span style="font-size:0.82rem;opacity:0.7;">Remind me at</span>
     <select class="notif-select" id="notifHour">
